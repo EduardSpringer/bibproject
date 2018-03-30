@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+/*Helene Akulow*/
+
+fieldset{	
+	padding-top: 1.5em;
+	padding-left: 1.5em;
+	border: 1px solid #005A9B; 
+}
+legend{
+	color: #005A9B;
+	padding: 0.2em;
+	font-size: 1.75em;
+
+}
+
+#loginform{
+	width: 400px;
+	text-align: center;
+	margin-top: 40%;
+	margin-bottom:40%;
+	font-size: 1.2em;
+	
+}
+label{
+	min-width: 6em;
+	display: inline-block;
+	text-align: left;
+	margin: 5px;
+}
+
+input{
+ width: 10em;
+}
+input[type="checkbox"]{
+ width: auto;
+}
+
+
+button{
+	width: 150px;
+	margin: 10px;
+}
+
+a:link{
+	color: #005A9B;
+}
+a:visited{
+	color: #005A9B;
+}

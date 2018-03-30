@@ -1,0 +1,105 @@
+.zentriert{
+	max-width: 1000px; 
+	position: relative; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 10px; 
+}
+
+form {
+	display:inline-block; 
+	background: #0000FF; 
+	max-width: 1000px; 
+	border-radius: 5px; 
+	padding: 2em; 
+}
+
+input{
+	padding: 0.5em; 
+	width: 20em;
+	margin-right: auto; 
+	border: none;  
+	border-radius: 3px;
+	background: #FFFFFF; 
+	color: #000000;  
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 15px; 
+	line-height: 15px; 
+}
+
+.upload-button {
+	padding: 1em; 
+	width: 34em; 
+    background: #FFFFFF;
+    text-align: center; 
+    color: #000000;  
+    font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 13px; 
+	line-height: 15px;
+	border: none;  
+	border-radius: 5px;
+	background: #FFFFFF; 
+}
+ 
+.upload-button input
+{	
+    position: absolute;
+    opacity: 0; 
+}
+
+label{
+	display: inline-block; 
+	text-align: left; 
+	min-width: 10em; 
+	color: #FFFFFF; 
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 15px; 
+	line-height: 15px; 
+}
+
+p{
+	color: #FFFFFF; 
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 12px; 
+	line-height: 13px; 
+}
+
+h5{
+	color: #FFFFFF; 
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 12px; 
+	line-height: 13px; 
+}
+
+h1{
+	color: #FFFFFF; 
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 10px; 
+	line-height: 13px; 
+}
+
+button{
+	padding: 1em; 
+	width: 36em; 
+	border: none; 
+	border-radius: 5px; 
+	background: #FFFFFF; 
+	color: #000000; 
+	font-family: "Helvetica Neue"; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 13px; 
+	line-height: 15px; 
+}

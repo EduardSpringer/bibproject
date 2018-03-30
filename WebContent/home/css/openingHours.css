@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+/*Helene Akulow*/
+
+h1{
+	font-size: 2em;
+	color: #005A9B;
+}
+h2{
+	font-size: 1.5em;
+}
+
+p{	
+	line-height: 1.25;
+}

@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/*Format*/
+div#flexarea {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 950px;
+}
+
+legend {
+	background: white;
+	padding: 0.5em;
+	border: 2px solid;
+	border-color: #005A9B;
+	border-radius: 1em 0.5em 0.5em;
+}
+
+label:first-child {
+	vertical-align: top;
+}
+
+label:first-child {
+	min-width: 8em;
+	display: inline-block;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+fieldset div {
+	padding: 0.2em;
+}
+
+fieldset{
+	border: none;
+}
+
+div#title {
+	text-align: center;
+}
+
+input {
+	width: 25em;
+}
+
+textarea{
+	width: 32em;
+}
+
+button[type="submit"] {
+	margin-left: 8em;
+}
+
+/*Flex*/
+form {
+	background: white;
+	flex: 3;
+	border-radius: 1em;
+	border: 2px solid;
+	padding: 10px;
+	margin: 2em;
+	border-color: #005A9B;
+}
+
+aside {
+	background: white;
+	flex: 1;
+	border-radius: 1em;
+	border: 2px solid;
+	padding: 15px;
+	border-color: grey;
+	text-align: center;
+	margin-bottom: 23em;
+	margin-top: 2em;
+}
+
+.buttons {
+	padding-left: 2.5em;
+}
+
+button{
+	margin: 0.7em;
+}
+
+/*Style*/
+input:invalid+label::after {
+	color: red;
+	content: " ✘";
+}
+
+textarea:invalid+label::after {
+	color: red;
+	content: " ✘";
+}
+
+input:valid+label::after {
+	color: green;
+	content: " ✔";
+}
+
+textarea:valid+label::after {
+	color: green;
+	content: " ✔";
+}
+
+input:hover, textarea:hover {
+	border: 2px solid #005A9B;
+}
+
+form p {
+	color: red;
+	margin-left: 1em;
+}
+
+button[type="submit"], button[type="reset"] {
+	width: 12em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background: white;
+	border: 1px solid #005A9B;
+}
+
+button[type="submit"]:hover, button[type="reset"]:hover {
+	background: #005A9B;
+}
+
+button[type="submit"]:active, button[type="reset"]:active {
+	background: white;
+}
+
+/*Eduard Springer*/

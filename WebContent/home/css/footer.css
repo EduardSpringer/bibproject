@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+/*Helene Akulow*/
+
+.foot{
+	background-color: #005A9B;
+	padding: 25px ;
+    text-align: center;
+    width: 100%
+}
+.foot p{
+	font-size: 1.5em;
+}
+
+.foot a{
+	text-decoration: none;
+	color: white;
+}
+.foot a:hover{
+	background-color: white;
+	color: #005A9B;
+}

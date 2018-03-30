@@ -1,0 +1,109 @@
+@charset "ISO-8859-1";
+/*Helene Akulow*/
+
+/*Für contact, login, openingHours, profileEditForm, registerForm*/
+.zentriert{
+	max-width:1280px;
+	display:inline-block; /*damit div nur so groß ist wie nötig*/
+	position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+   /* background-color: yellow;*/
+    text-align: left; /*damit der inhalt nicht zentriert wird durch outsidediv*/
+    
+}
+
+.outsidediv{ /*damit der innere div zentriert werden kann*/
+	text-align: center;
+}
+/*Für Header*/
+header {
+	background-color: #005A9B;
+	width: 100%;
+	height: 240px;	
+}
+
+.center{ /*damit header immer zentriert bleibt*/
+ 	width: 1280px;
+ 	height:240px;
+ 	left: 0; 
+ 	right: 0;
+	margin: auto;
+}
+
+.center nav{  
+ 	position: relative; 
+	padding-left: 200px; /*damit nav zentriert ist*/
+}
+
+.center hr{
+	color: white;
+	width: 100%
+}
+
+#logo {	
+	width:179px;
+	height:173px;
+}
+
+#loginfeld{
+	margin: 10px;
+	float: right;
+	font-size: 1.2em;	
+}
+
+#loginfeld a{
+	text-decoration: none; /*wird nicht unterstrichen usw*/
+	color: white;
+}
+#loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiß*/
+	color: #005A9B;
+}
+
+
+#profilbild{
+	
+	width: 150px;
+	height: 150px;
+	/*margin-top: 15px;*/
+}
+
+/*dropdown Navigation*/
+.center ul{ 	/*Aufzählungspunkte und Abstände entfernt */
+	margin: 0px;
+	padding: 0px;
+	list-style: none;	
+}
+
+.center ul li{ /*Startseite, Reservieren, Termine, Quicklinks  sowie username wenn angemeldet*/
+	float: left;
+	width: 225px;
+	height: 40px;
+	background-color: #005A9B;
+	line-height: 40px;
+	text-align: center;
+	font-size: 1.5em;
+	color: white;	
+}
+
+.center ul li a{
+	text-decoration: none; /*wird nicht unterstrichen usw*/
+	color: white;
+	display: block; /*ganze zeile anstatt nur das wort anklickbar & hover*/
+	
+}
+.center ul li a:hover{
+	background-color: white;
+	color: #005A9B;
+}
+.center ul li ul li{ /*Punkte von Quicklinks*/
+	font-size: 0.75em;
+	line-height: 1.25;
+	width: 225px;
+	display: none; /*Punkte verstecken*/
+}
+
+.center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
+	display: block;
+}

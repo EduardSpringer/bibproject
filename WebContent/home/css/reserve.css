@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+div#flexarea {
+	display: flex;
+	flex-flow: row wrap;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1280px;
+}
+
+/* Flex*/
+main {
+	background: white;
+	flex: 2;
+	border-radius: 1em;
+	border: 1px solid;
+	padding: 10px;
+	margin: 10px;
+	border-color: #005A9B;
+	text-align: center;
+}
+
+aside {
+	background: white;
+	flex: 1;
+	border-radius: 1em;
+	border: 1px solid;
+	padding: 10px;
+	margin: 10px;
+	border-color: grey;
+	text-align: center;
+}
+
+#gruen:hover {
+    color: white;
+    border-color: #005A9B;
+}
+
+#gruen:focus{
+	background: #005A9B;
+}
+
+#gruen{
+	background: green;
+	width: 50px;
+	height: 50px;
+}
+
+#grau{
+	background: gray;
+	width: 50px;
+	height: 50px;
+	color: gray;
+}
+
+/* Eduard Springer */
