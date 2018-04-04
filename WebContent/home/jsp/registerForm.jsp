@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registrierung</title>
 <link rel="stylesheet" href="../css/content.css" type="text/css">
+<link rel="stylesheet" href="../css/header.css" type="text/css">
 </head>
 <body>
 	<%@ include file="../jspf/header.jspf" %>
