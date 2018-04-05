@@ -14,16 +14,16 @@
 	<main>
 	<div class="outsidediv">
 		<div class="zentriert">
-		<h1>&Ouml;ffnungszeiten</h1>
+		<h1>Öffnungszeiten</h1>
 		<h2>Servicezeiten am ServicePoint Bibliothek und IT</h2>
 		<p>Bibliothek ServicePoint<br>
 		Mo - Fr 10 - 18 Uhr<br>
 		Sa 10 - 14 Uhr</p>
 		
-		<p>Sommer&ouml;ffnungszeiten August bis Mitte Sept.:<br>
+		<p>Sommeröffnungszeiten August bis Mitte Sept.:<br>
 		Mo - Fr 13 - 17 Uhr<p>
 		
-		<p>Zugang f&uuml;r Hochschulmitglieder:<br>
+		<p>Zugang für Hochschulmitglieder:<br>
 		Mo - So 6 - 24 Uhr<p>
 		
 		<h2>IT ServicePoint in der Bibliothek</h2>
