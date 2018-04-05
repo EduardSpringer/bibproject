@@ -18,7 +18,7 @@
 
 	<!-- Überprüfung ob Benutzer eingeloggt ist -->
 	<!-- Muss auf empty geändert werden! -->
-	<c:if test="${not empty lb.username}">
+	<c:if test="${empty lb.username}">
 		<jsp:forward page="login.jsp" />
 	</c:if>
 
