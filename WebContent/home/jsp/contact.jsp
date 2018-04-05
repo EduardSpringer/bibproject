@@ -6,7 +6,7 @@
 <!DOCTYPE html><!-- Für die Festlegung der Syntax/ Elemente -->
 <html>
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="utf-8">
 		<title>Kontakt</title>
 		<base href="${pageContext.request.requestURI}"/><!-- Basis für relative Verweise bei MVC-Pattern -->
 		<link rel="stylesheet" type="text/css" href="../css/contact.css" /><!-- Einbindung der CSS-Dateien -->
