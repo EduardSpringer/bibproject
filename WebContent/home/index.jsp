@@ -92,9 +92,9 @@
 		<section class="felder">
 			<h2>Aktuelle Termine</h2> 
 			<p>
-			<b>Pr&uuml;fungsanmeldung:</b> 07.11.2017 - 17.11.2017<br>
+			<b>Prüfungsanmeldung:</b> 07.11.2017 - 17.11.2017<br>
 			<b>Vorlesungsfrei:</b> 23.12.2017 - 06.01.2018<br>
-			<b>R&uuml;ckmeldung zum SS 2018:</b> 15.01.2018 - 25.01.2018 
+			<b>Rückmeldung zum SS 2018:</b> 15.01.2018 - 25.01.2018 
 		</p>
 		</section>
 				
@@ -103,7 +103,7 @@
 	
 	<footer class="foot">
 	<p>
-		<a href="jsp/openingHours.jsp"> &Ouml;ffnungszeiten</a> |
+		<a href="jsp/openingHours.jsp"> Öffnungszeiten</a> |
 		<a href="jsp/contact.jsp">Kontakt</a>	|
 		<a href="jsp/legalNotice.jsp">Impressum</a>
 	</p>
