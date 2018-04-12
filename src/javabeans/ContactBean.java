@@ -1,9 +1,12 @@
+//Eduard Springer
+
 package javabeans;
 
 import java.io.Serializable;
 
 public class ContactBean implements Serializable {
-
+	private static final long serialVersionUID = 1L;
+	
 	private String betreff;
 	private String nachricht;
 	private String name;
@@ -41,5 +44,3 @@ public class ContactBean implements Serializable {
 		this.status = status;
 	}
 }
-
-/*Eduard Springer*/

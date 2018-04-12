@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><!-- page-Direktive für die Kommunikation mit dem Browser -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%-- page-Direktive für die Kommunikation mit dem Browser --%>
 <!DOCTYPE html><!-- Für die Festlegung der Syntax/ Elemente -->
 <html>
 	<head>
@@ -24,8 +24,9 @@
 					<h3>Fragen, Anregungen, Ideen?</h3>
 				</div>
 				<div>
+					<!-- Attribut "name" zum Einlesen vom Servlet & "id/class" für CSS -->
 					<label for="name">Name:</label> <input type="text" name="name"
-						id="name" placeholder="Ihr Name" maxlength="20" autofocus required>
+						id="name" placeholder="Ihr Name" maxlength="20" autofocus required> 
 					<label for="name"></label><!-- Label für Prüfzeichen -->
 				</div>
 				<div>
