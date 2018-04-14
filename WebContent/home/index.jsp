@@ -23,7 +23,8 @@
 			<div id="loginfeld">
 				<c:choose>
 				<c:when test="${empty lb.username}">
-					<a href="jsp/login.jsp">Anmelden</a>
+					<a href="jsp/login.jsp">Anmelden</a> 
+					
 				</c:when>
 				<c:otherwise>
 								
@@ -68,7 +69,7 @@
 	</header>	
 	
 	<div id="cookiebox">
-		<p id="cookie">Aktivieren Sie ihre Cookies 
+		<p id="cookietext">Aktivieren Sie ihre Cookies 
 			<button type="button" id="cookiebutton" onclick="cookieButton()">Ok!</button>
 		</p>
 	</div>
