@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" 
+	uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +26,16 @@
 				<div>
 					<label for="password">Passwort</label>
 					<input id="password" name="password" type="password" maxlength="10" required pattern="{5,10}">
-				</div>
+				</div>			
+				
 				<div>
 					<input type="checkbox" name="check" id="checkbox" value="merken">
 					<label for="checkbox">Anmeldenamen merken</label>
-				</div>				
+				</div>
+				
+				<p>${lb.fehlermeldung}</p>
+				 
+							
 				<button type="submit" name="loginbutton" value="login">Anmelden</button>
 				<p id="register">Noch nicht registriert?<br>
 				<a href="registerForm.jsp">Jetzt registrieren!</a>

@@ -6,6 +6,7 @@ public class LoginBean implements Serializable{
 	
 	private String username;
 	private String passwort;
+	private String fehlermeldung;
 	
 	public LoginBean(String username) {
 		this.username = username;
@@ -22,6 +23,13 @@ public class LoginBean implements Serializable{
 	}
 	public void setPasswort(String passwort) {
 		this.passwort = passwort;
+	}
+	public String getFehlermeldung() {
+		return fehlermeldung;
+	}
+
+	public void setFehlermeldung(String fehlermeldung) {
+		this.fehlermeldung = fehlermeldung;
 	}
 
 
