@@ -1,3 +1,5 @@
+<!-- Helene Akulow -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" 
@@ -20,14 +22,14 @@
 						</ul>
 					</li>
 				</ul>	
-				<img id="profilbild" src="../img/keinBild.jpg" alt="Profilbild">
+				<img src="../img/keinBild.jpg" width="150" height="150" alt="Profilbild">
 				
 				</c:otherwise>
 				</c:choose>
 			</div>
 
 			<a href="../index.jsp">
-				<img id="logo" src="../img/logo.jpg" alt="Logo">
+				<img src="../img/logo.jpg" width="179" height="173" alt="Logo">
 			</a>
 			
 			<hr>
