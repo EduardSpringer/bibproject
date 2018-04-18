@@ -17,7 +17,7 @@
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
 		<c:choose>
-			<c:when test="${empty cb.name}"><%-- Falls name-Bean nicht leer ist, dann ... --%>
+			<c:when test="${not empty cb.name}"><%-- Falls name-Bean nicht leer ist, dann ... --%>
 				<div id="message">
 					<h2>${cb.name},<%--JSP-EL: direkter Zugriff auf Beans--%>
 						vielen Dank für Ihre Nachricht!<br /> Sie werden nun auf die
