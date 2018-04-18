@@ -69,9 +69,9 @@ public class LoginServlet extends HttpServlet {
 			String loginbutton = request.getParameter("loginbutton");
 			String checkbox = request.getParameter("check");
 						
-			//if (checkbox == null) {
-			//	checkbox ="-";
-			//}
+			if (checkbox == null) { 
+				checkbox ="-"; //sonst NullPointerException Z.102
+			}
 			//System.out.println(checkbox);
 		    	  
 			switch(loginbutton) {
@@ -79,11 +79,13 @@ public class LoginServlet extends HttpServlet {
 				case "login": //Buttonvalue
 					
 					LoginBean benutzer = getLoginData(username); //Userdaten aus DB holen
+					HttpSession session = request.getSession();
 					
 					if(benutzer.getFehlermeldung() != null) { //User nicht gefunden					
 						response.sendRedirect("home/jsp/login.jsp");		
 						//System.out.println("du bist nicht registriert");
 					}
+					
 					else {		
 						
 						if(!password.equals(benutzer.getPasswort())) { //unterschiedliche Passwörter
@@ -93,7 +95,9 @@ public class LoginServlet extends HttpServlet {
 							response.sendRedirect("home/jsp/login.jsp");
 						}
 												
-						else{ 
+						else{  //Anmeldedaten passen
+							
+							session.setAttribute("lb", benutzer);	
 						
 							if(checkbox.equals("merken")) {
 								Cookie cookie1 = new Cookie("usernameCookie", username);
@@ -110,9 +114,9 @@ public class LoginServlet extends HttpServlet {
 										System.out.println(cookie.getName() + " " + cookie.getValue());		
 									}
 								}
-								//else {
-								//	System.out.println("keine Cookies gespeichert");
-								//}
+								else {
+									System.out.println("keine Cookies gespeichert");
+								}
 							}
 						
 							if(username.equals("admin")) {
@@ -124,7 +128,7 @@ public class LoginServlet extends HttpServlet {
 						}
 					}
 					
-					HttpSession session = request.getSession();
+					
 					session.setAttribute("lb", benutzer);						
 					break;
 			}
