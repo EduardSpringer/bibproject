@@ -26,12 +26,12 @@
 				<div>
 					<!-- Attribut "name" zum Einlesen vom Servlet & "id/class" für CSS -->
 					<label for="name">Name:</label> <input type="text" name="name"
-						id="name" placeholder="Ihr Name" maxlength="40" autofocus required> 
+						id="name" placeholder="Ihr Name" maxlength="25" autofocus required> 
 					<label for="name"></label><!-- Label für Prüfzeichen -->
 				</div>
 				<div>
 					<label for="email">E-Mail-Adresse:</label> <input type="email"
-						name="email" id="email" placeholder="Ihre E-Mail-Adresse" maxlength="45"
+						name="email" id="email" placeholder="Ihre E-Mail-Adresse" maxlength="30"
 						required pattern="[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}"><!-- \. als Literalzeichen sonst ist . ein Platzhalter, 
 						[] Menge der erlaubten Zeichen, {} Einschränkung der Zeichenanzahl -->
 					<label for="email"></label>
