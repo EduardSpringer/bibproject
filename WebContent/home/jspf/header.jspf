@@ -8,7 +8,7 @@
 			<div id="loginfeld">
 				<c:choose>
 				<c:when test="${empty lb.username}">
-					<a href="jsp/login.jsp">Anmelden</a> 
+					<a href="login.jsp">Anmelden</a> 
 				</c:when>
 				<c:otherwise>
 								

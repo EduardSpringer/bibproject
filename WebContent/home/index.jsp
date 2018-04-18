@@ -15,9 +15,9 @@
 	
 	</head>
 
-<body onpageshow="cookieFunktion();timer()">
+<body>
 
-	<header >
+	<header>
 		<div class="center">
 			
 			<div id="loginfeld">
@@ -67,12 +67,13 @@
 			</nav>			
 		</div>
 	</header>	
-	
+	<!--  
 	<div id="cookiebox">
 		<p id="cookietext">Aktivieren Sie ihre Cookies 
 			<button type="button" id="cookiebutton" onclick="cookieButton()">Ok!</button>
 		</p>
 	</div>
+	-->
 	
 	<main> 
 		<img id="bild" src="img/startseite.jpg" alt="Bild">
