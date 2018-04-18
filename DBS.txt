@@ -1,0 +1,30 @@
+CREATE TABLE Benutzer(
+    Vorname VARCHAR(20),
+    Nachname VARCHAR(20),
+    Passwort VARCHAR(10),
+    EMail VARCHAR(15),
+    Username VARCHAR(7),
+    Profilbild BINARY,
+    PRIMARY KEY(Username)
+    );
+    
+CREATE TABLE platzreservierung(
+ 	PlaceID INTEGER,
+	Username VARCHAR(7),
+    Datum DATE,
+    Zeit INTEGER,
+    Zeitstempel Timestamp,
+    PRIMARY KEY(PlaceID),
+    FOREIGN KEY (Username) REFERENCES Benutzer(Username)
+	);
+  
+CREATE TABLE Kontakt(
+	KontaktID SERIAL,
+    Betreff TEXT,
+    Nachricht TEXT,
+    Name VARCHAR(25),
+    EMail VARCHAR(30),
+    Zeitstempel Timestamp,
+    Status BOOLEAN,
+PRIMARY KEY(KontaktID)
+    );
