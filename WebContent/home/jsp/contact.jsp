@@ -26,12 +26,12 @@
 				<div>
 					<!-- Attribut "name" zum Einlesen vom Servlet & "id/class" für CSS -->
 					<label for="name">Name:</label> <input type="text" name="name"
-						id="name" placeholder="Ihr Name" maxlength="20" autofocus required> 
+						id="name" placeholder="Ihr Name" maxlength="40" autofocus required> 
 					<label for="name"></label><!-- Label für Prüfzeichen -->
 				</div>
 				<div>
 					<label for="email">E-Mail-Adresse:</label> <input type="email"
-						name="email" id="email" placeholder="Ihre E-Mail-Adresse"
+						name="email" id="email" placeholder="Ihre E-Mail-Adresse" maxlength="45"
 						required pattern="[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+\.[a-z]{2,3}"><!-- \. als Literalzeichen sonst ist . ein Platzhalter, 
 						[] Menge der erlaubten Zeichen, {} Einschränkung der Zeichenanzahl -->
 					<label for="email"></label>
@@ -39,7 +39,7 @@
 				<div>
 					<label for="betreff">Betreff:</label> <input type="text"
 						list="betreffListe" name="betreff" id="betreff"
-						placeholder="Ihr Betreff" maxlength="20" required> 
+						placeholder="Ihr Betreff" maxlength="40" required> 
 						<label for="betreff"></label>
 						<!-- Vorschläge für Input-Feld id="betreffliste" -->
 					<datalist id="betreffListe">
