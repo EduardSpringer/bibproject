@@ -22,22 +22,29 @@
 		<header>
 			<div class="center">
 				
-				<div id="loginfeld">
+				<div>
 					<c:choose>
-					<c:when test="${empty lb.username}">
-						<a href="jsp/login.jsp">Anmelden</a> 						
-					</c:when>
-					<c:otherwise>						
-					<ul>
-						<li><a>${lb.username}</a>
+						<c:when test="${empty lb.username}">
+							<div class="loginfeld">
+								<a href="jsp/login.jsp">Anmelden</a> 
+							</div>						
+						</c:when>
+						<c:otherwise>
+						<div class="loginfeld">	
+							<img id="profilbild" src="img/keinBild.jpg" width="150" height="150" alt="Profilbild">		
+						</div>
+							
+						<div class="loginfeld">				
 							<ul>
-								<li><a href="jsp/profileEditForm.jsp">Profil bearbeiten</a></li>
-								<li><a href="/bibproject/logoutservlet">Logout</a></li>
+								<li><a>${lb.username}</a>
+									<ul>
+										<li><a href="jsp/profileEditForm.jsp">Profil bearbeiten</a></li>
+										<li><a href="/bibproject/logoutservlet">Logout</a></li>
+									</ul>
+								</li>
 							</ul>
-						</li>
-					</ul>	
-					<img src="img/keinBild.jpg" width="150" height="150" alt="Profilbild">		
-					</c:otherwise>
+						</div>	
+						</c:otherwise>
 					</c:choose>
 				</div>
 	

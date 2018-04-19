@@ -43,18 +43,25 @@ header {
 }
 
 
-#loginfeld{
+.loginfeld{
 	margin: 10px;
 	float: right;
 	font-size: 1.2em;	
 }
 
-#loginfeld a{
+.loginfeld a{
 	text-decoration: none; /*wird nicht unterstrichen usw*/
 	color: white;
 }
-#loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiß*/
+.loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiß*/
 	color: #005A9B;
+}
+
+#profilbild{	
+	width: 150px;
+	height: 150px;
+	/*margin-top: 15px;*/
+	
 }
 
 /*dropdown Navigation*/
