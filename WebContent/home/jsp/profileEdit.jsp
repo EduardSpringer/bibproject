@@ -6,8 +6,6 @@
 <base href="${pageContext.request.requestURI}" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 	<%@ include file="../jspf/header.jspf" %>
