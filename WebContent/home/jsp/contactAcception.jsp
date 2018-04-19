@@ -16,20 +16,20 @@
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
-		<c:choose>
-			<c:when test="${not empty cb.name}"><%-- Falls name-Bean nicht leer ist, dann ... --%>
-				<div id="message">
-					<h2>${cb.name},<%--JSP-EL: direkter Zugriff auf Beans--%>
-						vielen Dank für Ihre Nachricht!<br /> Sie werden nun auf die
-						Startseite weitergeleitet.
-					</h2>
-					<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt, 
-						<a href="../index.jsp">klicken Sie hier</a>!
-					</p>
-				</div>
-			</c:when>
-			<c:otherwise><jsp:forward page="contact.jsp" /></c:otherwise><%-- ...ansonsten weiterleiten --%>
-		</c:choose>
+		<div id="message">
+			<h2>${cb.name},<%--JSP-EL: direkter Zugriff auf Beans--%>
+				vielen Dank für Ihre Nachricht!<br /> Sie werden nun auf die
+				Startseite weitergeleitet.
+			</h2>
+			<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt, 
+				<a href="../index.jsp">klicken Sie hier</a>!
+			</p>
+		</div>
 		<%@ include file="../jspf/footer.jspf"%>
+		<%-- <c:choose>
+				<c:when test="${not empty cb.name}">Falls name-Bean nicht leer ist, dann ...
+				</c:when>
+				<c:otherwise><jsp:forward page="contact.jsp" /></c:otherwise>...ansonsten weiterleiten
+			</c:choose> --%>
 	</body>
 </html>
