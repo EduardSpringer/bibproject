@@ -1,4 +1,3 @@
-@charset "ISO-8859-1";
 /*Helene Akulow*/
 
 /*Für contact, login, openingHours, profileEditForm, registerForm*/
@@ -42,10 +41,6 @@ header {
 	width: 100%
 }
 
-#logo {	
-	width:179px;
-	height:173px;
-}
 
 #loginfeld{
 	margin: 10px;
@@ -59,14 +54,6 @@ header {
 }
 #loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiß*/
 	color: #005A9B;
-}
-
-
-#profilbild{
-	
-	width: 150px;
-	height: 150px;
-	/*margin-top: 15px;*/
 }
 
 /*dropdown Navigation*/
