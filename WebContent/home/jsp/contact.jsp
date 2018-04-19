@@ -57,11 +57,11 @@
 					<label for="nachricht"></label>
 				</div>
 			</fieldset>
-			<div class="buttons">
-				<button type="submit" name="sendbutton"
-					formaction="/bibproject/contactformservlet" formmethod="post">Abschicken</button>
-				<button type="reset" name="resetbutton">Zurücksetzen</button>
-			</div>
+				<div class="buttons">
+					<button type="submit" name="sendbutton"
+						formaction="/bibproject/contactformservlet" formmethod="post">Abschicken</button>
+					<button type="reset" name="resetbutton">Zurücksetzen</button>
+				</div>
 			<p>✘ = Eingabe erforderlich</p>
 		</form>
 		</main>
