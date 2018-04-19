@@ -21,31 +21,31 @@
 			<div class="zentriert">
 				
 				<form id="loginform" action="/bibproject/loginservlet" method="post">
-				<fieldset><legend>Anmeldung</legend>		
-					<div>
-						<label for="username">Name</label>
-						<input id="username" name="username" value="${cookie.usernameCookie.value}" 
-						type="text" maxlength="7" required pattern="[A-Za-z]{3}[0-9]{4}|admin" title="abc1234">
-					</div>
-					<div>
-						<label for="password">Passwort</label>
-						<input id="password" name="password" type="password" maxlength="10" required pattern="{5,10}"
-						title="Three letter country code">
-					</div>			
-					
-					<div>
-						<input type="checkbox" name="check" id="checkbox" value="merken">
-						<label for="checkbox">Anmeldenamen merken</label>
-					</div>
-					
-					<p>${lb.fehlermeldung}</p>
-					 
-								
-					<button type="submit" name="loginbutton" value="login">Anmelden</button>
-					<p id="register">Noch nicht registriert?<br>
-					<a href="registerForm.jsp">Jetzt registrieren!</a>
-					</p>
-				</fieldset>	
+					<fieldset>
+						<legend>Anmeldung</legend>		
+						<div>
+							<label for="username">Anmeldename:</label>
+							<input type ="text" id="username" name="username" value="${cookie.usernameCookie.value}" 
+							type="text" maxlength="7" size="15" required pattern="[A-Za-z]{3}[0-9]{4}|admin" title="abc1234">
+						</div>
+						<div>
+							<label for="password">Passwort:</label>
+							<input id="password" name="password" type="password" maxlength="10" size="15" required pattern="{5,10}">
+						</div>			
+						
+						<div>
+							<input type="checkbox" name="check" id="checkbox" value="merken">
+							<label for="checkbox">Anmeldenamen merken</label>
+						</div>
+						
+						<p id="fehlermeldung">${lb.fehlermeldung}</p>
+						 
+									
+						<button type="submit" name="loginbutton" value="login">Anmelden</button>
+						<p id="register">Noch nicht registriert?<br>
+						<a href="registerForm.jsp">Jetzt registrieren!</a>
+						</p>
+					</fieldset>	
 				</form>
 			
 				

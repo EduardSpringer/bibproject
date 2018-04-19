@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*Helene Akulow*/
 
 fieldset{	
@@ -9,7 +10,6 @@ legend{
 	color: #005A9B;
 	padding: 0.2em;
 	font-size: 1.75em;
-
 }
 
 #loginform{
@@ -24,20 +24,40 @@ label{
 	min-width: 6em;
 	display: inline-block;
 	text-align: left;
-	margin: 5px;
+	/*margin: auto;/*5px;*/
 }
 
 input{
  width: 10em;
 }
-input[type="checkbox"]{
+input:hover{
+	border: 2px solid #005A9B;
+}
+input[type="checkbox"]{ /*weil Checkboxen auch input-Felder sind, 
+muss deren Ursprung wiederhergestellt werden*/
  width: auto;
+ margin-left: auto;
+ margin-top: 1.5em;
+ 
+}
+
+#fehlermeldung{
+	margin-left: auto;
+	color: red;
+	
+	
 }
 
 
 button{
 	width: 150px;
 	margin: 10px;
+	background: white;
+	border: 1px solid #005A9B;
+}
+button:hover{
+	background: #005A9B;
+	color: white;
 }
 
 a:link{

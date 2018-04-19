@@ -1,9 +1,10 @@
+@charset "UTF-8";
 /*Helene Akulow*/
 
-/*Für contact, login, openingHours, profileEditForm, registerForm*/
+/*FÃ¼r login, openingHours, profileEditForm, registerForm*/
 .zentriert{
 	max-width:1280px;
-	display:inline-block; /*damit div nur so groß ist wie nötig*/
+	display:inline-block; /*damit div nur so groÃŸ ist wie nÃ¶tig*/
 	position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -16,7 +17,7 @@
 .outsidediv{ /*damit der innere div zentriert werden kann*/
 	text-align: center;
 }
-/*Für Header*/
+/*FÃ¼r Header*/
 header {
 	background-color: #005A9B;
 	width: 100%;
@@ -52,13 +53,13 @@ header {
 	text-decoration: none; /*wird nicht unterstrichen usw*/
 	color: white;
 }
-#loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiß*/
+#loginfeld ul li a:hover{/*wegen '#loginfeld a' ist die Schrift immer weiÃŸ*/
 	color: #005A9B;
 }
 
 /*dropdown Navigation*/
 
-.center ul{ 	/*Aufzählungspunkte und Abstände entfernt */
+.center ul{ 	/*AufzÃ¤hlungspunkte und AbstÃ¤nde entfernt */
 	margin: 0px;
 	padding: 0px;
 	list-style: none;	
@@ -92,6 +93,6 @@ header {
 	display: none; /*Punkte verstecken*/
 }
 
-.center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
+.center ul li:hover ul li{ /*versteckte Punkte beim rÃ¼berfahren wieder anzeigen*/
 	display: block;
 }

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
 	</head>
+	
 	<body>
 		<%@ include file="../jspf/header.jspf" %>
 		<main>
