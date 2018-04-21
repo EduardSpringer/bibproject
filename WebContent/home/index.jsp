@@ -59,7 +59,7 @@
 					<li><a href="index.jsp">Startseite</a></li>
 					<li><a href="jsp/reserve.jsp">Reservieren</a></li>
 					<li><a href="pdf/events.pdf">Termine</a></li>
-					<li><a>Quicklinks</a>
+					<li><a>Quicklinks ▼</a>
 						<ul>
 							<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
 							<li><a href="https://www.thi.de/">Technische Hochschule</a></li>
