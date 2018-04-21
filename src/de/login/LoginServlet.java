@@ -38,11 +38,11 @@ public class LoginServlet extends HttpServlet {
 			try(ResultSet rsSelect = pstmt2.executeQuery();){ //Username wird gesucht
 			
 				if(rsSelect != null && rsSelect.next()) { //Username gefunden
-					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einfügen
+					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einfï¿½gen
 				}
 				else { //Username nicht gefunden
-					benutzer.setFehlermeldung("Sie sind nicht registriert");
-					benutzer.setUsername(null); //für den Headeranzeige wichtig 
+					benutzer.setFehlermeldung("âš  FEHLER:<br> Sie sind nicht registriert!");
+					benutzer.setUsername(null); //fï¿½r den Headeranzeige wichtig 
 					return benutzer;
 				}
 			}
@@ -88,9 +88,10 @@ public class LoginServlet extends HttpServlet {
 					
 					else {		
 						
-						if(!password.equals(benutzer.getPasswort())) { //unterschiedliche Passwörter
-							benutzer.setFehlermeldung("Falsches Passwort");
-							benutzer.setUsername(null); //Für Headeranzeige relevant
+						if(!password.equals(benutzer.getPasswort())) { //unterschiedliche Passwï¿½rter
+							benutzer.setFehlermeldung("âš  FEHLER:<br> Das Passwort fÃ¼r den Benutzernamen " + 
+														benutzer.getUsername()+ " ist falsch!");
+							benutzer.setUsername(null); //Fï¿½r Headeranzeige relevant
 							//System.out.println("falsches passwort");
 							response.sendRedirect("home/jsp/login.jsp");
 						}
@@ -101,10 +102,10 @@ public class LoginServlet extends HttpServlet {
 						
 							if(checkbox.equals("merken")) {
 								Cookie cookie1 = new Cookie("usernameCookie", username);
-								cookie1.setMaxAge(60 * 60 * 24); //Cookie für einen Tag
+								cookie1.setMaxAge(60 * 60 * 24); //Cookie fï¿½r einen Tag
 								cookie1.setPath("/");
 								response.addCookie(cookie1);
-								System.out.println("Cookie eingfügt");
+								System.out.println("Cookie eingfï¿½gt");
 								
 								Cookie[] cookies = request.getCookies();
 								if (cookies != null) {

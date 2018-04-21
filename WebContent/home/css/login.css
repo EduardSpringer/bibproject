@@ -2,9 +2,11 @@
 /*Helene Akulow*/
 
 fieldset{	
-	padding-top: 1.5em;
+	padding-top: 0.5em;
 	padding-left: 1.5em;
 	border: 1px solid #005A9B; 
+	border-radius: 1em;
+	padding-bottom: 1.5em;
 }
 legend{
 	color: #005A9B;
@@ -21,15 +23,16 @@ legend{
 	
 }
 label{
-	min-width: 6em;
+	min-width: 5em;
 	display: inline-block;
 	text-align: left;
-	/*margin: auto;/*5px;*/
 }
 
 input{
  width: 10em;
+ margin-bottom: 0.5em;
 }
+
 input:hover{
 	border: 2px solid #005A9B;
 }
@@ -37,23 +40,20 @@ input[type="checkbox"]{ /*weil Checkboxen auch input-Felder sind,
 muss deren Ursprung wiederhergestellt werden*/
  width: auto;
  margin-left: auto;
- margin-top: 1.5em;
+ margin-top: 1em;
  
 }
 
 #fehlermeldung{
-	margin-left: auto;
-	color: red;
-	
-	
+	color: red;	
 }
-
 
 button{
 	width: 150px;
 	margin: 10px;
 	background: white;
 	border: 1px solid #005A9B;
+	margin-top:1.5em;
 }
 button:hover{
 	background: #005A9B;
