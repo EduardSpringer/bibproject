@@ -13,7 +13,7 @@ main {
 	background: white;
 	flex: 2;
 	border-radius: 1em;
-	border: 1px solid;
+	border: 2px solid;
 	padding: 10px;
 	margin: 10px;
 	margin-top: 1em;
@@ -25,7 +25,7 @@ aside {
 	background: white;
 	flex: 1;
 	border-radius: 1em;
-	border: 1px solid;
+	border: 2px solid;
 	padding: 10px;
 	margin: 10px;
 	margin-top: 1em;
