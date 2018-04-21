@@ -4,7 +4,7 @@ CREATE TABLE Benutzer(
     Passwort VARCHAR(10),
     EMail VARCHAR(15),
     Username VARCHAR(7),
-    Profilbild BINARY,
+    Profilbild BLOB,
     PRIMARY KEY(Username)
     );
     
