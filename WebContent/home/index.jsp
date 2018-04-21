@@ -7,8 +7,9 @@
 <html> <!-- umfasst das gesamte HTML-Dokument -->
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<base href="${pageContext.request.requestURI}" />
 		<title>Startseite</title>
+		<meta name="Webseite der Bibliothek an der THI" content="Platzreservierung"/>
+		<base href="${pageContext.request.requestURI}" />
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/homepage.css">
 		<link rel="stylesheet" href="css/footer.css">
