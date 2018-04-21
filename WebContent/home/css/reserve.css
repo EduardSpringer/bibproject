@@ -16,6 +16,7 @@ main {
 	border: 1px solid;
 	padding: 10px;
 	margin: 10px;
+	margin-top: 1em;
 	border-color: #005A9B;
 	text-align: center;
 }
@@ -27,6 +28,7 @@ aside {
 	border: 1px solid;
 	padding: 10px;
 	margin: 10px;
+	margin-top: 1em;
 	border-color: grey;
 	text-align: center;
 }
