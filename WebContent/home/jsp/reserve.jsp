@@ -38,8 +38,8 @@
 			<p>
 			<label for="zeitraum">Zeitraum:</label>
 				<select id="zeitraum">
-					<option value="choose">auswählen</option>
-					<option value="08:00 - 10:00">08:00 - 10:00</option>
+					<!-- <option value="choose">auswählen</option> -->
+					<option value="08:00 - 10:00" selected>08:00 - 10:00</option>
 					<option value="10:00 - 12:00">10:00 - 12:00</option>
 					<option value="12:00 - 14:00">12:00 - 14:00</option>
 					<option value="14:00 - 16:00">14:00 - 16:00</option>

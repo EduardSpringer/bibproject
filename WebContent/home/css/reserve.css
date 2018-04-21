@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/*Eduard Springer*/
 
 div#flexarea {
 	display: flex;
@@ -8,7 +8,7 @@ div#flexarea {
 	max-width: 1280px;
 }
 
-/* Flex*/
+/* Flexbox*/
 main {
 	background: white;
 	flex: 2;
@@ -33,6 +33,7 @@ aside {
 	text-align: center;
 }
 
+/* Style */
 #gruen:hover {
     color: white;
     border-color: #005A9B;
@@ -54,5 +55,3 @@ aside {
 	height: 50px;
 	color: gray;
 }
-
-/* Eduard Springer */
