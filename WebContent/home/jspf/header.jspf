@@ -21,7 +21,7 @@
 				
 						<div class="loginfeld">				
 							<ul>
-								<li><a>${lb.username}</a>
+								<li><a>▼${lb.username}</a>
 									<ul>
 										<li><a href="profileEditForm.jsp">Profil bearbeiten</a></li>
 										<li><a href="/bibproject/logoutservlet">Logout</a></li>
