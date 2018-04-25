@@ -19,6 +19,8 @@
 				<p>${trace}</p>
 			</c:forEach>
 		</h3>
-	<%@ include file="../jspf/footer.jspf"%>
+	<%@ include file="../jspf/footer.jspf"%>	
+	<%-- Beispiel für einen Fehler:
+	<%String irgendwas = null;out.println(irgendwas.toString());%> --%>
 	</body>
 </html>
