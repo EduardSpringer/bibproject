@@ -1,6 +1,4 @@
-/**
- * 
- */
+//Eduard Springer
 
 document.addEventListener("DOMContentLoaded", init);
 
