@@ -34,7 +34,7 @@
 						<div class="loginfeld">	
 							<c:choose>
 								<c:when test="${empty lb.profilbild}">
-									<img id="profilbild" src="de.login/bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
+									<img id="profilbild" src="/bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
 								</c:when>
 								<c:otherwise>
 									<img id="profilbild" src="" width="150" height="150" alt="Profilbild1">

@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import javax.sql.DataSource;
 
 import javax.annotation.Resource;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +28,7 @@ public class ContactFormServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+//		request.setCharacterEncoding("utf-8");
 
 		String betreff = request.getParameter("betreff");//Zugriff auf die Felder(name-tag) in .jsp-Datei
 		String nachricht = request.getParameter("nachricht");
@@ -35,28 +36,30 @@ public class ContactFormServlet extends HttpServlet {
 		String email = request.getParameter("email");
 
 		ContactBean cb = new ContactBean();//JavaBeans in einer Session hinterlegen
-
 		cb.setBetreff(betreff);
 		cb.setNachricht(nachricht);
 		cb.setName(name);
 		cb.setEmail(email);
-		cb.setStatus(false);// 0 als Status in der DB für 'ungelesen' im Admin-Panel
+		cb.setStatus(false);// 0 als Status in der DB fÃ¼r 'ungelesen' im Admin-Panel
 
-		HttpSession session = request.getSession();//Nutzung einer Sitzung
-		session.setAttribute("cb", cb);// JavaBean für die aktuelle Sitzung festlegen 
+//		HttpSession session = request.getSession();//Nutzung einer Sitzung
+//		session.setAttribute("cb", cb);// JavaBean fÃ¼r die aktuelle Sitzung festlegen 
+		request.setAttribute("cb", cb);
 
-		persist(cb); // Übertragung der JavaBean an die DB
+		persist(cb); // Ãœbertragung der JavaBean an die DB
 		
-		response.sendRedirect("home/jsp/contactAcception.jsp"); //Weiterleitung an eine JSP als Antwort
+//		response.sendRedirect("home/jsp/contactAcception.jsp"); //Weiterleitung an eine JSP als Antwort
+		RequestDispatcher disp = request.getRequestDispatcher("home/jsp/contactAcception.jsp"); 
+		disp.forward(request, response);
 	}
 
 	private void persist(ContactBean cb) throws ServletException {
 		//Verbindung zur DB herstellen und SQL-Anweisungen (INSERT) absetzen
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) { /*Platzhalter für Werte in DBS*/
+						"INSERT INTO kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) { /*Platzhalter fuer Werte in DBS*/
 
-			pstmt.setString(1, cb.getBetreff()); //Zugriff auf über Klasse java.sql.PreparedStatement auf die JavaBeans
+			pstmt.setString(1, cb.getBetreff()); //Zugriff auf die JavaBeans und Speicherung in die DB
 			pstmt.setString(2, cb.getNachricht());
 			pstmt.setString(3, cb.getName());
 			pstmt.setString(4, cb.getEmail());

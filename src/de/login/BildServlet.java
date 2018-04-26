@@ -53,7 +53,16 @@ public class BildServlet extends HttpServlet {
 				try(ResultSet rsSelect = pstmt.executeQuery();){ //Username wird gesucht
 				
 					if(rsSelect != null && rsSelect.next()) { //Username gefunden	
-						Blob bild = rsSelect.getBlob("profilbild");
+						
+						byte[] image = rsSelect.getBytes("profilbild");
+						user.setProfilbild(image);
+						
+						response.setContentType("image/jpeg");
+						response.setContentLength(image.length);
+						response.getOutputStream().write(image);
+						
+						
+						/*Blob bild = rsSelect.getBlob("profilbild");
 						response.reset();
 						long length = bild.length();
 						response.setHeader("Content-Length", String.valueOf(length));
@@ -69,7 +78,7 @@ public class BildServlet extends HttpServlet {
 								}
 								out.flush();
 								
-							}	
+							}*/	
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
