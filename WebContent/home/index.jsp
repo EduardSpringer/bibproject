@@ -32,13 +32,13 @@
 						</c:when>
 						<c:otherwise>
 						<div class="loginfeld">	
-						<img id="profilbild" src="bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">
+						
 							<c:choose>
 								<c:when test="${empty lb.profilbild}">
-											
+									<img id="profilbild" src="bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
 								</c:when>
 								<c:otherwise>
-									<img id="profilbild" src="" width="150" height="150" alt="Profilbild1">
+									<img id="profilbild" src="img/keinBild.jpg" width="150" height="150" alt="Profilbild1">
 									<!-- src="img/keinBild.jpg" src="de.login/bildservlet?username=${lb.username}"-->
 								</c:otherwise>
 							</c:choose>
