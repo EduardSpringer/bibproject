@@ -40,7 +40,7 @@ public class BildServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
-		//System.out.println(user.getUsername());
+		System.out.println(user.getUsername());
 		
 		
 		try(Connection con = ds.getConnection();
@@ -53,16 +53,9 @@ public class BildServlet extends HttpServlet {
 				try(ResultSet rsSelect = pstmt.executeQuery();){ //Username wird gesucht
 				
 					if(rsSelect != null && rsSelect.next()) { //Username gefunden	
+												
 						
-						byte[] image = rsSelect.getBytes("profilbild");
-						user.setProfilbild(image);
-						
-						response.setContentType("image/jpeg");
-						response.setContentLength(image.length);
-						response.getOutputStream().write(image);
-						
-						
-						/*Blob bild = rsSelect.getBlob("profilbild");
+						Blob bild = rsSelect.getBlob("profilbild");
 						response.reset();
 						long length = bild.length();
 						response.setHeader("Content-Length", String.valueOf(length));
@@ -78,7 +71,7 @@ public class BildServlet extends HttpServlet {
 								}
 								out.flush();
 								
-							}*/	
+							}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
