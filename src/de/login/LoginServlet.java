@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -27,7 +27,8 @@ public class LoginServlet extends HttpServlet {
 	
 	private LoginBean getLoginData(String usern) throws ServletException{
 		
-		LoginBean benutzer = new LoginBean(usern);
+		
+		LoginBean benutzer = new LoginBean();
 			
 		try(Connection con = ds.getConnection();
 			//PreparedStatement pstmt = con.prepareStatement("USE thidb;");
@@ -39,11 +40,11 @@ public class LoginServlet extends HttpServlet {
 			
 				if(rsSelect != null && rsSelect.next()) { //Username gefunden
 					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einf�gen
+					benutzer.setUsername(usern);
+				
 				}
 				else { //Username nicht gefunden
 					benutzer.setFehlermeldung("⚠ FEHLER:<br> Sie sind nicht registriert!");
-					benutzer.setUsername(null); //f�r den Headeranzeige wichtig 
-					return benutzer;
 				}
 			}
 						
@@ -59,15 +60,15 @@ public class LoginServlet extends HttpServlet {
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
-			response.setStatus(HttpServletResponse.SC_OK);	// nicht zwingend erforderlich; ist der default-Wert
-			response.setContentType("text/html");
-			response.setCharacterEncoding("UTF-8");
-			
+			request.setCharacterEncoding("UTF-8");
+		
 			//Parameter aus dem Formular:
 			String username=request.getParameter("username");
 		    String password=request.getParameter("password");			
 			String loginbutton = request.getParameter("loginbutton");
 			String checkbox = request.getParameter("check");
+			
+			RequestDispatcher disp;
 						
 			if (checkbox == null) { 
 				checkbox ="-"; //sonst NullPointerException Z.102
@@ -81,31 +82,40 @@ public class LoginServlet extends HttpServlet {
 					LoginBean benutzer = getLoginData(username); //Userdaten aus DB holen
 					HttpSession session = request.getSession();
 					
-					if(benutzer.getFehlermeldung() != null) { //User nicht gefunden					
-						response.sendRedirect("home/jsp/login.jsp");		
+					if(benutzer.getFehlermeldung() != null) { //User nicht gefunden						
+						request.setAttribute("lb", benutzer);
+						disp = request.getRequestDispatcher("/home/jsp/login.jsp");
+						disp.forward(request, response);
+								
 						//System.out.println("du bist nicht registriert");
 					}
 					
 					else {		
 						
 						if(!password.equals(benutzer.getPasswort())) { //unterschiedliche Passw�rter
+				
 							benutzer.setFehlermeldung("⚠ FEHLER:<br> Das Passwort für den Benutzernamen " + 
-														benutzer.getUsername()+ " ist falsch!");
+																benutzer.getUsername()+ " ist falsch!");
+							
 							benutzer.setUsername(null); //F�r Headeranzeige relevant
 							//System.out.println("falsches passwort");
-							response.sendRedirect("home/jsp/login.jsp");
+							request.setAttribute("lb", benutzer);
+							disp = request.getRequestDispatcher("/home/jsp/login.jsp");
+							disp.forward(request, response);
+							
 						}
 												
 						else{  //Anmeldedaten passen
 							
-							session.setAttribute("lb", benutzer);	
-						
+							
+							session.setAttribute("lb", benutzer);
+							
 							if(checkbox.equals("merken")) {
 								Cookie cookie1 = new Cookie("usernameCookie", username);
 								cookie1.setMaxAge(60 * 60 * 24); //Cookie f�r einen Tag
 								cookie1.setPath("/");
 								response.addCookie(cookie1);
-								System.out.println("Cookie eingf�gt");
+								System.out.println("Cookie eingfügt");
 								
 								Cookie[] cookies = request.getCookies();
 								if (cookies != null) {
@@ -120,17 +130,23 @@ public class LoginServlet extends HttpServlet {
 								}
 							}
 						
-							if(username.equals("admin")) {
-								response.sendRedirect("home/html/admin.html");
+							if(username.equals("admin")) {						
+								disp = request.getRequestDispatcher("/home/html/admin.html");
+								disp.forward(request, response);
+
 							}
-							else {
-								response.sendRedirect("home/index.jsp");
+							else { //history.back
+								disp = request.getRequestDispatcher("/home/index.jsp");
+								disp.forward(request, response);
+								
 							}
 						}
 					}
 					
 					
-					session.setAttribute("lb", benutzer);						
+					//session.setAttribute("lb", benutzer);
+					
+					
 					break;
 			}
 	}

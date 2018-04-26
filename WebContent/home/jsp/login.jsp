@@ -9,6 +9,7 @@
 				Angaben zum Nachladen von JavaScript- und Stylesheet-Dateien -->
 		<meta charset="UTF-8">
 		<title>Anmeldung</title>
+		<base href="${pageContext.request.requestURI}" />
 		<link rel="stylesheet" href="../css/login.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">

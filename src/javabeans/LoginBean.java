@@ -1,15 +1,24 @@
 package javabeans;
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 public class LoginBean implements Serializable{
 	
 	private String username;
 	private String passwort;
 	private String fehlermeldung;
+	private byte[] profilbild;
 	
-	public LoginBean(String username) {
-		this.username = username;
+	public LoginBean() {		
+	}
+	
+	public byte[] getProfilbild() {
+		return profilbild;
+	}
+
+	public void setProfilbild(byte[] profilbild) {
+		this.profilbild = profilbild;
 	}
 	
 	public String getUsername() {
@@ -31,6 +40,7 @@ public class LoginBean implements Serializable{
 	public void setFehlermeldung(String fehlermeldung) {
 		this.fehlermeldung = fehlermeldung;
 	}
+	
 
 
 }
