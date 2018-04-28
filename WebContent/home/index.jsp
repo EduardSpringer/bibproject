@@ -71,7 +71,6 @@
 							<li><a href="https://moodle.thi.de/moodle/">Moodle</a></li>
 							<li><a href="https://print.thi.de">Drucken</a></li>
 							<li><a href="https://exchange.thi.de">Webmail</a></li>
-							<li><a href="https://idp1.thi.de/idp/profile/SAML2/Redirect/SSO;jsessionid=935F04F10D206BDCB915E1C9D954D28E?execution=e1s1">Primuss (Studierenden Portal)</a></li>
 						</ul>
 					</li>		
 					</ul>			
