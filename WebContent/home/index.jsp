@@ -49,6 +49,7 @@
 								<li><a>${lb.username} ▼</a> 
 									<ul>
 										<li><a href="jsp/profileEditForm.jsp">Profil bearbeiten</a></li>
+										<li><a href="jsp/myReservation.jsp">Meine Termine</a></li>
 										<li><a href="/bibproject/logoutservlet">Logout</a></li>
 									</ul>
 								</li>
@@ -68,7 +69,6 @@
 					<ul>
 					<li><a href="index.jsp">Startseite</a></li>
 					<li><a href="jsp/reserve.jsp">Reservieren</a></li>
-					<li><a href="pdf/events.pdf">Termine</a></li>
 					<li><a>Quicklinks ▼</a>
 						<ul>
 							<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
@@ -98,22 +98,6 @@
 			
 			<section class="felder">
 				<h2>Freie Plätze: ##</h2> 
-			</section>
-			<hr>
-	
-			<section class="felder">
-	
-				<h2 id="timer">Pr&uuml;fungszeitraum fängt in ### Tagen an!</h2>
-				
-			</section>
-			<hr>
-			<section class="felder">
-				<h2>Aktuelle Termine</h2> 
-				<p>
-				<b>Prüfungsanmeldung:</b> 07.11.2017 - 17.11.2017<br>
-				<b>Vorlesungsfrei:</b> 23.12.2017 - 06.01.2018<br>
-				<b>Rückmeldung zum SS 2018:</b> 15.01.2018 - 25.01.2018 
-			</p>
 			</section>
 					
 		</main>

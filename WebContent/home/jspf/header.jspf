@@ -24,6 +24,7 @@
 								<li><a>${lb.username} ▼</a>
 									<ul>
 										<li><a href="profileEditForm.jsp">Profil bearbeiten</a></li>
+										<li><a href="myReservation.jsp">Meine Termine</a></li>
 										<li><a href="/bibproject/logoutservlet">Logout</a></li>
 									</ul>
 								</li>
@@ -44,7 +45,6 @@
 				<ul>
 				<li><a href="../index.jsp">Startseite</a></li>
 				<li><a href="reserve.jsp">Reservieren</a></li>
-				<li><a href="../pdf/events.pdf">Termine</a></li>
 				<li><a>Quicklinks ▼</a>
 					<ul>
 						<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
