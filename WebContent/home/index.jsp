@@ -14,15 +14,10 @@
 		<link rel="stylesheet" href="css/homepage.css">
 		<link rel="stylesheet" href="css/footer.css">
 		<script type="text/javascript" src="javascript/cookie.js"></script>
-		<script type="text/javascript" src="javascript/timer.js"></script>
-	
 	</head>
-
 	<body>
-	
 		<header>
 			<div class="center">
-				
 				<div>
 					<c:choose>
 						<c:when test="${empty lb.username}">
@@ -90,16 +85,11 @@
 			</p>
 		</div>
 		-->
-		
 		<main> 
-			<img id="bild" src="img/startseite.jpg" width="1280" height="450" alt="Bild">
-			
-			<h1>Herzlich Willkommen in unserer Bibliothek </h1>
-			
-			<section class="felder">
-				<h2>Freie Plätze: ##</h2> 
+			<section>
+				<h1>AKTUELLE PLATZAUSLASTUNG: ##</h1> 
 			</section>
-					
+			<img id="bild" src="img/startseite.jpg" width="1280" height="450" alt="Bild">	
 		</main>
 				
 		<footer class="foot">
@@ -109,7 +99,5 @@
 			<a href="jsp/legalNotice.jsp">Impressum</a>
 		</p>
 		</footer>
-	
-	
 	</body>
 </html>

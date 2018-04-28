@@ -7,10 +7,10 @@
 		<title>Impressum</title>
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<link rel="stylesheet" href="../css/legalNotice.css">
 	</head>
 	<body>
-		<%@ include file="../jspf/header.jspf" %>
-		<div class='impressum'>
+	<%@ include file="../jspf/header.jspf" %>
 			<h1>Impressum</h1>
 			<p>Angaben gemäß § 5 TMG</p>
 			<p>THI<br> 
@@ -33,9 +33,8 @@
 			Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.<br>
 			</p><br> 
 			Impressum vom <a href="http://www.impressum-generator.de">impressum-generator.de</a> der <a href="http://www.kanzlei-hasselbach.de/standorte/bonn/">Kanzlei Hasselbach Rechtsanwälte</a>
-	 	</div>
-	 		<!--Quelle: impressum-generator.de-->
+	 <!--Quelle: impressum-generator.de-->
 	 		
-			<%@ include file="../jspf/footer.jspf" %>
+	<%@ include file="../jspf/footer.jspf" %>
 	</body>
 </html>
