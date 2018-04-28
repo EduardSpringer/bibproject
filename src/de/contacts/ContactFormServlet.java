@@ -42,15 +42,17 @@ public class ContactFormServlet extends HttpServlet {
 		cb.setEmail(email);
 		cb.setStatus(false);// 0 als Status in der DB für 'ungelesen' im Admin-Panel
 
-//		HttpSession session = request.getSession();//Nutzung einer Sitzung
-//		session.setAttribute("cb", cb);// JavaBean für die aktuelle Sitzung festlegen 
-		request.setAttribute("cb", cb);
+		HttpSession session = request.getSession();//Nutzung einer Sitzung
+		session.setAttribute("cb", cb);// JavaBean für die aktuelle Sitzung festlegen 
 
 		persist(cb); // Übertragung der JavaBean an die DB
 		
-//		response.sendRedirect("home/jsp/contactAcception.jsp"); //Weiterleitung an eine JSP als Antwort
-		RequestDispatcher disp = request.getRequestDispatcher("home/jsp/contactAcception.jsp"); 
-		disp.forward(request, response);
+		response.sendRedirect("home/jsp/contactAcception.jsp"); //Weiterleitung an eine JSP als Antwort
+		
+//		Wegen "refresh" der Seite ist die Verwendung des Dispatchers nicht möglich!
+//		request.setAttribute("cb", cb);
+//		RequestDispatcher disp = request.getRequestDispatcher("home/jsp/contactAcception.jsp"); 
+//		disp.forward(request, response);
 	}
 
 	private void persist(ContactBean cb) throws ServletException {
