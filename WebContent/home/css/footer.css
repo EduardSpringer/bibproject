@@ -2,6 +2,8 @@
 
 /*Helene Akulow*/
 
+
+
 .foot{
 	background-color: #005A9B;
 	padding: 25px ;
@@ -10,6 +12,7 @@
 }
 .foot p{
 	font-size: 1.5em;
+	font-family: sans-serif;
 }
 
 .foot a{

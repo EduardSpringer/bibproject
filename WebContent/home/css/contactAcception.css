@@ -1,5 +1,9 @@
 /*Eduard Springer*/
 
+body{
+	font-family: sans-serif;
+}
+
 div#message {
 	text-align: center;
 	margin: 10em;

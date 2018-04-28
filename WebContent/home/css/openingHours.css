@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /*Helene Akulow*/
 
+body{
+	font-family: sans-serif;
+}
+
 h1{
 	font-size: 2em;
 	color: #005A9B;

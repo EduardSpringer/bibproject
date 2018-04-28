@@ -7,6 +7,10 @@
 	box-sizing: border-box;	
 }
 
+main{
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 section.felder{
 	width: 1280px;
 	position: relative;

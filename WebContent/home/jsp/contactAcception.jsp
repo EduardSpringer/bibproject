@@ -9,7 +9,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="refresh" content="8; URL=../index.jsp"><!-- Weiterleitung in 8 Sekunden -->
 		<title>Nachricht erfolgreich versandt!</title>
-		<base href="${pageContext.request.requestURI}" />
+		<base href="${pageContext.request.requestURI}"/>
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
 		<link rel="stylesheet" href="../css/contactAcception.css">
@@ -21,7 +21,7 @@
 				vielen Dank für Ihre Nachricht!<br /> Sie werden nun auf die
 				Startseite weitergeleitet.
 			</h2>
-			<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt, 
+			<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt,<br>
 				<a href="../index.jsp">klicken Sie hier</a>!
 			</p>
 		</div>

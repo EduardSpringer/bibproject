@@ -19,6 +19,7 @@ main {
 	margin-top: 1em;
 	border-color: #005A9B;
 	text-align: center;
+	font-family: sans-serif;
 }
 
 aside {
@@ -31,6 +32,7 @@ aside {
 	margin-top: 1em;
 	border-color: grey;
 	text-align: center;
+	font-family: sans-serif;
 }
 
 /* Style */
