@@ -17,17 +17,19 @@ public class LogoutServlet extends HttpServlet {
 
     public LogoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		HttpSession session=request.getSession(false); 
 		if (session != null){
+			/*
 			session.removeAttribute("username");
 			session.removeAttribute("passwort");
 			session.removeAttribute("fehlermeldung");
-        	session.invalidate();  
+			session.removeAttribute("adminrechte");*/
+			session.removeAttribute("lb");
+			session.invalidate();  
         }
         response.sendRedirect("home/index.jsp");
 	}

@@ -1,8 +1,7 @@
 <!-- Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" 
-	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> <!-- Document Type Definition (legt die verwendbaren Elemente und die Syntax fest) -->
 <html> <!-- umfasst das gesamte HTML-Dokument -->
 	<head>
@@ -72,7 +71,8 @@
 							<li><a href="https://print.thi.de">Drucken</a></li>
 							<li><a href="https://exchange.thi.de">Webmail</a></li>
 						</ul>
-					</li>		
+					</li>
+
 					</ul>			
 				</nav>			
 			</div>
@@ -86,7 +86,11 @@
 		-->
 		<main> 
 			<section>
-				<h1>AKTUELLE PLATZAUSLASTUNG: ##</h1> 
+				<h1>AKTUELLE PLATZAUSLASTUNG</h1> 
+				<div id=platzauslastung>
+					<p>Reservierte Plätze: ##</p>
+					<p>Freie Plätze: ##</p>
+				</div>
 			</section>
 			<img id="bild" src="img/startseite.jpg" width="1280" height="450" alt="Bild">	
 		</main>

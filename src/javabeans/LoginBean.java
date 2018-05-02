@@ -9,6 +9,7 @@ public class LoginBean implements Serializable{
 	private String passwort;
 	private String fehlermeldung;
 	private byte[] profilbild;
+	private boolean adminrechte; 
 	
 	public LoginBean() {		
 	}
@@ -39,6 +40,14 @@ public class LoginBean implements Serializable{
 
 	public void setFehlermeldung(String fehlermeldung) {
 		this.fehlermeldung = fehlermeldung;
+	}
+
+	public boolean isAdminrechte() {
+		return adminrechte;
+	}
+
+	public void setAdminrechte(boolean adminrechte) {
+		this.adminrechte = adminrechte;
 	}
 	
 

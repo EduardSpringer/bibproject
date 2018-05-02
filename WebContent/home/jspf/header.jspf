@@ -1,9 +1,4 @@
 <!-- Helene Akulow -->
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" 
-	uri="http://java.sun.com/jsp/jstl/core"%>
 	
 	<header>
 		<div class="center">			
@@ -21,7 +16,7 @@
 				
 						<div class="loginfeld">				
 							<ul>
-								<li><a>${lb.username} ▼</a>
+								<li><a>${lb.username} &#x25bc;</a>
 									<ul>
 										<li><a href="profileEditForm.jsp">Profil bearbeiten</a></li>
 										<li><a href="myReservation.jsp">Meine Termine</a></li>
@@ -45,7 +40,7 @@
 				<ul>
 				<li><a href="../index.jsp">Startseite</a></li>
 				<li><a href="reserve.jsp">Reservieren</a></li>
-				<li><a>Quicklinks ▼</a>
+				<li><a>Quicklinks &#x25bc;</a>
 					<ul>
 						<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
 						<li><a href="https://www.thi.de/">Technische Hochschule</a></li>

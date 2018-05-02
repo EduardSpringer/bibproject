@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 				if(rsSelect != null && rsSelect.next()) { //Username gefunden
 					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einf�gen
 					benutzer.setUsername(usern);
+					benutzer.setAdminrechte(rsSelect.getBoolean("Adminrechte")); //true oder false
 				
 				}
 				else { //Username nicht gefunden
@@ -83,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 					HttpSession session = request.getSession();
 					
 					if(benutzer.getFehlermeldung() != null) { //User nicht gefunden						
-						request.setAttribute("lb", benutzer);
+						request.setAttribute("lb", benutzer); //request wird nur einmal angezeigt beim Aufruf
 						disp = request.getRequestDispatcher("/home/jsp/login.jsp");
 						disp.forward(request, response);
 								
@@ -99,15 +100,14 @@ public class LoginServlet extends HttpServlet {
 							
 							benutzer.setUsername(null); //F�r Headeranzeige relevant
 							//System.out.println("falsches passwort");
-							request.setAttribute("lb", benutzer);
+							request.setAttribute("lb", benutzer); //request wird nur einmal angezeigt beim Aufruf
 							disp = request.getRequestDispatcher("/home/jsp/login.jsp");
 							disp.forward(request, response);
 							
 						}
 												
 						else{  //Anmeldedaten passen
-							
-							
+														
 							session.setAttribute("lb", benutzer);
 							
 							if(checkbox.equals("merken")) {
@@ -129,23 +129,11 @@ public class LoginServlet extends HttpServlet {
 									System.out.println("keine Cookies gespeichert");
 								}
 							}
-						
-							if(username.equals("admin")) {						
-								disp = request.getRequestDispatcher("/home/html/admin.html");
-								disp.forward(request, response);
-
-							}
-							else { //history.back
-								disp = request.getRequestDispatcher("/home/index.jsp");
-								disp.forward(request, response);
-								
-							}
+							//history.back()
+							disp = request.getRequestDispatcher("/home/index.jsp");
+							disp.forward(request, response);
 						}
 					}
-					
-					
-					//session.setAttribute("lb", benutzer);
-					
 					
 					break;
 			}

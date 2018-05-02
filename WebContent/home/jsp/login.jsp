@@ -1,8 +1,7 @@
 <!-- Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" 
-	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> <!-- Document Type Definition (legt die verwendbaren Elemente und die Syntax fest) -->
 <html> <!-- Wurzelelement-> umfasst das gesamte HTML-Dokument -->
 	<head> <!-- Kopf: Enthält Titel der Seite, Meta-Angaben zum Dokument (z.B. Zeichenkodierung) sowie

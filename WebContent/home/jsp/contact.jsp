@@ -1,13 +1,13 @@
 <!-- Eduard Springer -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%> <%--page-Direktive für die Kommunikation mit dem Browser--%>
 <%-- <%@ pageerrorPage="errorPage.jsp"%> --%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>page-Direktive für die Kommunikation mit dem Browser/ Bib von JSTL --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%-- Bib von JSTL für Schleifen usw. --%>
 <!DOCTYPE html><!-- Für die Festlegung der Syntax/ Elemente -->
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>Kontakt</title>
 		<base href="${pageContext.request.requestURI}"/><!-- Basis für relative Verweise bei MVC-Pattern -->
 		<link rel="stylesheet" type="text/css" href="../css/contact.css" /><!-- Einbindung der CSS-Dateien -->

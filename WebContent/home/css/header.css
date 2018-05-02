@@ -10,7 +10,7 @@
     margin-right: auto;
     padding: 10px;
    /* background-color: yellow;*/
-    text-align: left; /*damit der inhalt nicht zentriert wird durch outsidediv*/
+    text-align: left; /*damit der inhalt nicht durch outsidediv zentriert wird */
     
 }
 
@@ -28,14 +28,15 @@ header {
 .center{ /*damit header immer zentriert bleibt*/
  	width: 1280px;
  	height:240px;
- 	left: 0; 
- 	right: 0;
+ 	/*left: 0; 
+ 	right: 0;*/
 	margin: auto;
 }
 
 .center nav{  
  	position: relative; 
 	padding-left: 200px; /*damit nav zentriert ist*/
+	z-index: 1; /*bleibt im Vordergrund. Für Ul li ul li wichtig*/
 }
 
 .center hr{
@@ -75,7 +76,7 @@ header {
 
 .center ul li{ /*Startseite, Reservieren, Termine, Quicklinks  sowie username wenn angemeldet*/
 	float: left;
-	width: 225px;
+	width: 275px;
 	height: 40px;
 	background-color: #005A9B;
 	line-height: 40px;
@@ -98,10 +99,11 @@ header {
 }
 .center ul li ul li{ /*Punkte von Quicklinks*/
 	font-size: 0.75em;
-	line-height: 1.25;
-	width: 225px;
+	/*line-height: 1.25;*/
+	width: 250px;
 	display: none; /*Punkte verstecken*/
-
+	/*position: relative;
+	z-index: 1;*/
 }
 
 .center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
