@@ -1,7 +1,9 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <footer class="foot">
 	<p>
-		<a href="openingHours.jsp"> Öffnungszeiten</a> |
+		<a href="openingHours.jsp"> Ã–ffnungszeiten</a> |
 		<a href="contact.jsp">Kontakt</a>	|
 		<a href="legalNotice.jsp">Impressum</a>
 	</p>

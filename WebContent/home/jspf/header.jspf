@@ -1,4 +1,7 @@
 <!-- Helene Akulow -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>	
+<%--Page direktive darf/muss in der .jspf verwendet werden --%>
 	
 	<header>
 		<div class="center">			
@@ -10,13 +13,20 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div class="loginfeld">
-							<img src="../img/keinBild.jpg" width="150" height="150" alt="Profilbild">
+						<div class="loginfeld">							
+							<c:choose>
+								<c:when test="${lb.bildexist == true}">
+									<img id="profilbild" src="../../bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
+								</c:when>
+								<c:otherwise>
+									<img id="profilbild" src="../img/keinBild.jpg" width="150" height="150" alt="Profilbild1">
+								</c:otherwise>
+							</c:choose>
 						</div>
 				
 						<div class="loginfeld">				
 							<ul>
-								<li><a>${lb.username} &#x25bc;</a>
+								<li><a>${lb.username} ▼</a>
 									<ul>
 										<li><a href="profileEditForm.jsp">Profil bearbeiten</a></li>
 										<li><a href="myReservation.jsp">Meine Termine</a></li>
@@ -40,7 +50,7 @@
 				<ul>
 				<li><a href="../index.jsp">Startseite</a></li>
 				<li><a href="reserve.jsp">Reservieren</a></li>
-				<li><a>Quicklinks &#x25bc;</a>
+				<li><a>Quicklinks ▼</a>
 					<ul>
 						<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
 						<li><a href="https://www.thi.de/">Technische Hochschule</a></li>
@@ -48,7 +58,11 @@
 						<li><a href="https://print.thi.de">Drucken</a></li>
 						<li><a href="https://exchange.thi.de">Webmail</a></li>
 					</ul>
-				</li>		
+				</li>
+				<c:if test="${lb.adminrechte == true}">
+					<li><a href="admin.jsp">Admin &#x25bc;</a></li>	
+			
+				</c:if>		
 				</ul>			
 			</nav>		
 		</div>

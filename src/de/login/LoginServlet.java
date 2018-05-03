@@ -41,6 +41,7 @@ public class LoginServlet extends HttpServlet {
 				if(rsSelect != null && rsSelect.next()) { //Username gefunden
 					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einf�gen
 					benutzer.setUsername(usern);
+					benutzer.setBildexist(rsSelect.getBoolean("bildexist")); //true oder false
 					benutzer.setAdminrechte(rsSelect.getBoolean("Adminrechte")); //true oder false
 				
 				}

@@ -8,6 +8,7 @@
 		<title>Öffnungszeiten</title>
 		<link rel="stylesheet" href="../css/openingHours.css">
 		<link rel="stylesheet" href="../css/header.css">
+		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/footer.css">
 	</head>
 	

@@ -5,6 +5,7 @@ CREATE TABLE Benutzer(
     EMail VARCHAR(15),
     Username VARCHAR(7),
     Profilbild BLOB,
+    Bildexist BOOLEAN,
     Adminrechte BOOLEAN,
     PRIMARY KEY(Username),
     );

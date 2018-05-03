@@ -8,6 +8,7 @@
 <title>Profil bearbeiten</title>
 <link rel="stylesheet" href="../css/content.css" type="text/css">
 <link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/center.css">
 <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>

@@ -1,14 +1,14 @@
 package javabeans;
 
 import java.io.Serializable;
-import java.sql.Blob;
 
 public class LoginBean implements Serializable{
 	
 	private String username;
 	private String passwort;
 	private String fehlermeldung;
-	private byte[] profilbild;
+	private byte[] profilbild; //braucht man eigentlich nicht
+	private boolean bildexist;
 	private boolean adminrechte; 
 	
 	public LoginBean() {		
@@ -48,6 +48,14 @@ public class LoginBean implements Serializable{
 
 	public void setAdminrechte(boolean adminrechte) {
 		this.adminrechte = adminrechte;
+	}
+
+	public boolean isBildexist() {
+		return bildexist;
+	}
+
+	public void setBildexist(boolean bildexist) {
+		this.bildexist = bildexist;
 	}
 	
 

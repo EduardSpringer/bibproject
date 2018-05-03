@@ -11,6 +11,7 @@
 		<base href="${pageContext.request.requestURI}" />
 		<link rel="stylesheet" href="../css/login.css">
 		<link rel="stylesheet" href="../css/header.css">
+		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/footer.css">
 	</head>
 	

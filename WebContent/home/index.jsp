@@ -25,15 +25,13 @@
 							</div>						
 						</c:when>
 						<c:otherwise>
-						<div class="loginfeld">	
-						
+						<div class="loginfeld">				
 							<c:choose>
-								<c:when test="${empty lb.profilbild}">
-									<img id="profilbild" src="bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
+								<c:when test="${lb.bildexist == true}">
+									<img id="profilbild" src="../bildservlet?username=${lb.username}" width="150" height="150" alt="Profilbild">		
 								</c:when>
 								<c:otherwise>
 									<img id="profilbild" src="img/keinBild.jpg" width="150" height="150" alt="Profilbild1">
-									<!-- src="img/keinBild.jpg" src="de.login/bildservlet?username=${lb.username}"-->
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -72,7 +70,10 @@
 							<li><a href="https://exchange.thi.de">Webmail</a></li>
 						</ul>
 					</li>
-
+					 
+					<c:if test="${lb.adminrechte == true}">
+						<li><a href="jsp/admin.jsp">Admin</a></li>	
+					</c:if>	
 					</ul>			
 				</nav>			
 			</div>
