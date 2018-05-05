@@ -2,7 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> <%--page-Direktive für die Kommunikation mit dem Browser--%>
-<%-- <%@ pageerrorPage="errorPage.jsp"%> --%>
+<%@ page errorPage="errorPage.jsp" %> <%--Bei Fehler, Weiterleitung an die Fehlerseite --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> <%-- Bib von JSTL für Schleifen usw. --%>
 <!DOCTYPE html><!-- Für die Festlegung der Syntax/ Elemente -->
 <html>
