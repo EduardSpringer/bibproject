@@ -7,7 +7,7 @@ CREATE TABLE Benutzer(
     Profilbild BLOB,
     Bildexist BOOLEAN,
     Adminrechte BOOLEAN,
-    PRIMARY KEY(Username),
+    PRIMARY KEY(Username)
     );
     
 CREATE TABLE platzreservierung(
@@ -28,5 +28,5 @@ CREATE TABLE Kontakt(
     EMail VARCHAR(30),
     Zeitstempel Timestamp,
     Status BOOLEAN,
-PRIMARY KEY(KontaktID)
+	PRIMARY KEY(KontaktID)
     );
