@@ -60,6 +60,7 @@ header {
 	text-align: center;
 	margin: 0;
 	padding: 0;
+	padding-left: 10%;/* edit by Eduard */
 }
 
 .center ul li{ /*Startseite, Reservieren, Termine, Quicklinks  sowie username wenn angemeldet*/
@@ -91,9 +92,15 @@ header {
 	display: none; /*Punkte verstecken*/
 	position: relative;
 	float: right;
-
+	border-bottom: 1px solid white;/* edit by Eduard  */
 }
 
 .center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
 	display: block;
+}
+
+/* edit by Eduard */
+nav li#admin{
+	background-color: #c0c0c0;
+	border-radius: 70px;
 }
