@@ -2,6 +2,7 @@ package de.login;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.*; 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,32 +48,52 @@ public class RegisterServlet extends HttpServlet {
 						session.setAttribute("javabean", javabean);
 						String[] generatedKeys = new String[]{"id"}; 				
 						try(Connection con = ds.getConnection();
-							PreparedStatement ps = con.prepareStatement(
-								"INSERT INTO thidb.Benutzer (Vorname, Nachname, Passwort, EMail, Username, Profilbild) VALUES (?, ?, ?, ?, ?, ?)", generatedKeys)){
-							ps.setString(1, javabean.getVorname()); 
-							ps.setString(2, javabean.getNachname()); 
-							ps.setString(3, javabean.getPasswort()); 
-							ps.setString(4, javabean.getEmail());
-							ps.setString(5, javabean.getUsername());
-							ps.setBytes(6, javabean.getImage()); 
-							//ps.setString(7, javabean.getUsername());
-							//ps.executeUpdate(); 
-							try(Connection c = ds.getConnection()){
-								ps.executeUpdate(); 
-								response.sendRedirect("home/jsp/register.jsp"); 
+							PreparedStatement p = con.prepareStatement(
+								"SELECT * FROM thidb.Benutzer WHERE Username = ?")){
+							p.setString(1, javabean.getUsername()); 
+							ResultSet rs = p.executeQuery(); 
+							if(rs.next()) {
+								response.sendRedirect("home/jsp/admin.jsp");
 							}
+							else {
+								try(Connection conn = ds.getConnection();
+									PreparedStatement ps = con.prepareStatement(
+										"INSERT INTO thidb.Benutzer (Vorname, Nachname, Passwort, EMail, Username, Profilbild, Bildexist, Adminrechte) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", generatedKeys)){
+									ps.setString(1, javabean.getVorname()); 
+									ps.setString(2, javabean.getNachname()); 
+									ps.setString(3, javabean.getPasswort()); 
+									ps.setString(4, javabean.getEmail());
+									ps.setString(5, javabean.getUsername());
+									ps.setByte(6, javabean.getImage()); 
+									if(javabean.getImage() != 0) {
+										ps.setBoolean(7, true); 
+									}
+									else {
+										ps.setBoolean(7, false); 
+									}
+									ps.setBoolean(8, false); 
+									//ps.setString(7, javabean.getUsername());
+									//ps.executeUpdate(); 
+										try(Connection c = ds.getConnection()){
+											ps.executeUpdate(); 
+											response.sendRedirect("home/jsp/register.jsp"); 
+										}
+										catch(Exception e) {
+											response.sendRedirect("home/jsp/admin.jsp"); 
+											//Verweis mit Dispatcher
+										}	
+									}
+							
+								catch(Exception ex) {
+									//response.sendRedirect("home/jsp/admin.jsp");
+									throw new ServletException(ex.getMessage()); 
+								}
+						
+							}
+						}
 							catch(Exception e) {
-								response.sendRedirect("home/jsp/benutzervorhanden.jsp"); 
+								throw new ServletException(e.getMessage()); 
 							}
-						}
-						catch(Exception ex) {
-							throw new ServletException(ex.getMessage()); 
-						
-						}
-						
-						
-
-	}
 	
 	/*private void persist(ProfileBean javabean) throws ServletException{
 		String[] generatedKeys = new String[]{"id"}; 				
@@ -95,5 +116,6 @@ public class RegisterServlet extends HttpServlet {
 				throw new ServletException(ex.getMessage()); 
 			}
 	}*/
-
+	
+}
 }
