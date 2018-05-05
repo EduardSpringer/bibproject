@@ -15,8 +15,7 @@
 	<body>
 		<%@ include file="../jspf/header.jspf" %>
 	
-	2 Listen: Einzel- und Wiederholungsreservierungen
-	<div id="flex"></div>
+	<div id="flex">
 		<section>
 			<h1>Einzelreservierungen</h1>
 		

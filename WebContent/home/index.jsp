@@ -63,16 +63,21 @@
 					<li><a href="jsp/reserve.jsp">Reservieren</a></li>
 					<li><a>Quicklinks ▼</a>
 						<ul>
-							<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de">Stundenplan</a></li>
-							<li><a href="https://www.thi.de/">Technische Hochschule</a></li>
-							<li><a href="https://moodle.thi.de/moodle/">Moodle</a></li>
-							<li><a href="https://print.thi.de">Drucken</a></li>
-							<li><a href="https://exchange.thi.de">Webmail</a></li>
+							<li><a href="https://www3.primuss.de/stpl/login.php?FH=fhin&Lang=de" target="_blank">Stundenplan</a></li>
+							<li><a href="https://www.thi.de/" target="_blank">Technische Hochschule</a></li>
+							<li><a href="https://moodle.thi.de/moodle/" target="_blank">Moodle</a></li>
+							<li><a href="https://print.thi.de" target="_blank">Drucken</a></li>
+							<li><a href="https://exchange.thi.de" target="_blank">Webmail</a></li>
 						</ul>
 					</li>
 					 
 					<c:if test="${lb.adminrechte == true}">
-						<li><a href="jsp/admin.jsp">Admin</a></li>	
+						<li><a>Admin ▼</a>	
+							<ul>
+								<li><a href="jsp/adminEmail.jsp">Kontaktverwaltung</a></li>
+								<li><a href="jsp/adminReserve.jsp">Platzverwaltung</a></li>
+							</ul>
+						</li>
 					</c:if>	
 					</ul>			
 				</nav>			
