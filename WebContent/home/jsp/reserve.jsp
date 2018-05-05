@@ -28,13 +28,6 @@
 			<noscript>Um den vollen Funktionsumfang dieser Webseite zu
 				erfahren, benötigen Sie aktiviertes JavaScript.</noscript>
 
-			<h3 id="datum">Platzverteilung:</h3>
-			<div id="platzverteilung">
-			</div>
-		</main>
-		<aside>
-			<h1>Bitte den Zeitraum auswählen:</h1>
-			<p id="uhrzeit"></p>
 			<p>
 			<label for="zeitraum">Zeitraum:</label>
 				<select id="zeitraum">
@@ -49,6 +42,15 @@
 					<option value="22:00 - 24:00">22:00 - 24:00</option>
 				</select>
 			</p>
+			
+			<h3 id="datum">Platzverteilung:</h3>
+			<div id="platzverteilung">
+			</div>
+		</main>
+		<aside>
+			<h1>Bitte den Zeitraum auswählen:</h1>
+			<p id="uhrzeit"></p>
+
 			<h1>Bitte den Sitzplatz per Mausklick auswählen:</h1>
 			<p>Ausgewählte Sitzplatz-Nr.: <div id="platznr">-</div></p>
 			<button type="submit" name="send" value="submit">Bestätigen</button>
