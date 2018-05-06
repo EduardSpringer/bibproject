@@ -11,12 +11,12 @@ CREATE TABLE Benutzer(
     );
     
 CREATE TABLE platzreservierung(
- 	ReservationID INTEGER,
- 	PlaceID INTEGER,
- 	RepeatID INTEGER,
+ 	ReservierungID INTEGER,
+ 	Datum DATE,
+ 	Zeitraum VARCHAR(13),
+ 	PlatzID INTEGER,
+ 	Terminbezeichnung VARCHAR(30),
 	Username VARCHAR(7),
-    Datum DATE,
-    Zeit VARCHAR(13),
     Zeitstempel Timestamp,
     PRIMARY KEY(ReservationID),
     FOREIGN KEY (Username) REFERENCES Benutzer(Username)
