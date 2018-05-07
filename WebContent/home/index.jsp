@@ -72,7 +72,7 @@
 					</li>
 					 
 					<c:if test="${lb.adminrechte == true}">
-						<li><a>Admin ▼</a>	
+						<li id="admin"><a>Admin ▼</a>	
 							<ul>
 								<li><a href="jsp/adminEmail.jsp">Kontaktverwaltung</a></li>
 								<li><a href="jsp/adminReserve.jsp">Platzverwaltung</a></li>
