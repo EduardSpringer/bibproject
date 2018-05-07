@@ -18,7 +18,7 @@ CREATE TABLE platzreservierung(
  	Terminbezeichnung VARCHAR(30),
 	Username VARCHAR(7),
     Zeitstempel Timestamp,
-    PRIMARY KEY(ReservationID),
+    PRIMARY KEY(ReservierungID),
     FOREIGN KEY (Username) REFERENCES Benutzer(Username)
 	);
   
