@@ -92,6 +92,7 @@ header {
 	display: none; /*Punkte verstecken*/
 	position: relative;
 	float: right;
+<<<<<<< HEAD
 }
 
 /* edit by Eduard  */
@@ -106,6 +107,9 @@ header {
 	display: none; /*Punkte verstecken*/
 	position: relative;
 	float: right;
+=======
+	border-bottom: 1px solid white;/* edit by Eduard  */
+>>>>>>> parent of 83d0ab0... CSS: Menu Teil 2
 }
 
 .center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
