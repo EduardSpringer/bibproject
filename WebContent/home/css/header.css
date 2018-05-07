@@ -55,12 +55,11 @@ header {
 /*dropdown Navigation*/
 
 .center ul{ 	/*Aufzählungspunkte und Abstände entfernt */
-
 	list-style: none;	
 	text-align: center;
 	margin: 0;
 	padding: 0;
-	padding-left: 10%;/* edit by Eduard */
+	padding-left: 10%;
 }
 
 .center ul li{ /*Startseite, Reservieren, Termine, Quicklinks  sowie username wenn angemeldet*/
@@ -92,31 +91,20 @@ header {
 	display: none; /*Punkte verstecken*/
 	position: relative;
 	float: right;
-<<<<<<< HEAD
-}
-
-/* edit by Eduard  */
-.center ul li ul li:hover{ 
-	background-color: #006cbd;
-	cursor: pointer;
 }
 
 .center ul li ul li a:hover{ /*Punkte von Quicklinks*/
-	font-size: 0.75em;
-	/*line-height: 1.25;*/
-	display: none; /*Punkte verstecken*/
-	position: relative;
-	float: right;
-=======
-	border-bottom: 1px solid white;/* edit by Eduard  */
->>>>>>> parent of 83d0ab0... CSS: Menu Teil 2
+	background-color: #006cbd;
+	cursor: pointer;
+	color: white;
+	border-radius: 0;
+	border: 0;
 }
 
 .center ul li:hover ul li{ /*versteckte Punkte beim rüberfahren wieder anzeigen*/
 	display: block;
 }
 
-/* edit by Eduard */
 nav li#admin{
 	background-color: #c0c0c0;
 	border-radius: 70px;
