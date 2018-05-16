@@ -24,11 +24,7 @@
 		</c:if>
 
 		<div id="flexarea">
-		<main>
-			<!-- Überprüfung, ob JavaScript aktiv ist -->
-			<noscript>Um den vollen Funktionsumfang dieser Webseite zu
-				erfahren, benötigen Sie aktiviertes JavaScript.</noscript>
-			
+		<main>	
 			<!-- Aktuelles Datum mittels JSP:fmt -->
 			<jsp:useBean id="meinDatum" class="java.util.Date"/>    
 			<fmt:formatDate value="${meinDatum}" pattern="yyyy-MM-dd" var="meinDatum"/>
@@ -50,6 +46,11 @@
 						<option value="22:00 - 24:00">22:00 - 24:00</option>
 				</select>
 			</div>
+			
+			<!-- Überprüfung, ob JavaScript aktiv ist -->
+			<noscript><br>Um den vollen Funktionsumfang dieser Webseite zu
+				nutzen, benötigen Sie aktiviertes JavaScript!<a href="https://www.enable-javascript.com/de/" target="_blank">
+				<br>Klicken Sie hier</a>, um mehr zu erfahren!</noscript>
 			
 			<!-- <h3 id="datum">Platzverteilung:</h3> -->
 			<div id="platzverteilung">

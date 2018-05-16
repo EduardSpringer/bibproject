@@ -96,3 +96,8 @@ label{
 	margin-left: 3px;
 	color: black;
 }
+
+noscript{
+	font-family: sans-serif;
+	color: red;		
+}
