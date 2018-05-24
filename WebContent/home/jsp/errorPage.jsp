@@ -14,8 +14,8 @@
 	</head>
 	<body>
 	<%@ include file="../jspf/header.jspf"%>
-		<h1>Es ist ein Fehler aufgetreten! Bitte setzen Sie sich mit Ihrem Administrator in Verbindung: admin@thibib.de</h2>
-		<h2>Die Fehlermeldung lautet: ${pageContext.exception.stackTrace}</h1>
+		<h1>Es ist ein Fehler aufgetreten! Bitte setzen Sie sich mit Ihrem Administrator in Verbindung: admin@thibib.de</h1>
+		<h2>Die Fehlermeldung lautet: ${pageContext.exception.stackTrace}</h2>
 		<h3>Stacktrace:
 			<c:forEach var="trace" items="${pageContext.exception.stackTrace}">
 				<p>${trace}</p>
