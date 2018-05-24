@@ -18,6 +18,25 @@
 	<div id="flex">
 		<section>
 			<h1>Einzelreservierungen</h1>
+			
+			<table>
+			<tr>
+				<th>Nummer</th>
+				<th>Datum</th>
+				<th>Uhrzeit</th>
+				<th>Platznummer</th>
+				<th>Löschen</th>
+			</tr>
+			<c:forEach var="termin" items="${einzeltermine}">
+				<tr>
+					<td>NR</td>
+					<td>${termin.datumString}</td>
+					<td>${termin.zeitraum}</td>
+					<td>${termin.platzID}</td>
+					<td><a href="">X</a></td>
+				</tr>
+			</c:forEach>
+		</table>
 		
 		</section>
 		

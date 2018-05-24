@@ -8,24 +8,30 @@ public class ReservationBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int reservierungID;
-	private int placeID;
+	private int platzID;
 	private String username;
-	private Date datum;
+	private String datumString;
 	private String zeitraum;
 	private String terminbezeichnung;
 	private Date zeitstempel;
 	
+	public String getDatumString() {
+		return datumString;
+	}
+	public void setDatumString(String datumString) {
+		this.datumString = datumString;
+	}
 	public int getReservierungID() {
 		return reservierungID;
 	}
 	public void setReservierungID(int reservierungID) {
 		this.reservierungID = reservierungID;
 	}
-	public int getPlaceID() {
-		return placeID;
+	public int getPlatzID() {
+		return platzID;
 	}
-	public void setPlaceID(int placeID) {
-		this.placeID = placeID;
+	public void setPlatzID(int platzID) {
+		this.platzID = platzID;
 	}
 
 	public String getUsername() {
@@ -34,12 +40,7 @@ public class ReservationBean implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Date getDatum() {
-		return datum;
-	}
-	public void setDatum(Date datum) {
-		this.datum = datum;
-	}
+
 	public String getZeitraum() {
 		return zeitraum;
 	}
