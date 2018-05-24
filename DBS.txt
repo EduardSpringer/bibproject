@@ -13,7 +13,7 @@ CREATE TABLE Benutzer(
 CREATE TABLE platzreservierung(
  	ReservierungID INTEGER,
  	Datum DATE,
- 	Zeitraum VARCHAR(13),
+ 	Zeitraum INTEGER,
  	PlatzID INTEGER,
  	Terminbezeichnung VARCHAR(30),
 	Username VARCHAR(7),
