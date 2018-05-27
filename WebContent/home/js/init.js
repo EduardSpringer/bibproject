@@ -45,8 +45,4 @@ function init() {
 
 		}
 	}
-	
-	//aktuelle Uhrzeit
-	document.getElementById("uhrzeit").innerHTML = "Aktuelle Uhrzeit: " + heute.getHours() + ":"
-	+ ((heute.getMinutes() > 10) ? "" : "0") + heute.getMinutes() + " Uhr";
 }
