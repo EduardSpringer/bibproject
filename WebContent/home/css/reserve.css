@@ -34,12 +34,17 @@ aside {
 	font-family: sans-serif;
 }
 
-/* Style */
+/* Style für main*/
 #auswahl{
 	text-align: right;
 	padding: 10px;
 	background: #e4e3f1;
 	border-radius: 10px;
+}
+
+#datum, #zeitraum{
+	font-size: 1.0em;
+	font-family: sans-serif;
 }
 
 label{
@@ -99,5 +104,94 @@ label{
 
 noscript{
 	font-family: sans-serif;
-	color: red;		
+	color: red;	
+}
+
+/* Style für aside*/
+h1{
+	margin-top: 0em;
+	background: #e4e3f1;
+	border-radius: 0.3em;
+	padding: 0.3em;
+}
+
+#selectedNr{
+	margin-top: 2em;
+}
+
+#platznr{
+	color: #005A9B;
+	font-size: 1.1em;
+}
+
+#termintyp{
+	margin-top: 2em;
+	font-size: 1.1em;
+}
+
+#termineingrenzung{
+	display: inline-flex;
+	margin-top: 1em;
+}
+
+#terminname{
+	margin-top: 2em;
+}
+
+#terminbezeichnung{
+	min-width: 12em;
+}
+
+#terminname label[for=terminbezeichnung]{
+	font-size: 1.02em;
+}
+
+#termineingrenzung label[for=vom]{
+	font-size: 1em;
+	min-width: 0em;
+	margin-right: 0.4em;
+}
+
+#termineingrenzung label[for=bis]{
+	font-size: 1em;
+	min-width: 2em;
+	margin-right: 0.4em;
+}
+
+#actionbuttons{
+	margin-top: 2.9em;
+}
+
+#dauer{
+	font-size: 1.02em;
+	text-align: left;
+	margin-left: 2.6em;
+	visibility: hidden;
+}
+
+button[type=submit], button[type=reset]{
+	font-size: 1.0em;
+	height: 2em;
+	width: 10em;
+	color: #005A9B;
+	background: white;
+	border: 1px solid #005A9B;
+}
+
+button[type=reset]{
+	margin-right: 1.6em;
+	color: black;
+}
+
+button[type="submit"]:hover, button[type="reset"]:hover {
+	background: #e4e3f1;
+}
+
+button[type="submit"]:active, button[type="reset"]:active {
+	background: white;
+}
+
+/*Style für Input-Felder*/
+input:hover{
+	border: 2px solid #005A9B;
 }

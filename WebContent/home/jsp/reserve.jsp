@@ -22,47 +22,64 @@
 		<c:if test="${empty lb.username}">
 			<jsp:forward page="login.jsp" />
 		</c:if>
-
 		<div id="flexarea">
 		<main>	
-			<!-- Aktuelles Datum mittels JSP:fmt -->
-			<jsp:useBean id="meinDatum" class="java.util.Date"/>    
-			<fmt:formatDate value="${meinDatum}" pattern="yyyy-MM-dd" var="meinDatum"/>
+			<!-- Aktuelles Datum mittels JSP:fmt ermitteln, um min-Wert für Kalendar zu gewinnen-->
+			<jsp:useBean id="aktuellesDatum" class="java.util.Date"/>    
+			<fmt:formatDate value="${aktuellesDatum}" pattern="yyyy-MM-dd" var="aktuellesDatum"/>
+			
+			<!-- https://stackoverflow.com/questions/13661212/get-date-of-tomorrow-using-jstl/25058675 -->
+			<jsp:useBean id="bisDatum" class="java.util.Date"/> 
+			<jsp:setProperty name="bisDatum" property="time" value="${bisDatum.time + 604800000}"/>
+			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
-				<input type="date" name="Datum" id="datum" min="${meinDatum}" max="2018-10-02" value="${meinDatum}" required> 
-			
+				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required="required"> 
 				<label for="zeitraum">Zeitraum:</label>
-				<select id="zeitraum">
+				<select name="zeitraum" id="zeitraum">
 						<option value="choose" selected>auswählen</option>
-						<option value="08:00 - 10:00">08:00 - 10:00</option>
-						<option value="10:00 - 12:00">10:00 - 12:00</option>
-						<option value="12:00 - 14:00">12:00 - 14:00</option>
-						<option value="14:00 - 16:00">14:00 - 16:00</option>
-						<option value="16:00 - 18:00">16:00 - 18:00</option>
-						<option value="18:00 - 20:00">18:00 - 20:00</option>
-						<option value="20:00 - 22:00">20:00 - 22:00</option>
-						<option value="22:00 - 24:00">22:00 - 24:00</option>
+						<option value="10">08:00 - 10:00</option>
+						<option value="12">10:00 - 12:00</option>
+						<option value="14">12:00 - 14:00</option>
+						<option value="16">14:00 - 16:00</option>
+						<option value="18">16:00 - 18:00</option>
+						<option value="20">18:00 - 20:00</option>
+						<option value="22">20:00 - 22:00</option>
+						<option value="24">22:00 - 24:00</option>
 				</select>
 			</div>
-			
 			<!-- Überprüfung, ob JavaScript aktiv ist -->
 			<noscript><br>Um den vollen Funktionsumfang dieser Webseite zu
 				nutzen, benötigen Sie aktiviertes JavaScript!<a href="https://www.enable-javascript.com/de/" target="_blank">
 				<br>Klicken Sie hier</a>, um mehr zu erfahren!</noscript>
-			
-			<!-- <h3 id="datum">Platzverteilung:</h3> -->
-			<div id="platzverteilung">
-			</div>
+			<div id="platzverteilung"></div>
 		</main>
 		<aside>
-<!-- 			<h1>Bitte den Zeitraum auswählen:</h1>
-			<p id="uhrzeit"></p>
-
-			<h1>Bitte den Sitzplatz per Mausklick auswählen:</h1>
-			<p>Ausgewählte Sitzplatz-Nr.: <div id="platznr">-</div></p>
-			<button type="submit" name="send" value="submit">Bestätigen</button> -->
+			<h1>Reservierungsdaten</h1>
+			<p id="selectedNr">Ausgewählte Sitzplatz-Nr.:</p>
+			<output id="platznr" name="platznr">--</output>
+			<div id="termintyp">
+				<input type="radio" id="einzeltermin" name="termin" value="einzeltermin" checked>
+				<label for="einzeltermin">Einzeltermin</label>
+				<input type="radio" id="wiederholtermin" name="termin" value="wiederholtermin">
+				<label for="wiederholtermin">Wiederholtermin</label>
+			</div>
+			<div id="terminname">
+				<label for="terminbezeichnung">Terminbezeichnung:</label>
+				<input type="text" id="terminbezeichnung" name="terminbezeichnung" maxlength="40" disabled>
+			</div>
+			<div id="termineingrenzung">
+				<label for="vom">vom</label>
+				<input type="date" id="vom" name="vom" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" disabled>
+				<label for="bis">bis</label>
+				<input type="date" id="bis" name="bis" min="${bisDatum}" max="2018-10-02" step="7" value="${bisDatum}" disabled>
+			</div>
+			<p id="dauer">Dauer: 1 Woche</p>
+			<div id="actionbuttons">
+				<button type="reset" name="reset">Zurücksetzen</button>
+				<button type="submit" name="submit" value="submit">Reservieren</button>
+			</div>
 		</aside>
 		</div>
 		<%@ include file="../jspf/footer.jspf"%>
