@@ -100,6 +100,7 @@ function init() {
     opt.text = "auswählen";
     opt.value = "select";
     opt.selected = true;
+    opt.hidden = true;
     dropdown.appendChild(opt);
     dropdown.add(opt, dropdown[0]);
 }

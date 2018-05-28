@@ -47,6 +47,10 @@ aside {
 	font-family: sans-serif;
 }
 
+select{
+	cursor: pointer;
+}
+
 label{
 	font-size: 1.2em;	
 	min-width: 5em;
