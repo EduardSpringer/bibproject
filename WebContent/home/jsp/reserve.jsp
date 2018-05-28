@@ -37,17 +37,7 @@
 				<label for="datum">Datum: </label>
 				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required="required"> 
 				<label for="zeitraum">Zeitraum:</label>
-				<select name="zeitraum" id="zeitraum">
-						<option value="choose" selected>auswählen</option>
-						<option value="10">08:00 - 10:00</option>
-						<option value="12">10:00 - 12:00</option>
-						<option value="14">12:00 - 14:00</option>
-						<option value="16">14:00 - 16:00</option>
-						<option value="18">16:00 - 18:00</option>
-						<option value="20">18:00 - 20:00</option>
-						<option value="22">20:00 - 22:00</option>
-						<option value="24">22:00 - 24:00</option>
-				</select>
+				<select name="zeitraum" id="zeitraum"></select>
 			</div>
 			<!-- Überprüfung, ob JavaScript aktiv ist -->
 			<noscript><br>Um den vollen Funktionsumfang dieser Webseite zu
