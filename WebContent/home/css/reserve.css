@@ -81,18 +81,18 @@ label{
 #gruen{
 	font-family: sans-serif;
 	background-color: #4CAF50;
-	width: 46px;
-	height: 46px;
-	margin-left: 3px;
+	width: 42px;
+	height: 42px;
+	margin-left: 7px;
 	color: black;
 }
 
 #grau{
 	background: white;
-	width: 46px;
-	height: 46px;
+	width: 42px;
+	height: 42px;
 	color: white;
-	margin-left: 3px;
+	margin-left: 7px;
 	background-color: white;
 	border: 0;
 }
@@ -100,9 +100,9 @@ label{
 #rot{
 	font-family: sans-serif;
 	background-color: red;
-	width: 46px;
-	height: 46px;
-	margin-left: 3px;
+	width: 42px;
+	height: 42px;
+	margin-left: 7px;
 	color: black;
 }
 
