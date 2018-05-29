@@ -126,6 +126,15 @@ h1{
 #platznr{
 	color: #005A9B;
 	font-size: 1.1em;
+	margin-right: 1em;
+}
+
+#unsichtbaresElement{
+	visibility: hidden;
+}
+
+#unsichtbaresElement output{
+	visibility: visible;
 }
 
 #termintyp{

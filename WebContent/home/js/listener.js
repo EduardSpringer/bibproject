@@ -23,12 +23,14 @@ function setAllEventListener() {
 	// Date: Ausgabe in Wochen
 		var woche = document.getElementById("bis")
 		woche.addEventListener("change", setWoche)
+	// Änderungen nach Zeitraumauswahl
+		var zeitraum = document.getElementById("zeitraum")
+		zeitraum.addEventListener("change", changeZeitraum)
 }
 
 function changeText(j) {
 	return function() {
 		document.getElementById("platznr").value = j;
-		// document.getElementsByClassName("buttons").value;
 	};
 }
 
@@ -54,6 +56,8 @@ function changeTermin() {
 }
 
 function changeDatum() {
+	document.getElementById("platznr").innerHTML = "";
+	
 	document.getElementById("vom").value = document.getElementById("datum").value;
 	
 	document.getElementById("bis").value = document.getElementById("datum").value;
@@ -200,4 +204,8 @@ function setWoche(){
 	else{
 		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Woche";
 	}
+}
+
+function changeZeitraum(){
+	document.getElementById("platznr").innerHTML = "";
 }
