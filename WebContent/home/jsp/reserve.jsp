@@ -33,11 +33,14 @@
 			<jsp:setProperty name="bisDatum" property="time" value="${bisDatum.time + 604800000}"/>
 			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
+			<!-- Formular -->
+			<form action="/servlets/suchServlet" method="post" id="formular"></form>
+	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
-				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required="required"> 
+				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required="required" form="formular"> 
 				<label for="zeitraum">Zeitraum:</label>
-				<select name="zeitraum" id="zeitraum"></select>
+				<select name="zeitraum" id="zeitraum" form="formular"></select>
 			</div>
 			<!-- Überprüfung, ob JavaScript aktiv ist -->
 			<noscript><br>Um den vollen Funktionsumfang dieser Webseite zu
@@ -48,8 +51,8 @@
 		<aside>
 			<h1>Reservierungsdaten</h1>
 			<p id="selectedNr">Ausgewählte Sitzplatz-Nr.:</p>
-			<output id="platznr" name="platznr">--</output>
-			<div id="termintyp">
+			<p id="unsichtbaresElement">Test<output id="platznr" name="platznr" form="formular"></output></p>
+			<div id="termintyp" >
 				<input type="radio" id="einzeltermin" name="termin" value="einzeltermin" checked>
 				<label for="einzeltermin">Einzeltermin</label>
 				<input type="radio" id="wiederholtermin" name="termin" value="wiederholtermin">
@@ -57,17 +60,17 @@
 			</div>
 			<div id="terminname">
 				<label for="terminbezeichnung">Terminbezeichnung:</label>
-				<input type="text" id="terminbezeichnung" name="terminbezeichnung" maxlength="40" disabled>
+				<input type="text" id="terminbezeichnung" name="terminbezeichnung" maxlength="40" disabled form="formular">
 			</div>
 			<div id="termineingrenzung">
 				<label for="vom">vom</label>
-				<input type="date" id="vom" name="vom" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" disabled>
+				<input type="date" id="vom" name="vom" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" disabled form="formular">
 				<label for="bis">bis</label>
-				<input type="date" id="bis" name="bis" min="${bisDatum}" max="2018-10-02" step="7" value="${bisDatum}" disabled>
+				<input type="date" id="bis" name="bis" min="${bisDatum}" max="2018-10-02" step="7" value="${bisDatum}" disabled form="formular">
 			</div>
-			<p id="dauer">Dauer: 1 Woche</p>
+			<p id="dauer" >Dauer: 1 Woche</p>
 			<div id="actionbuttons">
-				<button type="reset" name="reset">Zurücksetzen</button>
+				<button type="reset" name="reset" form="formular">Zurücksetzen</button>
 				<button type="submit" name="submit" value="submit">Reservieren</button>
 			</div>
 		</aside>
