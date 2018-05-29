@@ -70,7 +70,7 @@
 			</div>
 			<p id="dauer" >Dauer: 1 Woche</p>
 			<div id="actionbuttons">
-				<button type="reset" name="reset" form="formular">Zurücksetzen</button>
+				<!-- <button type="reset" name="reset" form="formular">Zurücksetzen</button> -->
 				<button type="submit" name="submit" value="submit">Reservieren</button>
 			</div>
 		</aside>
