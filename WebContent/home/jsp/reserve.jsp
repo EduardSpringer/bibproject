@@ -1,4 +1,4 @@
-<!-- Eduard Springer -->
+ <!-- Eduard Springer -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -38,7 +38,7 @@
 	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
-				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required="required" form="formular"> 
+				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required form="formular"> 
 				<label for="zeitraum">Zeitraum:</label>
 				<select name="zeitraum" id="zeitraum" form="formular"></select>
 			</div>
