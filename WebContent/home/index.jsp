@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/homepage.css">
 		<link rel="stylesheet" href="css/footer.css">
-		<!--  <script type="text/javascript" src="js/cookie.js"></script>-->
+		<script type="text/javascript" src="js/cookie.js"></script>
 	</head>
 	<body>
 		<header>
