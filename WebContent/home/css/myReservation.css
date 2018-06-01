@@ -7,9 +7,7 @@ div#flex {
 	margin-left: auto;
 	margin-right: auto;
 	width: 1280px;
-	min-height: 400px;
-	
-	
+	min-height: 400px;	
 }
 
 section {
@@ -25,4 +23,15 @@ section {
 h1{
 	text-align: center;
 	/*color: #005A9B;*/
+}
+
+table{
+	text-align: center;
+	width: 100%;
+}
+th, td{
+	border-bottom: solid 1px #dad7d7;
+	text-align: center;
+	vertical-align: middle;
+	padding: 3px 0px;
 }
