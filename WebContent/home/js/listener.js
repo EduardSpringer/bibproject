@@ -51,6 +51,7 @@ function changeTermin() {
 
 function changeDatum() {
 	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platzverteilung").innerHTML ="";
 	
 	document.getElementById("vom").value = document.getElementById("datum").value;
 	
@@ -210,8 +211,7 @@ function changeZeitraum(){
 	
 	//falls datum invalid ist, dann tue nichts mehr
     if (!datumElement.checkValidity()) {
-    	var body = document.getElementById("platzverteilung");
-    	body.innerHTML = '';
+    	document.getElementById("platzverteilung").innerHTML ="";
         return;
     }
 	
@@ -224,8 +224,7 @@ function changeZeitraum(){
 			var plaetze = JSON.parse(xmlhttp.responseText);
 			
 			//Alte Plätze löschen
-			var body = document.getElementById("platzverteilung");
-			body.innerHTML = '';
+			document.getElementById("platzverteilung").innerHTML ="";
 			
 			// Initialisierung der Sitzplätze
 			var array = [ "3", "4", "5", "8", "9", "10", "13", "14", "15", "18", "19",
