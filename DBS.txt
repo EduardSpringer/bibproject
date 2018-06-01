@@ -11,7 +11,7 @@ CREATE TABLE Benutzer(
     );
     
 CREATE TABLE platzreservierung(
- 	ReservierungID INTEGER,
+ 	ReservierungID INTEGER AUTO_INCREMENT,
  	Datum DATE,
  	Zeitraum INTEGER,
  	PlatzID INTEGER,
