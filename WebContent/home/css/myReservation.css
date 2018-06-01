@@ -22,7 +22,13 @@ section {
 
 h1{
 	text-align: center;
-	/*color: #005A9B;*/
+	margin-top: 0em;
+	background: #e4e3f1;
+	border-radius: 0.3em;
+	padding: 0.3em;
+}
+p{
+	text-align: center;
 }
 
 table{
@@ -30,8 +36,8 @@ table{
 	width: 100%;
 }
 th, td{
-	border-bottom: solid 1px #dad7d7;
-	text-align: center;
-	vertical-align: middle;
 	padding: 3px 0px;
+}
+tr:nth-child(odd){
+	background:#efeef7;
 }

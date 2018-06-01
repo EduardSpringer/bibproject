@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../css/myReservation.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<script type="text/javascript" src="../js/myreservation.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf" %>
@@ -42,7 +43,8 @@
 							<td>${termin.datumString}</td>
 							<td>${termin.zeitraum}</td>
 							<td>${termin.platzID}</td>
-							<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}">X</a></td>
+							<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
+									class = deletelink>X</a></td>
 						</tr>
 					</c:forEach>
 				</table>
