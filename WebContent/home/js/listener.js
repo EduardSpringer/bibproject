@@ -203,10 +203,17 @@ function setWoche(){
 function changeZeitraum(){
 	document.getElementById("platznr").innerHTML = ""; 
 	
-	//TODO if datum == Null
-	
 	var datum = document.getElementById("datum").value;
+	var datumElement = document.getElementById("datum");
 	var zeitraum = document.getElementById("zeitraum").value;
+	var body = document.getElementById("platzverteilung");
+	
+	//falls datum invalid ist, dann tue nichts mehr
+    if (!datumElement.checkValidity()) {
+    	var body = document.getElementById("platzverteilung");
+    	body.innerHTML = '';
+        return;
+    }
 	
 	var searchURL = "/bibproject/placeinitservlet";
 	searchURL += "?datum=" + encodeURIComponent(datum) + "&zeitraum=" + encodeURIComponent(zeitraum);
