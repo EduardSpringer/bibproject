@@ -60,7 +60,7 @@
 			</div>
 			<div id="terminname">
 				<label for="terminbezeichnung">Terminbezeichnung:</label>
-				<input type="text" id="terminbezeichnung" name="terminbezeichnung" placeholder="max. 30 Zeichen" maxlength="30" disabled form="formular">
+				<input type="text" id="terminbezeichnung" name="terminbezeichnung" placeholder="max. 30 Zeichen" title="Bitte hier die Bezeichnung für Ihr Meeting festlegen!" maxlength="30" disabled form="formular">
 			</div>
 			<div id="termineingrenzung">
 				<label for="vom">vom</label>

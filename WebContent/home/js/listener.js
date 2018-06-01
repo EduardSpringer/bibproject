@@ -11,9 +11,9 @@ function setAllEventListener() {
 	// Date: Datum auf Datum des Wiederholtermins referenzieren & Zeiträume initialiseren
 		var datum = document.getElementById("datum")
 		datum.addEventListener("change", changeDatum)
-//	// Date: Datum (vom) auf Datum (bis) referenzieren
-//		var vom = document.getElementById("vom")
-//		vom.addEventListener("change", setVomMin)
+	// Date: Datum (vom) auf Datum (bis) referenzieren
+		var vom = document.getElementById("vom")
+		vom.addEventListener("change", setVomMin)
 	// Date: Ausgabe in Wochen
 		var woche = document.getElementById("bis")
 		woche.addEventListener("change", setWoche)
@@ -31,7 +31,7 @@ function changeText(j) {
 function changeTermin() {
 	if(document.getElementById("wiederholtermin").checked){
 		document.getElementById("terminbezeichnung").disabled = false;
-//		document.getElementById("vom").disabled = false;
+		document.getElementById("vom").disabled = false;
 		document.getElementById("bis").disabled = false;
 		
 		document.getElementById("terminbezeichnung").required = true;
@@ -42,7 +42,7 @@ function changeTermin() {
 	}
 	else{
 		document.getElementById("terminbezeichnung").disabled = true;
-//		document.getElementById("vom").disabled = true;
+		document.getElementById("vom").disabled = true;
 		document.getElementById("bis").disabled = true;
 		
 		document.getElementById("dauer").style.visibility = "hidden";
@@ -66,14 +66,18 @@ function changeDatum() {
 	// default-Value für Dauer
 	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
 	// Initialisierung der Zeiträume
+	initZeitraeume();
+}
+
+function initZeitraeume(){
 	var dropdown = document.getElementById("zeitraum");
     var aktuellesDatum = new Date();
     var systemDatum = aktuellesDatum.getDate();
     
     var datum = new Date(document.getElementById("datum").value);
-    var gewaehtlesDatum = datum.getDate();
+    var gewaehltesDatum = datum.getDate();
     
-    if(systemDatum != gewaehtlesDatum){
+    if(systemDatum != gewaehltesDatum){
     	var dropdown = document.getElementById("zeitraum");
     	document.getElementById("zeitraum").options.length = 0;
     	
@@ -173,18 +177,24 @@ function changeDatum() {
     }
 }
 
-//function setVomMin(){
-//	document.getElementById("bis").value = document.getElementById("vom").value;
-//	document.getElementById("bis").min = document.getElementById("vom").value;
-//	//Intervall von 7 Tagen
-//	document.getElementById("bis").step = 7;
-//	// Value um 7 Tagen erhöht
-//	document.getElementById("bis").stepUp(1);
-//	// Value auf Min referenziert
-//	document.getElementById("bis").min = document.getElementById("bis").value;
-//	
-//	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
-//}
+function setVomMin(){
+	document.getElementById("datum").value = document.getElementById("vom").value;
+	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platzverteilung").innerHTML ="";
+	
+	document.getElementById("bis").value = document.getElementById("vom").value;
+	document.getElementById("bis").min = document.getElementById("vom").value;
+	//Intervall von 7 Tagen
+	document.getElementById("bis").step = 7;
+	// Value um 7 Tagen erhöht
+	document.getElementById("bis").stepUp(1);
+	// Value auf Min referenziert
+	document.getElementById("bis").min = document.getElementById("bis").value;
+	
+	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
+	initZeitraeume();
+	setWoche();
+}
 
 //Author: Josiah Hester https://stackoverflow.com/questions/20587660/calculate-date-difference-in-weeks-javascript
 function setWoche(){
@@ -192,12 +202,10 @@ function setWoche(){
 	var bis = new Date(document.getElementById("bis").value);
 	
 	var weeks = Math.round((bis-vom)/ 604800000);
-	
-	if (weeks > 1){
-		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Wochen";
-	}
-	else{
+	if (weeks == 1){
 		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Woche";
+	} else {
+		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Wochen";
 	}
 }
 
