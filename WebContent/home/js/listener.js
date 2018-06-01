@@ -3,12 +3,6 @@
 document.addEventListener("DOMContentLoaded", setAllEventListener);
 
 function setAllEventListener() {
-	// BUTTONS: Anzeige der Platznr
-	for (var i = 0; i < 53; i++) {
-		var element = document.getElementsByClassName("buttons")[i];
-		var j = element.value;
-		element.addEventListener("click", changeText(j));
-	}
 	// RADIOBUTTONS: Einzeltermin, Wiederholtermin
 		var termin = document.getElementById("einzeltermin")
 		termin.addEventListener("change", changeTermin)
@@ -73,12 +67,12 @@ function changeDatum() {
 	// Initialisierung der Zeiträume
 	var dropdown = document.getElementById("zeitraum");
     var aktuellesDatum = new Date();
-    var aktuelleStunden = aktuellesDatum.getDate();
+    var systemDatum = aktuellesDatum.getDate();
     
     var datum = new Date(document.getElementById("datum").value);
-    var stunden = datum.getDate();
+    var gewaehtlesDatum = datum.getDate();
     
-    if(aktuelleStunden != stunden){
+    if(systemDatum != gewaehtlesDatum){
     	var dropdown = document.getElementById("zeitraum");
     	document.getElementById("zeitraum").options.length = 0;
     	
@@ -207,5 +201,92 @@ function setWoche(){
 }
 
 function changeZeitraum(){
-	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platznr").innerHTML = ""; 
+	
+	//TODO if datum == Null
+	
+	var datum = document.getElementById("datum").value;
+	var zeitraum = document.getElementById("zeitraum").value;
+	
+	var searchURL = "/bibproject/placeinitservlet";
+	searchURL += "?datum=" + encodeURIComponent(datum) + "&zeitraum=" + encodeURIComponent(zeitraum);
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var plaetze = JSON.parse(xmlhttp.responseText);
+			
+			//Alte Plätze löschen
+			var body = document.getElementById("platzverteilung");
+			body.innerHTML = '';
+			
+			// Initialisierung der Sitzplätze
+			var array = [ "3", "4", "5", "8", "9", "10", "13", "14", "15", "18", "19",
+					"20", "23", "24", "25", "28", "29", "30", "33", "34", "35", "36",
+					"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47",
+					"48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+					"59", "60", "61", "62", "65", "66", "71", "72", "76", "80", "81",
+					"86", "87", "91", "95", "96", "101", "102", "106", "110", "111",
+					"116", "117" ];
+			var placenr = 1;
+
+			for (var i = 1; i <= 120; i++) {
+				var check = "0";
+
+				for (var j = 0; j < array.length; j++) {
+					if (i == array[j]) {
+						var button = document.createElement("button");
+						button.setAttribute("id", "grau" + i);
+						button.setAttribute("class", "buttons");
+						button.setAttribute("disabled", "true");
+						var beschriftung = document.createTextNode(i);
+						button.appendChild(beschriftung);
+
+						var body = document.getElementById("platzverteilung");
+						body.appendChild(button);
+
+						check = "1";
+					}
+				}
+				if (check == 0) {
+					var button = document.createElement("button");
+					button.setAttribute("id", "gruen" + i);
+					button.setAttribute("class", "buttons");
+					button.setAttribute("value", placenr);
+					var beschriftung = document.createTextNode(placenr);
+					button.appendChild(beschriftung);
+					var body = document.getElementById("platzverteilung");
+					body.appendChild(button);
+
+					placenr += 1;
+				}
+			}
+			
+			//Wenn es reservierte Plätze gibt, dann diese als "rot"/ disabled setzen
+			if (plaetze != null || plaetze.length != 0) {
+				for (var i = 0; i < 120; i++) {
+					var button = document.getElementsByClassName("buttons")[i];
+					var j = button.value;
+					
+					for(k = 0; k < plaetze.length; k++){
+						if(j == plaetze[k].reservedPlace){
+							button.setAttribute("id", "rot" + i);
+							button.setAttribute("class", "buttons");
+							button.setAttribute("disabled", "true");
+						}
+					}
+				}
+			}
+			
+			// BUTTONS: Anzeige der Platznr
+			for (var i = 0; i < 120; i++) {
+				var element = document.getElementsByClassName("buttons")[i];
+				var j = element.value;
+				element.addEventListener("click", changeText(j));
+			}
+		}
+	};
+	xmlhttp.open("GET", searchURL, true);
+//	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //nur bei POST-Methode
+	xmlhttp.send();
 }
