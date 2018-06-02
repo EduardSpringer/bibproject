@@ -66,19 +66,20 @@ label{
 	margin-right: 10px;
 }
 
-#gruen:hover {
+/* [id^=] id beginnt mit ... */
+[id^=gruen]:hover {
     color: white;
     opacity: 0.6;
     cursor: pointer;
 }
 
-#gruen:focus{
+[id^=gruen]:focus{
 	color: white;
 	background: #005A9B;
 	cursor: auto;
 }
 
-#gruen{
+[id^=gruen]{
 	font-family: sans-serif;
 	background-color: #4CAF50;
 	width: 42px;
@@ -87,7 +88,7 @@ label{
 	color: black;
 }
 
-#grau{
+[id^=grau]{
 	background: white;
 	width: 42px;
 	height: 42px;
@@ -97,9 +98,9 @@ label{
 	border: 0;
 }
 
-#rot{
+[id^=rot]{
 	font-family: sans-serif;
-	background-color: red;
+	background-color: #e86f72;
 	width: 42px;
 	height: 42px;
 	margin-left: 7px;

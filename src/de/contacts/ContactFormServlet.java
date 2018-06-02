@@ -9,7 +9,6 @@ import java.sql.PreparedStatement;
 import javax.sql.DataSource;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

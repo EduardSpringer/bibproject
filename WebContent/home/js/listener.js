@@ -3,12 +3,6 @@
 document.addEventListener("DOMContentLoaded", setAllEventListener);
 
 function setAllEventListener() {
-	// BUTTONS: Anzeige der Platznr
-	for (var i = 0; i < 53; i++) {
-		var element = document.getElementsByClassName("buttons")[i];
-		var j = element.value;
-		element.addEventListener("click", changeText(j));
-	}
 	// RADIOBUTTONS: Einzeltermin, Wiederholtermin
 		var termin = document.getElementById("einzeltermin")
 		termin.addEventListener("change", changeTermin)
@@ -17,9 +11,9 @@ function setAllEventListener() {
 	// Date: Datum auf Datum des Wiederholtermins referenzieren & Zeiträume initialiseren
 		var datum = document.getElementById("datum")
 		datum.addEventListener("change", changeDatum)
-//	// Date: Datum (vom) auf Datum (bis) referenzieren
-//		var vom = document.getElementById("vom")
-//		vom.addEventListener("change", setVomMin)
+	// Date: Datum (vom) auf Datum (bis) referenzieren
+		var vom = document.getElementById("vom")
+		vom.addEventListener("change", setVomMin)
 	// Date: Ausgabe in Wochen
 		var woche = document.getElementById("bis")
 		woche.addEventListener("change", setWoche)
@@ -37,7 +31,7 @@ function changeText(j) {
 function changeTermin() {
 	if(document.getElementById("wiederholtermin").checked){
 		document.getElementById("terminbezeichnung").disabled = false;
-//		document.getElementById("vom").disabled = false;
+		document.getElementById("vom").disabled = false;
 		document.getElementById("bis").disabled = false;
 		
 		document.getElementById("terminbezeichnung").required = true;
@@ -48,7 +42,7 @@ function changeTermin() {
 	}
 	else{
 		document.getElementById("terminbezeichnung").disabled = true;
-//		document.getElementById("vom").disabled = true;
+		document.getElementById("vom").disabled = true;
 		document.getElementById("bis").disabled = true;
 		
 		document.getElementById("dauer").style.visibility = "hidden";
@@ -57,6 +51,7 @@ function changeTermin() {
 
 function changeDatum() {
 	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platzverteilung").innerHTML ="";
 	
 	document.getElementById("vom").value = document.getElementById("datum").value;
 	
@@ -71,14 +66,18 @@ function changeDatum() {
 	// default-Value für Dauer
 	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
 	// Initialisierung der Zeiträume
+	initZeitraeume();
+}
+
+function initZeitraeume(){
 	var dropdown = document.getElementById("zeitraum");
     var aktuellesDatum = new Date();
-    var aktuelleStunden = aktuellesDatum.getDate();
+    var systemDatum = aktuellesDatum.getDate();
     
     var datum = new Date(document.getElementById("datum").value);
-    var stunden = datum.getDate();
+    var gewaehltesDatum = datum.getDate();
     
-    if(aktuelleStunden != stunden){
+    if(systemDatum != gewaehltesDatum){
     	var dropdown = document.getElementById("zeitraum");
     	document.getElementById("zeitraum").options.length = 0;
     	
@@ -178,18 +177,24 @@ function changeDatum() {
     }
 }
 
-//function setVomMin(){
-//	document.getElementById("bis").value = document.getElementById("vom").value;
-//	document.getElementById("bis").min = document.getElementById("vom").value;
-//	//Intervall von 7 Tagen
-//	document.getElementById("bis").step = 7;
-//	// Value um 7 Tagen erhöht
-//	document.getElementById("bis").stepUp(1);
-//	// Value auf Min referenziert
-//	document.getElementById("bis").min = document.getElementById("bis").value;
-//	
-//	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
-//}
+function setVomMin(){
+	document.getElementById("datum").value = document.getElementById("vom").value;
+	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platzverteilung").innerHTML ="";
+	
+	document.getElementById("bis").value = document.getElementById("vom").value;
+	document.getElementById("bis").min = document.getElementById("vom").value;
+	//Intervall von 7 Tagen
+	document.getElementById("bis").step = 7;
+	// Value um 7 Tagen erhöht
+	document.getElementById("bis").stepUp(1);
+	// Value auf Min referenziert
+	document.getElementById("bis").min = document.getElementById("bis").value;
+	
+	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
+	initZeitraeume();
+	setWoche();
+}
 
 //Author: Josiah Hester https://stackoverflow.com/questions/20587660/calculate-date-difference-in-weeks-javascript
 function setWoche(){
@@ -197,15 +202,105 @@ function setWoche(){
 	var bis = new Date(document.getElementById("bis").value);
 	
 	var weeks = Math.round((bis-vom)/ 604800000);
-	
-	if (weeks > 1){
-		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Wochen";
-	}
-	else{
+	if (weeks == 1){
 		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Woche";
+	} else {
+		document.getElementById("dauer").innerHTML = "Dauer: " + weeks + " Wochen";
 	}
 }
 
 function changeZeitraum(){
-	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platznr").innerHTML = ""; 
+	
+	var datum = document.getElementById("datum").value;
+	var datumElement = document.getElementById("datum");
+	var zeitraum = document.getElementById("zeitraum").value;
+	var body = document.getElementById("platzverteilung");
+	
+	//falls datum invalid ist, dann tue nichts mehr
+    if (!datumElement.checkValidity()) {
+    	document.getElementById("platzverteilung").innerHTML ="";
+        return;
+    }
+	
+	var searchURL = "/bibproject/placeinitservlet";
+	searchURL += "?datum=" + encodeURIComponent(datum) + "&zeitraum=" + encodeURIComponent(zeitraum);
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var plaetze = JSON.parse(xmlhttp.responseText);
+			
+			//Alte Plätze löschen
+			document.getElementById("platzverteilung").innerHTML ="";
+			
+			// Initialisierung der Sitzplätze
+			var array = [ "3", "4", "5", "8", "9", "10", "13", "14", "15", "18", "19",
+					"20", "23", "24", "25", "28", "29", "30", "33", "34", "35", "36",
+					"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47",
+					"48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+					"59", "60", "61", "62", "65", "66", "71", "72", "76", "80", "81",
+					"86", "87", "91", "95", "96", "101", "102", "106", "110", "111",
+					"116", "117" ];
+			var placenr = 1;
+
+			for (var i = 1; i <= 120; i++) {
+				var check = "0";
+
+				for (var j = 0; j < array.length; j++) {
+					if (i == array[j]) {
+						var button = document.createElement("button");
+						button.setAttribute("id", "grau" + i);
+						button.setAttribute("class", "buttons");
+						button.setAttribute("disabled", "true");
+						var beschriftung = document.createTextNode(i);
+						button.appendChild(beschriftung);
+
+						var body = document.getElementById("platzverteilung");
+						body.appendChild(button);
+
+						check = "1";
+					}
+				}
+				if (check == 0) {
+					var button = document.createElement("button");
+					button.setAttribute("id", "gruen" + i);
+					button.setAttribute("class", "buttons");
+					button.setAttribute("value", placenr);
+					var beschriftung = document.createTextNode(placenr);
+					button.appendChild(beschriftung);
+					var body = document.getElementById("platzverteilung");
+					body.appendChild(button);
+
+					placenr += 1;
+				}
+			}
+			
+			//Wenn es reservierte Plätze gibt, dann diese als "rot"/ disabled setzen
+			if (plaetze != null || plaetze.length != 0) {
+				for (var i = 0; i < 120; i++) {
+					var button = document.getElementsByClassName("buttons")[i];
+					var j = button.value;
+					
+					for(k = 0; k < plaetze.length; k++){
+						if(j == plaetze[k].reservedPlace){
+							button.setAttribute("id", "rot" + i);
+							button.setAttribute("class", "buttons");
+							button.setAttribute("disabled", "true");
+						}
+					}
+				}
+			}
+			
+			// BUTTONS: Anzeige der Platznr
+			for (var i = 0; i < 120; i++) {
+				var element = document.getElementsByClassName("buttons")[i];
+				var j = element.value;
+				element.addEventListener("click", changeText(j));
+			}
+		}
+	};
+	xmlhttp.open("GET", searchURL, true);
+//	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //nur bei POST-Methode
+	xmlhttp.send();
 }
