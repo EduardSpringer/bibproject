@@ -11,7 +11,9 @@
 		<link rel="stylesheet" href="../css/myReservation.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<link rel="stylesheet" href="../css/cookie.css">
 		<script type="text/javascript" src="../js/myreservation.js"></script>
+		<script type="text/javascript" src="../js/cookie.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf" %>
@@ -25,7 +27,7 @@
 			<h1>Einzelreservierungen</h1>
 			
 			<c:if test="${empty einzeltermine}">
-				<p>Sie haben zur Zeit keine Einzelreservierungen</p>
+				<p class="keineTermine">Sie haben zur Zeit keine Einzelreservierungen</p>
 			</c:if>
 			
 			<c:if test="${not empty einzeltermine}">
@@ -44,7 +46,7 @@
 							<td>${termin.zeitraum}</td>
 							<td>${termin.platzID}</td>
 							<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
-									class = deletelink>X</a></td>
+									class ="deletelink">✘</a></td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -55,29 +57,32 @@
 			<h1>Wiederholungsreservierungen</h1>
 			
 			<c:if test="${empty wdhtermine}">
-				<p>Sie haben zur Zeit keine Wiederholungsreservierungen</p>
+				<p class="keineTermine">Sie haben zur Zeit keine Wiederholungsreservierungen</p>
 			</c:if>
 			<c:forEach var="terminBez" items="${terminBezSet}" varStatus="status">
-				<p id="teminbez">${terminBez} <a href="/bibproject/deletereservationservlet?terminBez=${terminBez}&reservierungID=0">X</a></p>
+				<p><span class="terminbez"> ${terminBez} </span>
+					<a href="/bibproject/deletereservationservlet?terminBez=${terminBez}&reservierungID=0"
+						class ="deletewdhtermin">✘</a>
+				</p>
 				
-			<table>
-			<tr>
-				<th> </th>
+			<table class="hiddentable">
+			<tr>			
 				<th>Datum</th>
 				<th>Uhrzeit</th>
 				<th>Platznummer</th>
 				<th>Löschen</th>
 			</tr>
 			
-			<c:forEach var="termin" items="${wdhtermine}" varStatus="status">
+			<c:forEach var="termin" items="${wdhtermine} ">
 				<c:if test="${terminBez == termin.terminbezeichnung}">
 							
 				<tr>
-					<td>${status.count}</td>
 					<td>${termin.datumString}</td>
 					<td>${termin.zeitraum}</td>
 					<td>${termin.platzID}</td>
-					<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}&terminBez=">X</a></td>
+					<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}&terminBez="
+							class="deletelink">✘</a>
+					</td>
 				</tr>
 				</c:if>
 			</c:forEach>

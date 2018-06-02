@@ -13,8 +13,10 @@
 		<link type="text/css" rel="stylesheet" href="../css/reserve.css" />
 		<link type="text/css" rel="stylesheet" href="../css/header.css">
 		<link type="text/css" rel="stylesheet" href="../css/footer.css">
+		<link rel="stylesheet" href="../css/cookie.css">
 		<script type="text/javascript" src="../js/init.js"></script>
 		<script type="text/javascript" src="../js/listener.js"></script>
+		<script type="text/javascript" src="../js/cookie.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>

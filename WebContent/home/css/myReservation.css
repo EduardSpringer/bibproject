@@ -27,10 +27,33 @@ h1{
 	border-radius: 0.3em;
 	padding: 0.3em;
 }
-p{
+
+.keineTermine{
 	text-align: center;
+	padding-top: 40px;
+	font-size: 1.1em;
+	font-style: italic;
 }
 
+.terminbez{
+	font-size: 1.1em;
+	font-style: italic;
+	font-weight: bold;
+	
+}
+.deletewdhtermin{
+	float: right;
+	padding-right: 50px;
+}
+
+.deletewdhtermin, .deletelink{
+	text-decoration: none; /*wird nicht unterstrichen usw*/
+	color: #005A9B;
+}
+
+.hiddentable{
+	display: none;
+}
 table{
 	text-align: center;
 	width: 100%;

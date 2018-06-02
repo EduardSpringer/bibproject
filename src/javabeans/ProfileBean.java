@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ProfileBean implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private String vorname; 
 	private String nachname; 
 	private String passwort; 
