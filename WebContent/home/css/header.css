@@ -108,3 +108,33 @@ nav li#admin{
 	background-color: #c0c0c0;
 	border-radius: 70px;
 }
+
+/*Cookiebox*/
+.show{
+	text-align: center;
+	position: fixed;
+	bottom: 0;   
+    width: 100%;
+	background-color: white;
+	border: 3px solid #005A9B;
+	border-radius: 2em;
+}
+.hidden{
+	display: none;
+}
+
+#cookietext{
+	color: red;
+	font-size: 1.5em;		
+}
+
+#cookiebutton{
+	font-size: 15px;
+	background-color: #005A9B;
+	border:#005A9B;
+	color: white;
+	margin-left: 10px;
+	width: 100px;
+	height: 30px;
+	border-radius: 5px;
+}
