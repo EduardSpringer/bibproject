@@ -83,14 +83,13 @@
 					</ul>			
 				</nav>			
 			</div>
-			<div id="cookiebox" class="show">
-				<p id="cookietext">Aktivieren Sie ihre Cookies 
-					<button type="button" id="cookiebutton">Ok!</button>
-				</p>
-			</div>
-		
-		</header>
-
+		</header>	
+		  
+		<div id="cookiebox" class="show">
+			<p id="cookietext">Aktivieren Sie ihre Cookies 
+				<button type="button" id="cookiebutton">Ok!</button>
+			</p>
+		</div>
 		
 		<main> 
 			<section>

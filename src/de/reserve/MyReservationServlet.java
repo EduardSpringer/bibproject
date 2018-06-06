@@ -109,9 +109,7 @@ public class MyReservationServlet extends HttpServlet {
 			try (ResultSet rs = pstmt.executeQuery()) {
 				
 				while (rs != null && rs.next()) {
-					//Nur die aktuellen Termine werden in die Liste gespeichert
 					if(timecheck(rs.getDate("datum"),rs.getString("zeitraum")) == true) {
-						
 						ReservationBean rb = new ReservationBean();
 						rb.setReservierungID(rs.getInt("reservierungID"));
 						rb.setDatumString(changeDateFormat(rs.getDate("datum")));
@@ -147,7 +145,7 @@ public class MyReservationServlet extends HttpServlet {
 		int stdNow = now.get(Calendar.HOUR_OF_DAY);
 		
 		//Für Datumvergleich:
-	    //Zeit von now & termindatum wird auf 0 gesetzt, weil in der DB ein default-Wert abgespeichert wird, 
+	    //Zeit von now & termindatum wird auf 0 gesetzt, weil in der DB eindefault-Wert abgespeichert wird, 
 		//welcher ignoriert werden muss 
 	    now.set(Calendar.HOUR_OF_DAY, 0);
 	    now.set(Calendar.MINUTE, 0);
@@ -214,7 +212,7 @@ public class MyReservationServlet extends HttpServlet {
 			return zeitraum;
 		}
 		else {
-			return "Fehler!!!";
+			return "bis " + zeitraumende + ":00";
 		}
 	}
 

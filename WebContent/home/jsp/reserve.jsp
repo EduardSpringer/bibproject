@@ -13,11 +13,10 @@
 		<link type="text/css" rel="stylesheet" href="../css/reserve.css" />
 		<link type="text/css" rel="stylesheet" href="../css/header.css">
 		<link type="text/css" rel="stylesheet" href="../css/footer.css">
-
+		<link rel="stylesheet" href="../css/cookie.css">
 		<script type="text/javascript" src="../js/init.js"></script>
-		<script type="text/javascript" src="../js/initPeriods.js"></script>
 		<script type="text/javascript" src="../js/listener.js"></script>
-
+		<script type="text/javascript" src="../js/cookie.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
@@ -63,7 +62,7 @@
 			</div>
 			<div id="terminname">
 				<label for="terminbezeichnung">Terminbezeichnung:</label>
-				<input type="text" id="terminbezeichnung" name="terminbezeichnung" placeholder="max. 30 Zeichen" title="Bitte hier die Bezeichnung für Ihr Meeting festlegen!" maxlength="30" disabled form="formular">
+				<input type="text" id="terminbezeichnung" name="terminbezeichnung" placeholder="max. 30 Zeichen" maxlength="30" disabled form="formular">
 			</div>
 			<div id="termineingrenzung">
 				<label for="vom">vom</label>
