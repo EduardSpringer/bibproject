@@ -1,11 +1,11 @@
+//Eduard Springer
+
 package de.reserve;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -34,8 +34,6 @@ public class PlaceInitServlet extends HttpServlet {
 
 		String datum = request.getParameter("datum");
 		String zeitraum = request.getParameter("zeitraum");
-		
-		System.out.println("datum: " + datum + " und zeitraum: " + zeitraum);
 		
 		List<ReservationBean> reserviertePlaetze = search(datum, zeitraum);
 				

@@ -209,3 +209,17 @@ button[type="submit"]:active, button[type="reset"]:active {
 input:hover{
 	border: 2px solid #005A9B;
 }
+
+input[type="number"]:hover{
+	border: 0px;
+}
+input[type="number"]{
+	border: 0px;
+	margin-left: 1em;
+	width: 1em;
+}
+
+/* https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box */
+input[type='number'] {
+    -moz-appearance:textfield;
+}

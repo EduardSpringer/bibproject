@@ -13,10 +13,8 @@
 		<link type="text/css" rel="stylesheet" href="../css/reserve.css" />
 		<link type="text/css" rel="stylesheet" href="../css/header.css">
 		<link type="text/css" rel="stylesheet" href="../css/footer.css">
-		<link rel="stylesheet" href="../css/cookie.css">
-		<script type="text/javascript" src="../js/init.js"></script>
+		<script type="text/javascript" src="../js/initPeriods.js"></script>
 		<script type="text/javascript" src="../js/listener.js"></script>
-		<script type="text/javascript" src="../js/cookie.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
@@ -36,7 +34,7 @@
 			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
 			<!-- Formular -->
-			<form action="/servlets/suchServlet" method="post" id="formular"></form>
+			<form action="/bibproject/reservationservlet" method="post" id="formular"></form>
 	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
@@ -53,11 +51,11 @@
 		<aside>
 			<h1>Reservierungsdaten</h1>
 			<p id="selectedNr">Ausgewählte Sitzplatz-Nr.:</p>
-			<p id="unsichtbaresElement">Test<output id="platznr" name="platznr" form="formular"></output></p>
+			<input type="number" id="platznr" name="platznr" form="formular" readonly required/>
 			<div id="termintyp" >
-				<input type="radio" id="einzeltermin" name="termin" value="einzeltermin" checked>
+				<input type="radio" id="einzeltermin" name="termin" value="einzeltermin" form="formular" checked>
 				<label for="einzeltermin">Einzeltermin</label>
-				<input type="radio" id="wiederholtermin" name="termin" value="wiederholtermin">
+				<input type="radio" id="wiederholtermin" name="termin" form="formular" value="wiederholtermin">
 				<label for="wiederholtermin">Wiederholtermin</label>
 			</div>
 			<div id="terminname">
@@ -73,7 +71,7 @@
 			<p id="dauer" >Dauer: 1 Woche</p>
 			<div id="actionbuttons">
 				<!-- <button type="reset" name="reset" form="formular">Zurücksetzen</button> -->
-				<button type="submit" name="submit" value="submit">Reservieren</button>
+				<button type="submit" name="submit" value="submit" form="formular">Reservieren</button>
 			</div>
 		</aside>
 		</div>
