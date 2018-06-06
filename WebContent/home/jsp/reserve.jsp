@@ -68,7 +68,7 @@
 				<label for="bis">bis</label>
 				<input type="date" id="bis" name="bis" min="${bisDatum}" max="2018-10-02" step="7" value="${bisDatum}" disabled form="formular">
 			</div>
-			<p id="dauer" >Dauer: 1 Woche</p>
+			<p id="dauer">Dauer: 1 Woche</p>
 			<div id="actionbuttons">
 				<!-- <button type="reset" name="reset" form="formular">Zurücksetzen</button> -->
 				<button type="submit" id="submitbutton" name="reservieren" value="submit" form="formular">Reservieren</button>

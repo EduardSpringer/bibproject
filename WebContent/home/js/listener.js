@@ -320,19 +320,38 @@ function checkForm(evt){
 	}
 	
 	if(document.getElementById("wiederholtermin").checked){
+//		var datum = document.getElementById("datum").value;
+//		var zeitraum = document.getElementById("zeitraum").value;
+//		var platznr = document.getElementById("platznr").value;
+//		
+//		var searchURL = "/bibproject/checkterminbezeichnungservlet";
+//		searchURL += "?terminbezeichnung=" + encodeURIComponent(terminbezeichnung);
+//		
+//		var xmlhttp = new XMLHttpRequest();
+//		xmlhttp.onreadystatechange = function() {
+//			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//				var gleicheBezeichnung = JSON.parse(xmlhttp.responseText);
+//				
+//				if(gleicheBezeichnung != null ||gleicheBezeichnung.length != 0 ){
+//					document.getElementById("terminbezeichnung").value = "";
+//					alert("Diese Terminbezeichnung existiert bereits!");
+//				}
+//			}
+//		};
 		
+//		xmlhttp.open("GET", searchURL, true);
+//		xmlhttp.send();
 		//Servlet
-		var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\nMöchten Sie dennoch für die restlichen Tage buchen?");
-		if (antwort == true) {
-    	
-		} else {
-			evt.preventDefault();
-		}
+//		var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\nMöchten Sie dennoch für die restlichen Tage buchen?");
+//		if (antwort == true) {
+//			//ReservationsServlet
+//		} else {
+//			evt.preventDefault();
+//		}
 	}
 }
 
 function checkTerminbezeichnung(){
-	//Servlet + Ajax + Ausgabe(Diese Termminbezeichnung existiert bereits!) + Focus auf Input + Select des Textes
 	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
 	
 	var searchURL = "/bibproject/checkterminbezeichnungservlet";
