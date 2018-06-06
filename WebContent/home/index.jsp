@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/homepage.css">
 		<link rel="stylesheet" href="css/footer.css">
-		<link rel="stylesheet" href="css/cookie.css">
 		<script type="text/javascript" src="js/cookie.js"></script>
 	</head>
 	<body>
@@ -83,14 +82,13 @@
 					</ul>			
 				</nav>			
 			</div>
+			<div id="cookiebox" class="show">
+				<p id="cookietext">Aktivieren Sie ihre Cookies 
+					<button type="button" id="cookiebutton">Ok!</button>
+				</p>
+			</div>
 		</header>	
-		  
-		<div id="cookiebox" class="show">
-			<p id="cookietext">Aktivieren Sie ihre Cookies 
-				<button type="button" id="cookiebutton">Ok!</button>
-			</p>
-		</div>
-		
+		  		
 		<main> 
 			<section>
 				<h1>AKTUELLE PLATZAUSLASTUNG</h1> 

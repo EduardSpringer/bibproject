@@ -13,8 +13,7 @@
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
 		<link rel="stylesheet" href="../css/contactAcception.css">
-		<link rel="stylesheet" href="../css/cookie.css">
-		<script type="text/javascript" src="../js/cookie.js"></script>
+
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
