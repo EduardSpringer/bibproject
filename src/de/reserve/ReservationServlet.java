@@ -3,6 +3,8 @@
 package de.reserve;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import javabeans.ContactBean;
+import javabeans.LoginBean;
 
 
 @WebServlet("/reservationservlet")
@@ -25,6 +28,7 @@ public class ReservationServlet extends HttpServlet {
 	private DataSource ds;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String datum = request.getParameter("datum");//Zugriff auf die Felder(name-tag) in .jsp-Datei
 		String zeitraum = request.getParameter("zeitraum");
 		String platznr = request.getParameter("platznr");
@@ -32,22 +36,30 @@ public class ReservationServlet extends HttpServlet {
 		String terminbezeichnung = request.getParameter("terminbezeichnung");
 		String bis = request.getParameter("bis");
 		
-		System.out.println("vom: " + datum + " Zeitraum: " + zeitraum + " Platz-Nr.: " + platznr + " Termin: " + termin + " Terminbezeichnung: " + terminbezeichnung + " bis: " + bis);
+		HttpSession session = request.getSession();
+		LoginBean user = (LoginBean) session.getAttribute("lb");
+		String username = user.getUsername();
 		
 		if ("einzeltermin".equals(termin)) {
-			System.out.println("Yes: einzeltermin");
+			resEinzeltermin(datum, zeitraum, platznr, username);
 		} else if ("wiederholtermin".equals(termin)) {
-			System.out.println("Yes: wiederholtermin");
+			
 		}
 		
-//
-//		HttpSession session = request.getSession();//Nutzung einer Sitzung
-//		session.setAttribute("cb", cb);// JavaBean für die aktuelle Sitzung festlegen 
-//
-//		persist(cb); // Übertragung der JavaBean an die DB
-//		
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/reserve.jsp");
 		dispatcher.forward(request, response);	
 	}
-
+	
+	private void resEinzeltermin(String datum, String zeitraum, String platznr, String username) throws ServletException {
+		try (Connection con = ds.getConnection();
+			 PreparedStatement pstmt = con.prepareStatement("INSERT INTO thidb.platzreservierung (datum, zeitraum, platzid, username) VALUES (?,?,?,?)")){
+			pstmt.setString(1, datum);
+			pstmt.setString(2, zeitraum);
+			pstmt.setString(3, platznr);
+			pstmt.setString(4, username);
+			pstmt.executeUpdate();
+		} catch (Exception ex) {
+			throw new ServletException(ex.getMessage());
+		}
+	}
 }
