@@ -34,7 +34,7 @@
 			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
 			<!-- Formular -->
-			<form action="/bibproject/reservationservlet" method="post" id="formular"></form>
+			<form id="formular" action="/bibproject/reservationservlet" method="post"></form>
 	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
@@ -71,7 +71,7 @@
 			<p id="dauer" >Dauer: 1 Woche</p>
 			<div id="actionbuttons">
 				<!-- <button type="reset" name="reset" form="formular">Zurücksetzen</button> -->
-				<button type="submit" name="submit" value="submit" form="formular">Reservieren</button>
+				<button type="submit" id="submitbutton" name="reservieren" value="submit" form="formular">Reservieren</button>
 			</div>
 		</aside>
 		</div>

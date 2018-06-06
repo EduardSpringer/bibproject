@@ -216,7 +216,7 @@ input[type="number"]:hover{
 input[type="number"]{
 	border: 0px;
 	margin-left: 1em;
-	width: 1em;
+	width: 1.1em;
 }
 
 /* https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box */

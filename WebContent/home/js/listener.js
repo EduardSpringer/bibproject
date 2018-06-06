@@ -21,8 +21,11 @@ function setAllEventListener() {
 		var zeitraum = document.getElementById("zeitraum");
 		zeitraum.addEventListener("change", changeZeitraum);
 	// Button(Submit): Reservieren
-		var form = document.getElementById("submitbutton");
+		var form = document.getElementById("formular");
 		form.addEventListener("submit", checkForm);
+	// Input: Terminbezeichnung
+		var terminbezeichnung = document.getElementById("terminbezeichnung");
+		terminbezeichnung.addEventListener("blur", checkTerminbezeichnung);
 }
 
 function changeText(j) {
@@ -53,7 +56,7 @@ function changeTermin() {
 }
 
 function changeDatum() {
-	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platznr").value = ""; 
 	document.getElementById("platzverteilung").innerHTML ="";
 	
 	document.getElementById("vom").value = document.getElementById("datum").value;
@@ -182,7 +185,7 @@ function initZeitraeume(){
 
 function setVomMin(){
 	document.getElementById("datum").value = document.getElementById("vom").value;
-	document.getElementById("platznr").innerHTML = "";
+	document.getElementById("platznr").value = ""; 
 	document.getElementById("platzverteilung").innerHTML ="";
 	
 	document.getElementById("bis").value = document.getElementById("vom").value;
@@ -213,7 +216,7 @@ function setWoche(){
 }
 
 function changeZeitraum(){
-	document.getElementById("platznr").innerHTML = ""; 
+	document.getElementById("platznr").value = ""; 
 	
 	var datum = document.getElementById("datum").value;
 	var datumElement = document.getElementById("datum");
@@ -308,7 +311,45 @@ function changeZeitraum(){
 	xmlhttp.send();
 }
 
-function checkForm(evt) {
-	alert("Test");
+function checkForm(evt){
+	var platz = document.getElementById("platznr").value;
+	
+	if(platz == ""){
+		alert("Bitte Sitzplatz auswählen!")
+		evt.preventDefault();
+	}
+	
+	if(document.getElementById("wiederholtermin").checked){
+		
+		//Servlet
+		var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\nMöchten Sie dennoch für die restlichen Tage buchen?");
+		if (antwort == true) {
+    	
+		} else {
+			evt.preventDefault();
+		}
+	}
 }
 
+function checkTerminbezeichnung(){
+	//Servlet + Ajax + Ausgabe(Diese Termminbezeichnung existiert bereits!) + Focus auf Input + Select des Textes
+	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
+	
+	var searchURL = "/bibproject/checkterminbezeichnungservlet";
+	searchURL += "?terminbezeichnung=" + encodeURIComponent(terminbezeichnung);
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var gleicheBezeichnung = JSON.parse(xmlhttp.responseText);
+			
+			if(gleicheBezeichnung.length != 0){
+				document.getElementById("terminbezeichnung").value = "";
+				alert("Diese Terminbezeichnung existiert bereits!");
+			}
+		}
+	};
+	
+	xmlhttp.open("GET", searchURL, true);
+	xmlhttp.send();
+}
