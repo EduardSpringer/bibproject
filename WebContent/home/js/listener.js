@@ -73,6 +73,7 @@ function changeDatum() {
 	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
 	// Initialisierung der Zeiträume
 	initZeitraeume();
+	setWoche();
 }
 
 function initZeitraeume(){
@@ -315,11 +316,20 @@ function checkForm(evt){
 	var platz = document.getElementById("platznr").value;
 	
 	if(platz == ""){
-		alert("Bitte Sitzplatz auswählen!")
+		alert("Bitte einen Sitzplatz auswählen!")
 		evt.preventDefault();
 	}
 	
 	if(document.getElementById("wiederholtermin").checked){
+		var datum = document.getElementById("datum").value;
+		var bisdatum = document.getElementById("bis").value;
+		
+		if(datum == bisdatum){ //falls datum und bisdatum gleich sind => wegen Max bei Datum
+			alert("Bitte als Einzeltermin buchen!");
+			document.getElementById("einzeltermin").checked = true;
+			changeTermin();
+			evt.preventDefault();
+		}
 //		var datum = document.getElementById("datum").value;
 //		var zeitraum = document.getElementById("zeitraum").value;
 //		var platznr = document.getElementById("platznr").value;
@@ -363,8 +373,12 @@ function checkTerminbezeichnung(){
 			var gleicheBezeichnung = JSON.parse(xmlhttp.responseText);
 			
 			if(gleicheBezeichnung.length != 0){
-				document.getElementById("terminbezeichnung").value = "";
-				alert("Diese Terminbezeichnung existiert bereits!");
+				var antwort = confirm("Diese Terminbezeichnung existiert bereits!" + "\nMöchten Sie dennoch Ihre neuen Termine dieser Bezeichnung zuordnen?");
+				if (antwort == true) {
+					return;
+				} else {
+					document.getElementById("terminbezeichnung").value = "";
+				}
 			}
 		}
 	};
