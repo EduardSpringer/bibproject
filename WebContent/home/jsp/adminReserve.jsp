@@ -5,7 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-
+<link rel="stylesheet" href="../css/cookie.css">
+<script type="text/javascript" src="../js/cookie.js"></script>
 </head>
 <body>
 		<h1>Hier sind die Plätze aufgelistet!</h1>

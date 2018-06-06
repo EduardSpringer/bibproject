@@ -13,7 +13,8 @@
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/footer.css">
-
+		<link rel="stylesheet" href="../css/cookie.css">
+		<script type="text/javascript" src="../js/cookie.js"></script>
 	</head>
 	
 	<body> <!-- eigentlicher Inhalt der Seite, der vom Browser angezeigt wird -->
