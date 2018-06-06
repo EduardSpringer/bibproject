@@ -4,22 +4,25 @@ document.addEventListener("DOMContentLoaded", setAllEventListener);
 
 function setAllEventListener() {
 	// RADIOBUTTONS: Einzeltermin, Wiederholtermin
-		var termin = document.getElementById("einzeltermin")
-		termin.addEventListener("change", changeTermin)
-		termin = document.getElementById("wiederholtermin")
-		termin.addEventListener("change", changeTermin)
+		var termin = document.getElementById("einzeltermin");
+		termin.addEventListener("change", changeTermin);
+		termin = document.getElementById("wiederholtermin");
+		termin.addEventListener("change", changeTermin);
 	// Date: Datum auf Datum des Wiederholtermins referenzieren & Zeiträume initialiseren
-		var datum = document.getElementById("datum")
-		datum.addEventListener("change", changeDatum)
+		var datum = document.getElementById("datum");
+		datum.addEventListener("change", changeDatum);
 	// Date: Datum (vom) auf Datum (bis) referenzieren
-		var vom = document.getElementById("vom")
-		vom.addEventListener("change", setVomMin)
+		var vom = document.getElementById("vom");
+		vom.addEventListener("change", setVomMin);
 	// Date: Ausgabe in Wochen
-		var woche = document.getElementById("bis")
-		woche.addEventListener("change", setWoche)
+		var woche = document.getElementById("bis");
+		woche.addEventListener("change", setWoche);
 	// Änderungen nach Zeitraumauswahl
-		var zeitraum = document.getElementById("zeitraum")
-		zeitraum.addEventListener("change", changeZeitraum)
+		var zeitraum = document.getElementById("zeitraum");
+		zeitraum.addEventListener("change", changeZeitraum);
+	// Button(Submit): Reservieren
+		var form = document.getElementById("submitbutton");
+		form.addEventListener("submit", checkForm);
 }
 
 function changeText(j) {
@@ -304,3 +307,8 @@ function changeZeitraum(){
 //	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //nur bei POST-Methode
 	xmlhttp.send();
 }
+
+function checkForm(evt) {
+	alert("Test");
+}
+
