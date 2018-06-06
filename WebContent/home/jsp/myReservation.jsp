@@ -73,8 +73,8 @@
 				<th>Löschen</th>
 			</tr>
 			
-			<c:forEach var="termin" items="${wdhtermine} ">
-				<c:if test="${terminBez == termin.terminbezeichnung}">
+			<c:forEach var="termin" items="${wdhtermine}">
+				<c:if test="${terminBez eq termin.terminbezeichnung}">
 							
 				<tr>
 					<td>${termin.datumString}</td>

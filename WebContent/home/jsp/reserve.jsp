@@ -51,7 +51,7 @@
 		<aside>
 			<h1>Reservierungsdaten</h1>
 			<p id="selectedNr">Ausgewählte Sitzplatz-Nr.:</p>
-			<input type="number" id="platznr" name="platznr" form="formular" readonly required/>
+			<input type="number" id="platznr" name="platznr" form="formular" readonly/>
 			<div id="termintyp" >
 				<input type="radio" id="einzeltermin" name="termin" value="einzeltermin" form="formular" checked>
 				<label for="einzeltermin">Einzeltermin</label>
