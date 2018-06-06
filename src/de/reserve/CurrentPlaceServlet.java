@@ -43,6 +43,8 @@ public class CurrentPlaceServlet extends HttpServlet {
 		
 		int anzPlaetze = sucheAnzAktuellerPlaetze(currentdate);
 		System.out.println(anzPlaetze);
+		String anz = "" + anzPlaetze;
+		response.getWriter().append(anz);
 		//request.setAttribute("anzBesetztePlaetze", anzPlaetze);
 			
 		// Weiterleiten an JSP

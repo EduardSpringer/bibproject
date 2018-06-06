@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="css/footer.css">
 
 		<script type="text/javascript" src="js/cookie.js"></script>
+		<script type="text/javascript" src="js/currentPlace.js"></script>
 	</head>
 	<body>
 		<header>
@@ -96,8 +97,8 @@
 			<section>
 				<h1>AKTUELLE PLATZAUSLASTUNG</h1> 
 				<div id=platzauslastung>
-					<p>Reservierte Plätze: ##</p>
-					<p>Freie Plätze: ##</p>
+					<p>Reservierte Plätze: <span id="resPlaetze"></span> </p>
+					<p>Freie Plätze: <span id="freiePlaetze"></span></p>
 				</div>
 			</section>
 			<img id="bild" src="img/startseite.jpg" width="1280" height="450" alt="Bild">	
