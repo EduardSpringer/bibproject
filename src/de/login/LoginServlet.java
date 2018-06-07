@@ -72,8 +72,6 @@ public class LoginServlet extends HttpServlet {
 			checkbox = "-"; // sonst NullPointerException Z.102
 		}
 
-
-
 		LoginBean benutzer = getLoginData(username); // Userdaten aus DB holen
 		HttpSession session = request.getSession();
 

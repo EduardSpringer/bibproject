@@ -4,6 +4,6 @@
 
 
 	{
-		"${anzBesetztePlaetze}"
+		"anzBesetzt":"${anzBesetztePlaetze}"
 	}
 

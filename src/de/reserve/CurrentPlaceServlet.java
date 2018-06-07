@@ -42,15 +42,14 @@ public class CurrentPlaceServlet extends HttpServlet {
 		java.sql.Date currentdate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		
 		int anzPlaetze = sucheAnzAktuellerPlaetze(currentdate);
-		System.out.println(anzPlaetze);
-		String anz = "" + anzPlaetze;
-		response.getWriter().append(anz);
-		//request.setAttribute("anzBesetztePlaetze", anzPlaetze);
+		//System.out.println(anzPlaetze);
+		//String anz = "" + anzPlaetze;
+		//response.getWriter().append(anz);
+		request.setAttribute("anzBesetztePlaetze", anzPlaetze);
 			
 		// Weiterleiten an JSP
-		//response.sendRedirect("home/jsp/myReservation.jsp");
-		//final RequestDispatcher dispatcher = request.getRequestDispatcher("");
-		//dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/JSON/currentPlace.jsp");
+		dispatcher.forward(request, response);
 
 	}
 	

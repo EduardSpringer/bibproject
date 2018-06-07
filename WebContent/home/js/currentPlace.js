@@ -1,21 +1,21 @@
 /**
  * Helene Akulow
  */
+"use strict";
 
-document.addEventListener("DOMContentLoaded",init);
-
-function init(){
+document.addEventListener("DOMContentLoaded", init);
+function init() {
+	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function(){
-		console.log("Collback reached with status " + xmlhttp.status + " and readyState " + xmlhttp.readyState);
-		if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			document.getElementById("resPlaetze").innerHTML = xmlhttp.responseText;
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var anzPlatz = JSON.parse(xmlhttp.responseText);
+	
+			document.getElementById("resPlaetze").innerHTML = anzPlatz;
+			document.getElementById("freiePlaetze");
 		}
 	}
-	xmlhttp.open("GET","currentplaceservlet", true);
+	xmlhttp.open("GET", "currentplaceservlet", true);
 	xmlhttp.send();
-	
-	document.getElementById("resPlaetze");
-	document.getElementById("freiePlaetze");
-	
 }
+
