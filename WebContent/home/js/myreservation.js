@@ -34,7 +34,9 @@ function confirmDeleteLink(evt){
 }
 
 function confirmDeleteWdh(evt){
-	var deletebox = confirm("Wollen Sie wirklich alle Einzeltermine zu \n dieser Terminbezeichnung löschen?");
+	var terminBez = this.getAttribute("id").replace('delete','');
+	
+	var deletebox = confirm("Wollen Sie wirklich alle Einzeltermine zu \n" + terminBez+" löschen?");
 	
 	if(!deletebox){
 		evt.preventDefault();
@@ -42,11 +44,11 @@ function confirmDeleteWdh(evt){
 };
 
 function showAndHide(){
-		//this=span, parentNode=p, nextSibling=#text, nextSibling=table
-	if(this.parentNode.nextSibling.nextSibling.className === "hiddentable"){
-		this.parentNode.nextSibling.nextSibling.classList.remove("hiddentable");
+		
+	if(document.getElementById(this.getAttribute("id")+"_table").className === "hiddentable"){
+		document.getElementById(this.getAttribute("id")+"_table").classList.remove("hiddentable");
 	}
 	else{
-		this.parentNode.nextSibling.nextSibling.className = "hiddentable";
+		document.getElementById(this.getAttribute("id")+"_table").className = "hiddentable";
 	}
 }

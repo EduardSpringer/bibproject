@@ -45,7 +45,7 @@
 							<td>${termin.datumString}</td>
 							<td>${termin.zeitraum}</td>
 							<td>${termin.platzID}</td>
-							<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
+							<td><a  href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
 									class ="deletelink">✘</a></td>
 						</tr>
 					</c:forEach>
@@ -60,12 +60,12 @@
 				<p class="keineTermine">Sie haben zur Zeit keine Wiederholungsreservierungen</p>
 			</c:if>
 			<c:forEach var="terminBez" items="${terminBezSet}" varStatus="status">
-				<p><span class="terminbez"> ${terminBez} </span>
+				<p><span class="terminbez" id="${terminBez}"> ${terminBez} </span>
 					<a href="/bibproject/deletereservationservlet?terminBez=${terminBez}&reservierungID=0"
-						class ="deletewdhtermin">✘</a>
+						class ="deletewdhtermin" id="delete${terminBez}">✘</a>
 				</p>
 				
-			<table class="hiddentable">
+			<table id= "${terminBez}_table">
 			<tr>			
 				<th>Datum</th>
 				<th>Uhrzeit</th>

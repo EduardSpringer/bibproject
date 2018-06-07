@@ -49,7 +49,7 @@ public class PlaceInitServlet extends HttpServlet {
 		int zeitraumInt = Integer.parseInt(zeitraum);
 		
 		try (Connection con = ds.getConnection();
-			 PreparedStatement pstmt = con.prepareStatement("SELECT PlatzID FROM platzreservierung WHERE datum = ? AND zeitraum = ?")) {
+			 PreparedStatement pstmt = con.prepareStatement("SELECT PlatzID FROM thidb.platzreservierung WHERE datum = ? AND zeitraum = ?")) {
 
 			pstmt.setString(1, datum);
 			pstmt.setInt(2, zeitraumInt);

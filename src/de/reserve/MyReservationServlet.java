@@ -70,7 +70,8 @@ public class MyReservationServlet extends HttpServlet {
 		
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-			 PreparedStatement pstmt = con.prepareStatement("SELECT * FROM thidb.platzreservierung WHERE username = ? AND terminbezeichnung IS NULL")) {
+			 PreparedStatement pstmt = con.prepareStatement("SELECT * FROM thidb.platzreservierung " 
+			 		+ "WHERE username = ? AND terminbezeichnung IS NULL ORDER BY Datum, zeitraum, PlatzID ASC")) {
 			
 			pstmt.setString(1,username);
 			try (ResultSet rs = pstmt.executeQuery()) {
@@ -84,7 +85,7 @@ public class MyReservationServlet extends HttpServlet {
 						rb.setPlatzID(rs.getInt("PlatzID"));
 						
 						einzeltermine.add(rb);
-						//System.out.println("einzeltermine");
+						
 					}
 				} // while rs.next()
 			}
@@ -103,7 +104,8 @@ public class MyReservationServlet extends HttpServlet {
 		
 		// DB-Zugriff
 		try (Connection con = ds.getConnection();
-			 PreparedStatement pstmt = con.prepareStatement("SELECT * FROM thidb.platzreservierung WHERE username = ? AND terminbezeichnung IS NOT NULL")) {
+			 PreparedStatement pstmt = con.prepareStatement("SELECT * FROM thidb.platzreservierung"
+			 		+ " WHERE username = ? AND terminbezeichnung IS NOT NULL ORDER BY Datum, zeitraum, PlatzID ASC")) {
 			
 			pstmt.setString(1,username);
 			try (ResultSet rs = pstmt.executeQuery()) {
