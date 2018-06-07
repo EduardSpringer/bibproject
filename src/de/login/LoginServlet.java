@@ -64,7 +64,6 @@ public class LoginServlet extends HttpServlet {
 		// Parameter aus dem Formular:
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String loginbutton = request.getParameter("loginbutton");
 		String checkbox = request.getParameter("check");
 
 		RequestDispatcher disp;
@@ -73,61 +72,57 @@ public class LoginServlet extends HttpServlet {
 			checkbox = "-"; // sonst NullPointerException Z.102
 		}
 
-		switch (loginbutton) {
 
-		case "login": // Buttonvalue
 
-			LoginBean benutzer = getLoginData(username); // Userdaten aus DB holen
-			HttpSession session = request.getSession();
+		LoginBean benutzer = getLoginData(username); // Userdaten aus DB holen
+		HttpSession session = request.getSession();
 
-			if (benutzer.getFehlermeldung() != null) { // User nicht gefunden
+		if (benutzer.getFehlermeldung() != null) { // User nicht gefunden
+			request.setAttribute("lb", benutzer); // request wird nur einmal angezeigt beim Aufruf
+			disp = request.getRequestDispatcher("/home/jsp/login.jsp");
+			disp.forward(request, response);
+
+			// System.out.println("du bist nicht registriert");
+		}
+
+		else {
+
+			if (!password.equals(benutzer.getPasswort())) { // unterschiedliche Passwoerter
+
+				benutzer.setFehlermeldung("⚠ FEHLER:<br> Das Passwort für den Benutzernamen "
+						+ benutzer.getUsername() + " ist falsch!");
+
+				benutzer.setUsername(null); // Fuer Headeranzeige relevant
+				// System.out.println("falsches passwort");
 				request.setAttribute("lb", benutzer); // request wird nur einmal angezeigt beim Aufruf
 				disp = request.getRequestDispatcher("/home/jsp/login.jsp");
 				disp.forward(request, response);
 
-				// System.out.println("du bist nicht registriert");
 			}
 
-			else {
+			else { // Anmeldedaten passen
 
-				if (!password.equals(benutzer.getPasswort())) { // unterschiedliche Passwoerter
+				session.setAttribute("lb", benutzer);
 
-					benutzer.setFehlermeldung("⚠ FEHLER:<br> Das Passwort für den Benutzernamen "
-							+ benutzer.getUsername() + " ist falsch!");
-
-					benutzer.setUsername(null); // Fuer Headeranzeige relevant
-					// System.out.println("falsches passwort");
-					request.setAttribute("lb", benutzer); // request wird nur einmal angezeigt beim Aufruf
-					disp = request.getRequestDispatcher("/home/jsp/login.jsp");
-					disp.forward(request, response);
-
+				if (checkbox.equals("merken")) {
+					Cookie cookie1 = new Cookie("usernameCookie", username);
+					cookie1.setMaxAge(60 * 60 * 24); // Cookie f�r einen Tag
+					cookie1.setPath("/");
+					response.addCookie(cookie1);
+					/*
+					 * Cookie[] cookies = request.getCookies(); if (cookies != null) { for (int i =
+					 * 0; i< cookies.length; i++) { Cookie cookie = cookies[i];
+					 * 
+					 * System.out.println(cookie.getName() + " " + cookie.getValue()); } } else {
+					 * System.out.println("keine Cookies gespeichert"); }
+					 */
 				}
-
-				else { // Anmeldedaten passen
-
-					session.setAttribute("lb", benutzer);
-
-					if (checkbox.equals("merken")) {
-						Cookie cookie1 = new Cookie("usernameCookie", username);
-						cookie1.setMaxAge(60 * 60 * 24); // Cookie f�r einen Tag
-						cookie1.setPath("/");
-						response.addCookie(cookie1);
-						/*
-						 * Cookie[] cookies = request.getCookies(); if (cookies != null) { for (int i =
-						 * 0; i< cookies.length; i++) { Cookie cookie = cookies[i];
-						 * 
-						 * System.out.println(cookie.getName() + " " + cookie.getValue()); } } else {
-						 * System.out.println("keine Cookies gespeichert"); }
-						 */
-					}
-					// history.back()
-					disp = request.getRequestDispatcher("/home/index.jsp");
-					disp.forward(request, response);
-				}
+				// history.back()
+				disp = request.getRequestDispatcher("/home/index.jsp");
+				disp.forward(request, response);
 			}
-
-			break;
 		}
+		
 	}
 
 }
