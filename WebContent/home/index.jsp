@@ -97,8 +97,9 @@
 			<section>
 				<h1>AKTUELLE PLATZAUSLASTUNG</h1> 
 				<div id=platzauslastung>
-					<p>Reservierte Plätze: <span id="resPlaetze"></span> </p>
-					<p>Freie Plätze: <span id="freiePlaetze"></span></p>
+					<p id="resPlaetze">Reservierte Plätze: </p>
+					<p id="freiePlaetze">Freie Plätze: </p>
+					<p class="hidden" id="geschlossen">Auslastung nicht verfügbar, weil die Bibliothek geschlossen ist!</p>
 				</div>
 			</section>
 			<img id="bild" src="img/startseite.jpg" width="1280" height="450" alt="Bild">	

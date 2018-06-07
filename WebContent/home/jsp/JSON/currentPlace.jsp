@@ -4,6 +4,7 @@
 
 
 	{
-		"anzBesetzt":"${anzBesetztePlaetze}"
+		"anzBesetzt":"${anzBesetztePlaetze}",
+		"anzFrei":"${anzFreiePlaetze}"
 	}
 
