@@ -172,10 +172,6 @@ h1{
 	margin-right: 0.4em;
 }
 
-#actionbuttons{
-	margin-top: 2.9em;
-}
-
 #dauer{
 	font-size: 1.02em;
 	text-align: left;
@@ -190,6 +186,7 @@ button[type=submit], button[type=reset]{
 	color: #005A9B;
 	background: white;
 	border: 1px solid #005A9B;
+	margin-bottom: 1.7em;
 }
 
 button[type=reset]{
@@ -204,6 +201,7 @@ button[type="submit"]:hover, button[type="reset"]:hover {
 button[type="submit"]:active, button[type="reset"]:active {
 	background: white;
 }
+
 
 /*Style für Input-Felder*/
 input:hover{
