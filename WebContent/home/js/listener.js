@@ -312,54 +312,103 @@ function changeZeitraum(){
 	xmlhttp.send();
 }
 
+
 function checkForm(evt){
 	var platz = document.getElementById("platznr").value;
+	var bisdatum = document.getElementById("bis").value;
 	
 	if(platz == ""){
-		alert("Bitte einen Sitzplatz auswählen!")
+//		alert("Bitte einen Sitzplatz auswählen!")
 		evt.preventDefault();
 	}
 	
 	if(document.getElementById("wiederholtermin").checked){
-		var datum = document.getElementById("datum").value;
-		var bisdatum = document.getElementById("bis").value;
-		
 		if(datum == bisdatum){ //falls datum und bisdatum gleich sind => wegen Max bei Datum
-			alert("Bitte als Einzeltermin buchen!");
+//			alert("Bitte als Einzeltermin buchen!");
 			document.getElementById("einzeltermin").checked = true;
 			changeTermin();
-			evt.preventDefault();
 		}
-//		var datum = document.getElementById("datum").value;
-//		var zeitraum = document.getElementById("zeitraum").value;
-//		var platznr = document.getElementById("platznr").value;
-//		
-//		var searchURL = "/bibproject/checkterminbezeichnungservlet";
-//		searchURL += "?terminbezeichnung=" + encodeURIComponent(terminbezeichnung);
-//		
-//		var xmlhttp = new XMLHttpRequest();
-//		xmlhttp.onreadystatechange = function() {
-//			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//				var gleicheBezeichnung = JSON.parse(xmlhttp.responseText);
-//				
-//				if(gleicheBezeichnung != null ||gleicheBezeichnung.length != 0 ){
-//					document.getElementById("terminbezeichnung").value = "";
-//					alert("Diese Terminbezeichnung existiert bereits!");
-//				}
-//			}
-//		};
 		
-//		xmlhttp.open("GET", searchURL, true);
-//		xmlhttp.send();
-		//Servlet
-//		var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\nMöchten Sie dennoch für die restlichen Tage buchen?");
-//		if (antwort == true) {
-//			//ReservationsServlet
-//		} else {
-//			evt.preventDefault();
-//		}
+		evt.preventDefault();
+		checkPlaetze(evt);
 	}
 }
+
+function checkPlaetze(evt){
+	
+	var datum = document.getElementById("datum").value;
+	var zeitraum = document.getElementById("zeitraum").value;
+	var platznr = document.getElementById("platznr").value;
+	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
+	var bis = document.getElementById("bis").value;
+	
+	var searchURL = "/bibproject/checkplaceservlet";
+	searchURL += "?datum=" + encodeURIComponent(datum) + "&zeitraum=" + encodeURIComponent(zeitraum)
+					+ "&platznr=" + encodeURIComponent(platznr) + "&terminbezeichnung=" + encodeURIComponent(terminbezeichnung) 
+					+ "&bis=" + encodeURIComponent(bis);
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var liste = JSON.parse(xmlhttp.responseText);
+			var besetztePlaetze = "";
+			var freiePlaetze = "";
+			
+			if(liste.length != 0){
+				for (var i = 0; i < liste.length; i++) {
+					if(besetztePlaetze != "" && liste[i].datumBesetzt != null && i != 0){
+						besetztePlaetze += " | ";
+					}
+					if(liste[i].datumBesetzt != null){
+						besetztePlaetze += liste[i].datumBesetzt;
+					}
+				}
+				
+				for (var i = 0; i < liste.length; i++) {
+					if(freiePlaetze != "" && liste[i].datum != null && i != 0){
+						freiePlaetze += " | ";
+					}
+					if(liste[i].datum != null){
+						freiePlaetze += liste[i].datum;
+					}
+				}
+			}
+			
+			if(besetztePlaetze != ""){
+				var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\n\n" + besetztePlaetze 
+						+ "\n\nMöchten Sie dennoch für die restlichen Tage: " + "\n\n" + freiePlaetze + "\n\nbuchen?");
+				if (antwort == true){
+					evt.preventDefault();
+					alert("buchen()_2");
+//					bookingWiederholtermine(freiePlaetze);
+				}
+				else{
+					return;
+				}
+			}
+			else{
+				evt.preventDefault();
+				alert("buchen()");
+//				bookingWiederholtermine(freiePlaetze);
+			}
+		}
+	};
+	
+	xmlhttp.open("GET", searchURL, true);
+	xmlhttp.send();
+}
+
+function bookingWiederholtermine(freiePlaetze){
+	//AJAX: Übergabe der 2.Listen (ListeMitZuBesetzendenPlätze): 
+	
+//	xmlhttp = new XMLHttpRequest();
+//	xmlhttp.onreadystatechange = parseReplyFromServer;
+//	xmlhttp.open("POST", "/bibproject/bookingservlet", true);
+//	xmlhttp.setRequestHeader("Content-Type","text/plain");
+//	xmlhttp.send("Liste=" + JSON.stringify(object));
+}
+
+
 
 function checkTerminbezeichnung(){
 	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
@@ -371,7 +420,6 @@ function checkTerminbezeichnung(){
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			var gleicheBezeichnung = JSON.parse(xmlhttp.responseText);
-			
 			if(gleicheBezeichnung.length != 0){
 				var antwort = confirm("Diese Terminbezeichnung existiert bereits!" + "\nMöchten Sie dennoch Ihre neuen Termine dieser Bezeichnung zuordnen?");
 				if (antwort == true) {
