@@ -7,10 +7,10 @@
 document.addEventListener("DOMContentLoaded", init);
 function init() {
 	var heute = new Date();
-	alert(heute.getHours());
+//	alert(heute.getHours());
 	if(heute.getHours() > 7){
 	
-		alert("test");
+//		alert("test");
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -25,7 +25,7 @@ function init() {
 		xmlhttp.send();
 	}
 	else{
-		alert("test2");
+//		alert("test2");
 		document.getElementById("resPlaetze").className="hidden";
 		document.getElementById("freiePlaetze").className="hidden";
 		document.getElementByID("geschlossen").classList.remove("hidden");		
