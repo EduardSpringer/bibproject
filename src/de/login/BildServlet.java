@@ -32,8 +32,10 @@ public class BildServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		request.setCharacterEncoding("UTF-8");		
 		String username = request.getParameter("username");
+
 		
 		try(Connection con = ds.getConnection();
 

@@ -46,6 +46,8 @@ public class ReservationServlet extends HttpServlet {
 		
 		if ("einzeltermin".equals(termin)) {
 			resTermin(datum, zeitraum, platznr, username, null);
+			
+		//deprecated, da Wiederholtermine mittels Ajax im anderen Servlet (BookingWiederholtermineServlet) gebucht werden
 		} else if ("wiederholtermin".equals(termin)) {
 			
 //			http://www.baeldung.com/java-date-difference
