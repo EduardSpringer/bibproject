@@ -318,13 +318,13 @@ function checkForm(evt){
 	var bisdatum = document.getElementById("bis").value;
 	
 	if(platz == ""){
-//		alert("Bitte einen Sitzplatz auswählen!")
+		alert("Bitte einen Sitzplatz auswählen!")
 		evt.preventDefault();
 	}
 	
 	if(document.getElementById("wiederholtermin").checked){
 		if(datum == bisdatum){ //falls datum und bisdatum gleich sind => wegen Max bei Datum
-//			alert("Bitte als Einzeltermin buchen!");
+			alert("Bitte als Einzeltermin buchen!");
 			document.getElementById("einzeltermin").checked = true;
 			changeTermin();
 		}
@@ -378,18 +378,14 @@ function checkPlaetze(evt){
 				var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\n\n" + besetztePlaetze 
 						+ "\n\nMöchten Sie dennoch für die restlichen Tage: " + "\n\n" + freiePlaetze + "\n\nbuchen?");
 				if (antwort == true){
-					evt.preventDefault();
-					alert("buchen()_2");
-//					bookingWiederholtermine(freiePlaetze);
+					bookingWiederholtermine(liste);
 				}
 				else{
 					return;
 				}
 			}
 			else{
-				evt.preventDefault();
-				alert("buchen()");
-//				bookingWiederholtermine(freiePlaetze);
+				bookingWiederholtermine(liste);
 			}
 		}
 	};
@@ -398,17 +394,21 @@ function checkPlaetze(evt){
 	xmlhttp.send();
 }
 
-function bookingWiederholtermine(freiePlaetze){
-	//AJAX: Übergabe der 2.Listen (ListeMitZuBesetzendenPlätze): 
-	
-//	xmlhttp = new XMLHttpRequest();
-//	xmlhttp.onreadystatechange = parseReplyFromServer;
-//	xmlhttp.open("POST", "/bibproject/bookingservlet", true);
-//	xmlhttp.setRequestHeader("Content-Type","text/plain");
-//	xmlhttp.send("Liste=" + JSON.stringify(object));
+function bookingWiederholtermine(liste){
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = parseReplyFromServer;
+	xmlhttp.open("POST", "/bibproject/reservationservlet", true);
+	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+//	xmlhttp.setRequestHeader("text/plain");
+	xmlhttp.send("liste=" + JSON.stringify(liste));
 }
 
-
+function parseReplyFromServer() {//Weil Dispatcher im Servlet nicht aktiviert wird!
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//		location.reload();
+		document.location.href="/bibproject/home/jsp/reserve.jsp";
+	}
+}
 
 function checkTerminbezeichnung(){
 	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
