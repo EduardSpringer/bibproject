@@ -40,7 +40,6 @@ public class BildServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
-		System.out.println(user.getUsername());
 		
 		
 		try(Connection con = ds.getConnection();
