@@ -39,7 +39,8 @@
 						<th>Platznummer</th>
 						<th>Löschen</th>
 					</tr>
-					<c:forEach var="termin" items="${einzeltermine}" varStatus="status">
+					<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
+								begin="${start}" end="${end}">
 						<tr>
 							<td>${status.count}</td>
 							<td>${termin.datumString}</td>
@@ -50,6 +51,9 @@
 						</tr>
 					</c:forEach>
 				</table>
+			</c:if>
+			<c:if test="${checkNextPage == true}" >
+				<a href="/bibproject/myreservationservlet?next=2">weiter</a>
 			</c:if>
 		</section>
 		

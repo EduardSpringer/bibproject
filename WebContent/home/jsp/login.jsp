@@ -33,10 +33,10 @@
 									title="THI Loginname (Musterbeispiel: hea1111)" placeholder= "hea1111">
 								<span></span>
 							</div>
-							<div>s
+							<div>
 								<label for="password">Passwort:</label>
 								<input id="password" name="password" type="password" maxlength="10" 
-									required pattern=".{5,10}">
+									required pattern=".{5,10}" placeholder="5 bis 10 Zeichen" title ="5 bis 10 Zeichen">
 								<span></span>
 							</div>			
 							

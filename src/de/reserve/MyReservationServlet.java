@@ -41,25 +41,46 @@ public class MyReservationServlet extends HttpServlet {
 		// eines Beans zur Weitergabe der Formulardaten an eine JSP
 		
 		request.setCharacterEncoding("UTF-8");	// In diesem Format erwartet das Servlet jetzt die Formulardaten
-
+		
+		String next = request.getParameter("next");
+		int nextPage = Integer.parseInt(next);
+		
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		
 		// DB-Zugriff
 		List<ReservationBean> einzeltermine = sucheEinzeltermine(user.getUsername());
+		int anzEinzTermine = einzeltermine.size();
+		//int nextPage = 1;
+		boolean checkNextPage = false;
+
+		
+		if(anzEinzTermine > 10) {
+			checkNextPage = true;			
+		}
+		
+		int start = 0;
+		int end = 10;
+		if(nextPage == 2) {
+			start = 11;
+			end = 20;
+		}
 		
 		Object wdhObject[] = sucheWdhtermine(user.getUsername());
 		List<ReservationBean> wdhtermine = (List<ReservationBean>) wdhObject[0];
 		Set<String> terminBezSet = (Set<String>) wdhObject[1];
-		
-				
+						
 		// Scope "Request"
+		request.setAttribute("start", start);
+		request.setAttribute("end", end);
 		request.setAttribute("einzeltermine", einzeltermine);
+		request.setAttribute("nextPage", nextPage);
+		request.setAttribute("checkNextPage",checkNextPage);
+		
 		request.setAttribute("wdhtermine", wdhtermine);
 		request.setAttribute("terminBezSet", terminBezSet);
 		
 		// Weiterleiten an JSP
-		//response.sendRedirect("home/jsp/myReservation.jsp");
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/myReservation.jsp");
 		dispatcher.forward(request, response);	
 	}
