@@ -43,7 +43,7 @@ header {
 	color: #005A9B;
 }
 
-#profilbild{	
+.profilbild{	
 	width: 150px;
 	height: 150px;
 	/*margin-top: 15px;*/

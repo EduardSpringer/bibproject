@@ -7,7 +7,6 @@
 document.addEventListener("DOMContentLoaded", init);
 function init() {
 	var heute = new Date();
-
 	
 	if(heute.getHours() > 7){
 	

@@ -44,6 +44,26 @@ muss deren Ursprung wiederhergestellt werden*/
  
 }
 
+input:invalid+span::after {
+	color: red;
+	content: " ✘";
+}
+
+textarea:invalid+span::after {
+	color: red;
+	content: " ✘";
+}
+
+input:valid+span::after {
+	color: green;
+	content: " ✔";
+}
+
+textarea:valid+span::after {
+	color: green;
+	content: " ✔";
+}
+
 #fehlermeldung{
 	color: red;	
 }

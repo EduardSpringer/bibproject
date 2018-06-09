@@ -60,7 +60,10 @@
 				<p class="keineTermine">Sie haben zur Zeit keine Wiederholungsreservierungen</p>
 			</c:if>
 			<c:forEach var="terminBez" items="${terminBezSet}" varStatus="status">
-				<p><span class="terminbez" id="${terminBez}"> ${terminBez} </span>
+				<p>
+					<span class="terminbez" id="${terminBez}"> ${terminBez} 
+						<span id="${terminBez}_pfeil">▼</span>
+					</span>
 					<a href="/bibproject/deletereservationservlet?terminBez=${terminBez}&reservierungID=0"
 						class ="deletewdhtermin" id="delete${terminBez}">✘</a>
 				</p>

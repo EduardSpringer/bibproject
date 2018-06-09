@@ -29,11 +29,15 @@
 							<div>
 								<label for="username">Name:</label>
 								<input type ="text" id="username" name="username" value="${cookie.usernameCookie.value}" 
-								type="text" maxlength="7" size="15" required pattern="[A-Za-z]{3}[0-9]{4}|admin" title="abc1234">
+									type="text" maxlength="7" autofocus required pattern="[A-Za-z]{3}[0-9]{4}" 
+									title="THI Loginname (Musterbeispiel: hea1111)" placeholder= "hea1111">
+								<span></span>
 							</div>
-							<div>
+							<div>s
 								<label for="password">Passwort:</label>
-								<input id="password" name="password" type="password" maxlength="10" size="15" required pattern="{5,10}">
+								<input id="password" name="password" type="password" maxlength="10" 
+									required pattern=".{5,10}">
+								<span></span>
 							</div>			
 							
 							<div>
