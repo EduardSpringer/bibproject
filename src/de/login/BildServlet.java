@@ -30,52 +30,43 @@ public class BildServlet extends HttpServlet {
 	@Resource(lookup="jdbc/MyTHIPool")
 	private DataSource ds;
 
-    public BildServlet() {
-        super();
-    }
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		HttpSession session = request.getSession();
-		LoginBean user = (LoginBean) session.getAttribute("lb");
-		System.out.println(user.getUsername());
-		
+		request.setCharacterEncoding("UTF-8");		
+		String username = request.getParameter("username");
 		
 		try(Connection con = ds.getConnection();
-				//PreparedStatement pstmt = con.prepareStatement("USE thidb;");
-				//ResultSet rsUse = pstmt.executeQuery();
-				PreparedStatement pstmt = con.prepareStatement("SELECT profilbild FROM thidb.benutzer WHERE username = ?")){
-					
-				pstmt.setString(1,user.getUsername());
+
+			PreparedStatement pstmt = con.prepareStatement("SELECT profilbild FROM thidb.benutzer WHERE username = ?")){
 				
-				try(ResultSet rsSelect = pstmt.executeQuery();){ //Username wird gesucht
-				
-					if(rsSelect != null && rsSelect.next()) { //Username gefunden	
-												
-						
-						Blob bild = rsSelect.getBlob("profilbild");
-						response.reset();
-						long length = bild.length();
-						response.setHeader("Content-Length", String.valueOf(length));
-						
+			pstmt.setString(1,username);
 			
-							try(InputStream in = bild.getBinaryStream();){
-								final int bufferSize = 256;
-								byte[] buffer  = new byte[bufferSize];
-	
-								ServletOutputStream out = response.getOutputStream();
-								while((length = in.read(buffer)) != -1) {
-									out.write(buffer,0,(int) length);
-								}
-								out.flush();
-								
+			try(ResultSet rsSelect = pstmt.executeQuery();){ //Username wird gesucht
+			
+				if(rsSelect != null && rsSelect.next()) { //Username gefunden	
+											
+					
+					Blob bild = rsSelect.getBlob("profilbild");
+					response.reset();
+					long length = bild.length();
+					response.setHeader("Content-Length", String.valueOf(length));
+					
+		
+						try(InputStream in = bild.getBinaryStream();){
+							final int bufferSize = 256;
+							byte[] buffer  = new byte[bufferSize];
+
+							ServletOutputStream out = response.getOutputStream();
+							while((length = in.read(buffer)) != -1) {
+								out.write(buffer,0,(int) length);
 							}
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
+							out.flush();
+							
+						}
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 		} catch (SQLException e1) {
 			
