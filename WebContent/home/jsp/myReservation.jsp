@@ -40,7 +40,7 @@
 						<th>Löschen</th>
 					</tr>
 					<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
-								begin="${start}" end="${end}">
+								begin="${erstesElement}" end="${letztesElement}">
 						<tr>
 							<td>${status.count}</td>
 							<td>${termin.datumString}</td>
@@ -51,10 +51,24 @@
 						</tr>
 					</c:forEach>
 				</table>
+			
 			</c:if>
-			<c:if test="${checkNextPage == true}" >
-				<a href="/bibproject/myreservationservlet?next=2">weiter</a>
-			</c:if>
+			
+			<p class="seitenlink">
+				<c:if test ="${vorherigeSeite != 0}">
+					<a  href="/bibproject/myreservationservlet?page=${vorherigeSeite}">◄ vorherige Seite</a>
+				</c:if>	
+				
+				<c:forEach begin="1" step="1" end="${seitenAnzInsgesamt}" varStatus="status" >
+					<a href="/bibproject/myreservationservlet?page=${status.count}">${status.count}</a>
+				
+				</c:forEach>		
+				
+				
+				<c:if test="${nachfolgendeSeite != 0}" >
+					<a href="/bibproject/myreservationservlet?page=${nachfolgendeSeite}">nächste Seite ►</a>
+				</c:if>
+			</p> 
 		</section>
 		
 		<section>

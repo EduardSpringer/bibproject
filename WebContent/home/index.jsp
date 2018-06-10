@@ -43,7 +43,7 @@
 								<li><a>${lb.username} ▼</a> 
 									<ul>
 										<li><a href="jsp/profileEditForm.jsp">Profil bearbeiten</a></li>
-										<li><a href="/bibproject/myreservationservlet?next=1">Meine Termine</a></li>
+										<li><a href="/bibproject/myreservationservlet?page=1">Meine Termine</a></li>
 										<li><a href="/bibproject/logoutservlet">Logout</a></li>
 									</ul>
 								</li>

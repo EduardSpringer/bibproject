@@ -41,44 +41,38 @@ public class MyReservationServlet extends HttpServlet {
 		// eines Beans zur Weitergabe der Formulardaten an eine JSP
 		
 		request.setCharacterEncoding("UTF-8");	// In diesem Format erwartet das Servlet jetzt die Formulardaten
+		String page = request.getParameter("page"); //diese Seite soll angezeigt werden!
 		
-		String next = request.getParameter("next");
-		int nextPage = Integer.parseInt(next);
 		
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		
-		// DB-Zugriff
+		// DB-Zugriff Einzeltermine
 		List<ReservationBean> einzeltermine = sucheEinzeltermine(user.getUsername());
-		int anzEinzTermine = einzeltermine.size();
-		//int nextPage = 1;
-		boolean checkNextPage = false;
-
 		
-		if(anzEinzTermine > 10) {
-			checkNextPage = true;			
-		}
-		
-		int start = 0;
-		int end = 10;
-		if(nextPage == 2) {
-			start = 11;
-			end = 20;
-		}
-		
+		//DB-Zugriff Wiederholungstermine
 		Object wdhObject[] = sucheWdhtermine(user.getUsername());
 		List<ReservationBean> wdhtermine = (List<ReservationBean>) wdhObject[0];
 		Set<String> terminBezSet = (Set<String>) wdhObject[1];
-						
-		// Scope "Request"
-		request.setAttribute("start", start);
-		request.setAttribute("end", end);
-		request.setAttribute("einzeltermine", einzeltermine);
-		request.setAttribute("nextPage", nextPage);
-		request.setAttribute("checkNextPage",checkNextPage);
 		
-		request.setAttribute("wdhtermine", wdhtermine);
-		request.setAttribute("terminBezSet", terminBezSet);
+		//Berechnung der Seitenanzahl und Anzeige der Elemente für jeweilige Seite für die Einzeltermine
+		int nextPageEinzeltermin [] = getEinzelterminPage(page,einzeltermine.size());
+		int start = nextPageEinzeltermin [0];
+		int end = nextPageEinzeltermin [1];
+		int anzSeiten = nextPageEinzeltermin [2];
+		int nachfolgendeSeite = nextPageEinzeltermin [3];
+		int vorherigeSeite =nextPageEinzeltermin [4];
+		
+		// Scope "Request"
+		request.setAttribute("erstesElement", start); //foreach schleife Einzeltermine
+		request.setAttribute("letztesElement", end); //foreach schleife Einzeltermine
+		request.setAttribute("seitenAnzInsgesamt", anzSeiten); //foreach schleife für Seitenanzahllink
+		request.setAttribute("nachfolgendeSeite", nachfolgendeSeite); //"nächste Seite" Einzeltermine
+		request.setAttribute("vorherigeSeite", vorherigeSeite);//"vorherige Seite" Einzeltermine
+	
+		request.setAttribute("einzeltermine", einzeltermine); //Liste der Res.Bean (Einzeltermine)		
+		request.setAttribute("wdhtermine", wdhtermine); //Liste der Res.Bean (Wdh Termine)
+		request.setAttribute("terminBezSet", terminBezSet); //alle Terminbezeichnungen
 		
 		// Weiterleiten an JSP
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/myReservation.jsp");
@@ -237,6 +231,71 @@ public class MyReservationServlet extends HttpServlet {
 		else {
 			return "bis " + zeitraumende + ":00";
 		}
+	}
+	
+	public int[] getEinzelterminPage(String p, int anzEinzTermine) {
+		int page = Integer.parseInt(p); //diese Seite soll angezeigt werden
+		int anzSeiten = 1; //so viele Seiten gibt es insgesamt
+		
+		
+	//Wenn es nur eine Seite gibt:
+		int start = 0; //"Begin" für die Ausgabe in der Foreach Schleife
+		int end = 0; // "End" für die Ausgabe
+		
+		//Wenn es weniger als 10 Termine gibt,
+		//bleibt nextPage und lastPage auf 0
+		//und dann wird "nächste Seite" & "vorherige Seite" nicht angezeigt
+		int nachfolgendeSeite=0;
+		int vorherigeSeite=0;
+		
+		
+	// Wenn es mehr als 10 Termine gibt, dann gibt es die Blätterfunktion:
+		int anzElemAufEinerSeite = 10;
+		if(anzEinzTermine > anzElemAufEinerSeite) {
+			start = (page - 1) * anzElemAufEinerSeite; 
+			//Zb: (2-1)*10 = 10 -> 2.Seite zeigt ab dem 11ten Element an (-1 weil es bei 0 anfängt)
+			
+			//Berechnung Seitenanzahl
+			if(anzEinzTermine % anzElemAufEinerSeite == 0 ) { // % Anzahl der Elemente auf einer Seite
+				//Es gibt keine "Restelemente", die auf die nächste Seite müssen
+				anzSeiten = anzEinzTermine / anzElemAufEinerSeite;											
+			}
+			
+			else {  //"Restelemente" die auf einer neuen Seite angezeigt werden müssen
+				anzSeiten = anzEinzTermine / anzElemAufEinerSeite + 1;									
+			}
+			
+			//Berechnung "End" ->letztes Element das Angezeigt werden soll
+			if(page == anzSeiten && anzEinzTermine % anzElemAufEinerSeite != 0) { // Wenn letzte Seite und "Restelemente"
+				end= start + (anzEinzTermine % anzElemAufEinerSeite);			
+				//Gesamtzahl der Einzeltermine = 45
+				//zb: Seite 5: start = (5-1)*10 = 40
+				//end = 40 + (45 % 10) - 1 = 44	
+				
+			}
+			else {
+				end = (page * anzElemAufEinerSeite)-1;
+				//zb: (2 * 10) -1 = 19 -> 2.Seite zeigt bis zum 20 Element an (-1 weil es bei 0 anfängt)
+			}
+										
+		}
+		else { // wenn es =< 10 Elemente gibt, dann soll die foreachSchleife nur bis zum Letzten Termin gehen
+			end= anzEinzTermine-1; //-1 weil es bei 0 anfängt
+		}
+		
+		//Wenn es mehrere Seiten und der User NICHT auf der LETZTEN Seite ist
+		//dann wird "nächste Seite" angezeigt
+		if(anzSeiten > 1 && page != anzSeiten) { 
+			nachfolgendeSeite = page+1; // für query
+		}
+		//Wenn es mehrere Seiten gibt und der User NICHT auf der ERSTEN Seite ist
+		//dann wird "letzte Seite" angezeigt
+		if(anzSeiten > 1 && page != 1) {
+			vorherigeSeite = page-1; // für query
+		}
+		
+		int ergebnis [] = {start, end, anzSeiten, nachfolgendeSeite, vorherigeSeite};
+		return ergebnis ;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
