@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="css/footer.css">
 
 		<script type="text/javascript" src="js/cookie.js"></script>
-		<script type="text/javascript" src="js/currentPlace.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
 		<header>

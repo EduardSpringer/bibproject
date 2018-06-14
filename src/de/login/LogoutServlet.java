@@ -1,6 +1,8 @@
 package de.login;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +33,9 @@ public class LogoutServlet extends HttpServlet {
 			session.removeAttribute("lb");
 			session.invalidate();  
         }
-        response.sendRedirect("home/index.jsp");
+		// Weiterleiten an JSP
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("home/index.jsp");
+		dispatcher.forward(request, response);	
 	}
 
 }
