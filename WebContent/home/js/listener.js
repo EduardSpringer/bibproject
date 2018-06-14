@@ -360,7 +360,14 @@ function checkPlaetze(evt){
 						besetztePlaetze += " | ";
 					}
 					if(liste[i].datumBesetzt != null){
-						besetztePlaetze += liste[i].datumBesetzt;
+						var mydate = new Date(liste[i].datumBesetzt);
+						var day = mydate.getDate();
+						var month = mydate.getMonth() + 1;
+						var year = mydate.getFullYear();
+						
+						var txt = day + "." + month + "." + year
+						
+						besetztePlaetze += txt;
 					}
 				}
 				
@@ -369,7 +376,14 @@ function checkPlaetze(evt){
 						freiePlaetze += " | ";
 					}
 					if(liste[i].datum != null){
-						freiePlaetze += liste[i].datum;
+						var mydate = new Date(liste[i].datum);
+						var day = mydate.getDate();
+						var month = mydate.getMonth() + 1;
+						var year = mydate.getFullYear();
+						
+						var txt = day + "." + month + "." + year
+						
+						freiePlaetze += txt;
 					}
 				}
 			}
