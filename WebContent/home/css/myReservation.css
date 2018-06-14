@@ -7,7 +7,7 @@ div#flex {
 	margin-left: auto;
 	margin-right: auto;
 	width: 1280px;
-	min-height: 550px;	
+	height: 550px;	
 }
 
 section {
@@ -66,28 +66,13 @@ th, td{
 tr:nth-child(odd){/*ungerade Zeile */
 	background:#efeef7;
 }
-/*
-.bottom{
-	position: absolute;
-	bottom: 5px;
-}
-*/
+
 .seitenlink{
-	position: relative;
-	text-align: center;
-	
+	position: absolute;
+	bottom: 0em;
+	left: 50%;
 }
 .seitenlink a{
 	text-decoration: none; /*wird nicht unterstrichen usw*/
 	color: #005A9B;text-decoration: none;
-}
-
-#back{
-	left: 0;
-	position: absolute;
-}
-
-#forward{
-	right: 0;
-	position: absolute;
 }
