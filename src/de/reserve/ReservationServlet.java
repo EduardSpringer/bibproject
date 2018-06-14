@@ -32,8 +32,7 @@ public class ReservationServlet extends HttpServlet {
 	private DataSource ds;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 
 		String datum = request.getParameter("datum");
 		String zeitraum = request.getParameter("zeitraum");
@@ -48,7 +47,6 @@ public class ReservationServlet extends HttpServlet {
 			resTermin(datum, zeitraum, platznr, username, null);
 		}
 		else {
-//			response.setContentType("text/plain");
 			JSONArray json;
 				
 			try {
@@ -62,7 +60,9 @@ public class ReservationServlet extends HttpServlet {
 						String strDatum = jsonObject.getString("datum");
 						String strZeitraum = jsonObject.getString("zeitraum");
 						String strPlatznr = jsonObject.getString("platznr");
-						String strTerminbezeichnung = jsonObject.getString("terminbezeichnung");
+						String test = jsonObject.getString("terminbezeichnung");
+						
+					    String strTerminbezeichnung = new String(test.getBytes("UTF-8"), "UTF-8");
 
 						resTermin(strDatum, strZeitraum, strPlatznr, username, strTerminbezeichnung);
 					}
@@ -126,6 +126,10 @@ public class ReservationServlet extends HttpServlet {
 	private void resTermin(String datum, String zeitraum, String platznr, String username, String terminbezeichnung) throws ServletException {
 		try (Connection con = ds.getConnection();
 			 PreparedStatement pstmt = con.prepareStatement("INSERT INTO thidb.platzreservierung (datum, zeitraum, platzid, username, terminbezeichnung) VALUES (?,?,?,?,?)")){
+			
+			pstmt.executeQuery("SET NAMES 'UTF8'");
+			pstmt.executeQuery("SET CHARACTER SET 'UTF8'");
+			
 			pstmt.setString(1, datum);
 			pstmt.setString(2, zeitraum);
 			pstmt.setString(3, platznr);

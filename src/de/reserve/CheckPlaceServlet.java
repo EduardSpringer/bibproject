@@ -36,11 +36,14 @@ public class CheckPlaceServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String datum = request.getParameter("datum");
 		String zeitraum = request.getParameter("zeitraum");
 		String platznr = request.getParameter("platznr");
-		String terminbezeichnung = request.getParameter("terminbezeichnung");
+		String test = request.getParameter("terminbezeichnung");
 		String bis = request.getParameter("bis");
+		
+		String terminbezeichnung = new String(test.getBytes("UTF-8"), "UTF-8");
 
 		Object plaetze[] = checkPlace(datum, zeitraum, platznr, terminbezeichnung, bis);
 

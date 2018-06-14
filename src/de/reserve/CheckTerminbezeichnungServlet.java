@@ -3,6 +3,8 @@
 package de.reserve;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +35,7 @@ public class CheckTerminbezeichnungServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String terminbezeichnung = request.getParameter("terminbezeichnung");
-		
+	
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		String username = user.getUsername();
@@ -53,6 +55,10 @@ public class CheckTerminbezeichnungServlet extends HttpServlet {
 			 PreparedStatement pstmt = con.prepareStatement("SELECT ReservierungID FROM thidb.platzreservierung "
 			 		+ "WHERE terminbezeichnung = ? AND username = ?")) {
 
+			//als UTF-8 in DB speichern
+			pstmt.executeQuery("SET NAMES 'UTF8'");
+			pstmt.executeQuery("SET CHARACTER SET 'UTF8'");
+			
 			pstmt.setString(1, terminbezeichnung);
 			pstmt.setString(2, username);
 			
