@@ -1,5 +1,6 @@
 //Eduard Springer
 
+"use strict";
 document.addEventListener("DOMContentLoaded", setAllEventListener);
 
 function setAllEventListener() {
@@ -101,7 +102,7 @@ function initZeitraeume(){
     		    ]
     		 }
     	
-    	for (i = 0; i < zeitraum.attribute.length; i++) {
+    	for (var i = 0; i < zeitraum.attribute.length; i++) {
     		var opt = document.createElement('option');
             opt.text = zeitraum.attribute[i].text;
             opt.value = zeitraum.attribute[i].value;
@@ -289,7 +290,7 @@ function changeZeitraum(){
 					var button = document.getElementsByClassName("buttons")[i];
 					var j = button.value;
 					
-					for(k = 0; k < plaetze.length; k++){
+					for(var k = 0; k < plaetze.length; k++){
 						if(j == plaetze[k].reservedPlace){
 							button.setAttribute("id", "rot" + i);
 							button.setAttribute("class", "buttons");
@@ -318,7 +319,7 @@ function checkForm(evt){
 	var bisdatum = document.getElementById("bis").value;
 	
 	if(platz == ""){
-		alert("Bitte einen Sitzplatz auswählen!")
+		alert("Bitte einen Sitzplatz per Mausklick auswählen!")
 		evt.preventDefault();
 	}
 	
@@ -392,14 +393,14 @@ function checkPlaetze(evt){
 				var antwort = confirm("Für folgende Termine können die Plätze nicht belegt werden: " + "\n\n" + besetztePlaetze 
 						+ "\n\nMöchten Sie dennoch für die restlichen Tage: " + "\n\n" + freiePlaetze + "\n\nbuchen?");
 				if (antwort == true){
-					bookingWiederholtermine(liste);
+					bookingWiederholtermine(liste, xmlhttp);
 				}
 				else{
 					return;
 				}
 			}
 			else{
-				bookingWiederholtermine(liste);
+				bookingWiederholtermine(liste, xmlhttp);
 			}
 		}
 	};
@@ -408,20 +409,15 @@ function checkPlaetze(evt){
 	xmlhttp.send();
 }
 
-function bookingWiederholtermine(liste){
-	xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = parseReplyFromServer;
+function bookingWiederholtermine(liste, xmlhttp){
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.location.href="/bibproject/home/jsp/reserve.jsp";
+		}
+	};
 	xmlhttp.open("POST", "/bibproject/reservationservlet", true);
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-//	xmlhttp.setRequestHeader("text/plain");
 	xmlhttp.send("liste=" + JSON.stringify(liste));
-}
-
-function parseReplyFromServer() {//Weil Dispatcher im Servlet nicht aktiviert wird!
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//		location.reload();
-		document.location.href="/bibproject/home/jsp/reserve.jsp";
-	}
 }
 
 function checkTerminbezeichnung(){

@@ -35,7 +35,7 @@
 			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
 			<!-- Formular -->
-			<form id="formular" action="/bibproject/reservationservlet" method="post"></form>
+			<form id="formular" action="/bibproject/reservationservlet" accept-charset="UTF-8" method="post"></form>
 	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>

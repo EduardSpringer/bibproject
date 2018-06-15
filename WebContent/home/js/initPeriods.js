@@ -1,5 +1,6 @@
 //Eduard Springer
 
+"use strict";
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -56,6 +57,7 @@ function init() {
         options.value = 10;
         dropdown.add(options, dropdown[0]);
     }
+    
     var opt = document.createElement('option');
     opt.text = "auswählen";
     opt.value = "select";
