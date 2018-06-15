@@ -42,7 +42,7 @@ private static final long serialVersionUID = 1L;
 		}
 		
 		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("/myreservationservlet");
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("/myreservationservlet?page=1");
 		dispatcher.forward(request, response);	
 	}
 

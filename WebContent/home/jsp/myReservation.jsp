@@ -42,7 +42,7 @@
 					<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
 								begin="${erstesElement}" end="${letztesElement}">
 						<tr>
-							<td>${status.count}</td>
+							<td>${status.index+1}</td>
 							<td>${termin.datumString}</td>
 							<td>${termin.zeitraum}</td>
 							<td>${termin.platzID}</td>
@@ -56,7 +56,7 @@
 			
 			<p class="seitenlink">
 				<c:if test ="${vorherigeSeite != 0}">
-					<a  href="/bibproject/myreservationservlet?page=${vorherigeSeite}">◄ vorherige Seite</a>
+					<a id="back" href="/bibproject/myreservationservlet?page=${vorherigeSeite}">◄ vorherige Seite</a>
 				</c:if>	
 				
 				<c:forEach begin="1" step="1" end="${seitenAnzInsgesamt}" varStatus="status" >
@@ -66,7 +66,7 @@
 				
 				
 				<c:if test="${nachfolgendeSeite != 0}" >
-					<a href="/bibproject/myreservationservlet?page=${nachfolgendeSeite}">nächste Seite ►</a>
+					<a id="forward" href="/bibproject/myreservationservlet?page=${nachfolgendeSeite}">nächste Seite ►</a>
 				</c:if>
 			</p> 
 		</section>
