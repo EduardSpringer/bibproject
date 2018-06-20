@@ -7,18 +7,25 @@
 		<base href="${pageContext.request.requestURI}" />
 		<meta charset="UTF-8">
 		<title>Registrierung erfolgt</title>
+		<link rel="stylesheet" href="../css/content.css" type="text/css">
+		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
-
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf" %>
-		<section>
-			<h1>Registrierung erfolgt</h1>
-		</section>
+		<div class="outsidediv"> 
+		<section class="zentriert"> 
+		<h1>Registrierung erfolgt</h1>
 		
+		<h2>
 		<jsp:useBean id="javabean" class="javabeans.ProfileBean" scope="session"></jsp:useBean>
-		Hallo <jsp:getProperty name="javabean" property="vorname"/>, Sie haben sich erfolgreich registriert! Sie können sich jetzt nun einloggen.
+		Hallo <jsp:getProperty name="javabean" property="vorname"/>, wir wünschen dir viel Erfolg bei den Prüfungen! 
+		</h2>
+		
+		<p><a href="login.jsp">Hier geht es zum Login</a></p>
+		</section>
+		</div>
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>
 </html>
