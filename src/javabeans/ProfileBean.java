@@ -11,7 +11,6 @@ public class ProfileBean implements Serializable{
 	private String passwortbestaetigen;
 	private String email;
 	private String username; 
-	private Byte image; 
 	
 	public String getVorname() {
 		return vorname;
@@ -49,9 +48,9 @@ public class ProfileBean implements Serializable{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public Byte getImage() {
+	public byte[] getImage() {
 		// TODO Auto-generated method stub
-		return image;
+		return null;
 	}
 	public void setId(long long1) {
 		// TODO Auto-generated method stub
