@@ -1,5 +1,7 @@
 package de.login;
 
+//Helene Akulow
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,37 +26,6 @@ public class LoginServlet extends HttpServlet {
 	@Resource(lookup = "jdbc/MyTHIPool")
 	private DataSource ds;
 
-	private LoginBean getLoginData(String usern) throws ServletException {
-
-		LoginBean benutzer = new LoginBean();
-
-		try (Connection con = ds.getConnection();
-				// PreparedStatement pstmt = con.prepareStatement("USE thidb;");
-				// ResultSet rsUse = pstmt.executeQuery();
-				PreparedStatement pstmt2 = con.prepareStatement("SELECT * FROM thidb.benutzer WHERE username = ?")) {
-
-			pstmt2.setString(1, usern);
-			try (ResultSet rsSelect = pstmt2.executeQuery();) { // Username wird gesucht
-
-				if (rsSelect != null && rsSelect.next()) { // Username gefunden
-					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einf�gen
-					benutzer.setUsername(usern);
-					benutzer.setBildexist(rsSelect.getBoolean("bildexist")); // true oder false
-					benutzer.setAdminrechte(rsSelect.getBoolean("Adminrechte")); // true oder false
-
-				} else { // Username nicht gefunden
-					benutzer.setFehlermeldung("⚠ FEHLER:<br> Sie sind nicht registriert!");
-				}
-			}
-
-		} catch (Exception e) {
-			throw new ServletException(e.getMessage());
-		}
-
-		// System.out.println("user: " + benutzer.getUsername());
-		// System.out.println("passwort: " + benutzer.getPasswort());
-		return benutzer;
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -83,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 			// System.out.println("du bist nicht registriert");
 		}
 
-		else {
+		else { //User gefunden
 
 			if (!password.equals(benutzer.getPasswort())) { // unterschiedliche Passwoerter
 
@@ -107,20 +78,46 @@ public class LoginServlet extends HttpServlet {
 					cookie1.setMaxAge(60 * 60 * 24); // Cookie f�r einen Tag
 					cookie1.setPath("/");
 					response.addCookie(cookie1);
-					/*
-					 * Cookie[] cookies = request.getCookies(); if (cookies != null) { for (int i =
-					 * 0; i< cookies.length; i++) { Cookie cookie = cookies[i];
-					 * 
-					 * System.out.println(cookie.getName() + " " + cookie.getValue()); } } else {
-					 * System.out.println("keine Cookies gespeichert"); }
-					 */
+
 				}
 				// history.back()
+				request.setAttribute("login", true);
+				
 				disp = request.getRequestDispatcher("/home/index.jsp");
 				disp.forward(request, response);
 			}
 		}
 		
+	}
+	
+	private LoginBean getLoginData(String usern) throws ServletException {
+
+		LoginBean benutzer = new LoginBean();
+
+		try (Connection con = ds.getConnection();
+				// PreparedStatement pstmt = con.prepareStatement("USE thidb;");
+				// ResultSet rsUse = pstmt.executeQuery();
+				PreparedStatement pstmt2 = con.prepareStatement("SELECT * FROM thidb.benutzer WHERE username = ?")) {
+
+			pstmt2.setString(1, usern);
+			try (ResultSet rsSelect = pstmt2.executeQuery();) { // Username wird gesucht
+
+				if (rsSelect != null && rsSelect.next()) { // Username gefunden
+					benutzer.setPasswort(rsSelect.getString("Passwort")); // Passwort des Users in LoginBean einf�gen
+					benutzer.setUsername(usern);
+					benutzer.setBildexist(rsSelect.getBoolean("bildexist")); // true oder false
+					benutzer.setAdminrechte(rsSelect.getBoolean("Adminrechte")); // true oder false
+
+				} else { // Username nicht gefunden
+					benutzer.setFehlermeldung("⚠ FEHLER:<br> Sie sind nicht registriert!");
+				}
+			}
+
+		} catch (Exception e) {
+			throw new ServletException(e.getMessage());
+		}
+
+		return benutzer;
 	}
 
 }
