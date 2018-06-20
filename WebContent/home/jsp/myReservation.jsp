@@ -1,6 +1,7 @@
-<%--Helene Akulow --%>
+<!--Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page errorPage="errorPage.jsp" %> <%--Bei Fehler, Weiterleitung an die Fehlerseite --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -25,35 +26,35 @@
 	<div id="flex">
 		<section>
 			<h1>Einzelreservierungen</h1>
-			
-			<c:if test="${empty einzeltermine}">
-				<p class="keineTermine">Sie haben zur Zeit keine Einzelreservierungen</p>
-			</c:if>
-			
-			<c:if test="${not empty einzeltermine}">
-				<table>
-					<tr>
-						<th></th>
-						<th>Datum</th>
-						<th>Uhrzeit</th>
-						<th>Platznummer</th>
-						<th>Löschen</th>
-					</tr>
-					<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
-								begin="${erstesElement}" end="${letztesElement}">
+			<div id="termindiv">
+				<c:if test="${empty einzeltermine}">
+					<p class="keineTermine">Sie haben zur Zeit keine Einzelreservierungen</p>
+				</c:if>
+				
+				<c:if test="${not empty einzeltermine}">
+					<table>
 						<tr>
-							<td>${status.index+1}</td>
-							<td>${termin.datumString}</td>
-							<td>${termin.zeitraum}</td>
-							<td>${termin.platzID}</td>
-							<td><a  href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
-									class ="deletelink">✘</a></td>
+							<th></th>
+							<th>Datum</th>
+							<th>Uhrzeit</th>
+							<th>Platznummer</th>
+							<th>Löschen</th>
 						</tr>
-					</c:forEach>
-				</table>
-			
-			</c:if>
-			
+						<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
+									begin="${erstesElement}" end="${letztesElement}">
+							<tr>
+								<td>${status.index+1}</td>
+								<td>${termin.datumString}</td>
+								<td>${termin.zeitraum}</td>
+								<td>${termin.platzID}</td>
+								<td><a  href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
+										class ="deletelink">✘</a></td>
+							</tr>
+						</c:forEach>
+					</table>
+				
+				</c:if>
+			</div>
 			<p class="seitenlink">
 				<c:if test ="${vorherigeSeite != 0}">
 					<a id="back" href="/bibproject/myreservationservlet?page=${vorherigeSeite}">◄ vorherige Seite</a>

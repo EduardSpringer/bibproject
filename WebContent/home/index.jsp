@@ -1,6 +1,7 @@
 <!-- Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page errorPage="errorPage.jsp" %> <%--Bei Fehler, Weiterleitung an die Fehlerseite --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> <!-- Document Type Definition (legt die verwendbaren Elemente und die Syntax fest) -->
 <html> <!-- umfasst das gesamte HTML-Dokument -->
@@ -12,12 +13,13 @@
 		<link rel="stylesheet" href="css/header.css">
 		<link rel="stylesheet" href="css/homepage.css">
 		<link rel="stylesheet" href="css/footer.css">
-
+		
 		<script type="text/javascript" src="js/cookie.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
 	</head>
 	<body>
 		<header>
+			
 			<div class="center">
 				<div>
 					<c:choose>
@@ -84,6 +86,7 @@
 					</ul>			
 				</nav>			
 			</div>
+			<nonscript>Sie haben JavaScript deaktiviert!</nonscript>
 			<div id="cookiebox" class="hidden">
 				<p id="cookietext">Aktivieren Sie ihre Cookies 
 					<button type="button" id="cookiebutton">Ok!</button>

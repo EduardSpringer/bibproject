@@ -29,6 +29,10 @@ h1{
 	padding: 0.3em;
 }
 
+#termindiv{
+	height: 350px;
+}
+
 .keineTermine{
 	text-align: center;
 	padding-top: 40px;
