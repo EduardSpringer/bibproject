@@ -4,7 +4,7 @@ CREATE TABLE Benutzer(
     Passwort VARCHAR(10),
     EMail VARCHAR(15),
     Username VARCHAR(7),
-    Profilbild BLOB,
+    Profilbild LONGBLOB,
     Bildexist BOOLEAN,
     Adminrechte BOOLEAN,
     PRIMARY KEY(Username)
