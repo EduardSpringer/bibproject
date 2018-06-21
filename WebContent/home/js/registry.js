@@ -1,5 +1,5 @@
 /**
- * 
+ * Sara V. Miller
  */
 
 "use strict";
@@ -10,8 +10,10 @@ function init(){
 	
 	var form = document.getElementById("absenden");
 	form.addEventListener("submit", formularAbsenden);
-	//document.getElementById("absenden").addEventListener("submit",formularAbsenden);
-	alert("init" + form);
+	
+	var form2 = document.getElementById("bearbeiten");
+	form2.addEventListener("submit", formularAbsenden);
+
 }
 
 function vergleichePasswort(){
@@ -23,7 +25,7 @@ function vergleichePasswort(){
 	if(passwort != passwortbestaetigen){
 	
 		alert("Passworteingaben stimmen nicht überein!\nBitte Eingaben nochmal überprüfen! "); 
-		evt.preventDefault();
+		
 	return false; 
 
 	}
@@ -39,7 +41,7 @@ function bildcheck(){
 	var bild = profilbild.substring(profilbild.lastIndexOf("."), profilbild.length)
 	
 	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || !profilbild) { 
-		alert("true bildcheck");
+		
 		return true; 
 	
 	}
@@ -47,28 +49,25 @@ function bildcheck(){
 	else{ 
 	
 		alert("Dateityp wird nicht unterstützt!\nUnterstützt werden folgende Dateiformate: png, jpg und jpeg "); 
-		evt.preventDefault();
+		
 		return false; 
 
 	}
 
 } 
 
-function formularAbsenden(evt){
-	alert("fomular absenden");
+function formularAbsenden(){	
 
-	var passwort = vergleichePasswort(); 
-	alert("Var passwort "+ passwort );
+	var passwort = vergleichePasswort(); 	
 	
 	var bild = bildcheck(); 
-	alert("Var bild" + bild);
+	
 	if(passwort == true && bild == true){
-	alert("formular absenden true");
+	
 		return true; 
 	
 	}  
-	alert("formular absenden false");
-	evt.preventDefault(); 
+	//evt.preventDefault();
 	return false; 
 
 }
