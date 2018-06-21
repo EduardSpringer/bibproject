@@ -86,7 +86,7 @@
 					</ul>			
 				</nav>			
 			</div>
-			<nonscript>Sie haben JavaScript deaktiviert!</nonscript>
+			<noscript>Sie haben JavaScript deaktiviert!</noscript>
 			<div id="cookiebox" class="hidden">
 				<p id="cookietext">Aktivieren Sie ihre Cookies 
 					<button type="button" id="cookiebutton">Ok!</button>
