@@ -336,7 +336,6 @@ function checkForm(evt){
 }
 
 function checkPlaetze(evt){
-	
 	var datum = document.getElementById("datum").value;
 	var zeitraum = document.getElementById("zeitraum").value;
 	var platznr = document.getElementById("platznr").value;
@@ -415,7 +414,7 @@ function bookingWiederholtermine(liste, xmlhttp){
 			document.location.href="/bibproject/home/jsp/reserve.jsp";
 		}
 	};
-	xmlhttp.open("POST", "/bibproject/reservationservlet", true);
+	xmlhttp.open("POST", "/bibproject/reservationwiederholterminservlet", true);
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xmlhttp.send("liste=" + JSON.stringify(liste));
 }
