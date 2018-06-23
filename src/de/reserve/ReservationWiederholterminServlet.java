@@ -1,4 +1,13 @@
-//Eduard Springer
+/**	
+ * Autor: Eduard Springer
+ * 
+ * Das ReservationWiederholterminServlet entnimmt die übergebene Liste mit besetzten/ freien Plätzen von listener.js,
+ * die aus der CheckPlaceServlet stammt.
+ * Dabei werden aus der Liste nur die freien Plätze, die das Attribut "datum" besitzen und nicht "datumBesetzt", entnommen.
+ * Die Terminbezeichnung wird auf das Format "UTF-8" formatiert.
+ * Verbucht den Wiederholtermin (Datum, Zeitraum, Platz-Nr., Terminbezeichnung) für den jeweiligen User.
+ * Setzt den Status auf OK (200).
+ */
 
 package de.reserve;
 
@@ -44,7 +53,7 @@ public class ReservationWiederholterminServlet extends HttpServlet {
 
 				JSONObject jsonObject = json.getJSONObject(i);
 						
-				if(jsonObject.has("datum")) {//Überprüfen, ob es die Plätze für Buchung sind (freiePlätze=datum; besetztePlätze=datumBesetzt)
+				if(jsonObject.has("datum")) {//Überprüfen, ob es die Plätze für Buchung sind (datum = freie Plätze; datumBesetzt = besetzte Plätze)
 					String strDatum = jsonObject.getString("datum");
 					String strZeitraum = jsonObject.getString("zeitraum");
 					String strPlatznr = jsonObject.getString("platznr");
@@ -59,7 +68,6 @@ public class ReservationWiederholterminServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 		}
-		
 		response.setStatus(HttpServletResponse.SC_OK);
 	}
 	

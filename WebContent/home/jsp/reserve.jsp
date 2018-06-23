@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>Platzreservierung</title>
 		<base href="${pageContext.request.requestURI}" />
 		<link type="text/css" rel="stylesheet" href="../css/reserve.css" />
@@ -25,16 +25,16 @@
 		</c:if>
 		<div id="flexarea">
 		<main>	
-			<!-- Aktuelles Datum mittels JSP:fmt ermitteln, um min-Wert für Kalendar zu gewinnen-->
+			<!-- Aktuelles Datum mittels JSP:fmt in best. Datumsformat formatieren!-->
 			<jsp:useBean id="aktuellesDatum" class="java.util.Date"/>    
 			<fmt:formatDate value="${aktuellesDatum}" pattern="yyyy-MM-dd" var="aktuellesDatum"/>
 			
-			<!-- https://stackoverflow.com/questions/13661212/get-date-of-tomorrow-using-jstl/25058675 -->
+			<!-- jsp:setProperty by Author: rickz 
+			Quelle: https://stackoverflow.com/questions/13661212/get-date-of-tomorrow-using-jstl/25058675 -->
 			<jsp:useBean id="bisDatum" class="java.util.Date"/> 
 			<jsp:setProperty name="bisDatum" property="time" value="${bisDatum.time + 604800000}"/>
 			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
 			
-			<!-- Formular -->
 			<form id="formular" action="/bibproject/reservationservlet" accept-charset="UTF-8" method="post"></form>
 	
 			<div id="auswahl">
@@ -43,10 +43,6 @@
 				<label for="zeitraum">Zeitraum:</label>
 				<select name="zeitraum" id="zeitraum" form="formular"></select>
 			</div>
-			<!-- Überprüfung, ob JavaScript aktiv ist -->
-			<noscript><br>Um den vollen Funktionsumfang dieser Webseite zu
-				nutzen, benötigen Sie aktiviertes JavaScript!<a href="https://www.enable-javascript.com/de/" target="_blank">
-				<br>Klicken Sie hier</a>, um mehr zu erfahren!</noscript>
 			<div id="platzverteilung"></div>
 		</main>
 		<aside>
@@ -71,7 +67,6 @@
 			</div>
 			<p id="dauer">Dauer: 1 Woche</p>
 			<div id="actionbuttons">
-				<!-- <button type="reset" name="reset" form="formular">Zurücksetzen</button> -->
 				<button type="submit" id="submitbutton" name="reservieren" value="submit" form="formular">Reservieren</button>
 			</div>
 		</aside>

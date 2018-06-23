@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-	// Initialisierung der Zeiträume
+	// Initialisierung der Zeiträume (Dropdown-Menü)
     var dropdown = document.getElementById("zeitraum");
     var datum = new Date();
     var uhrzeit = datum.getHours();

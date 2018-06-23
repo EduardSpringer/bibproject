@@ -1,10 +1,15 @@
-//Eduard Springer
+/**	
+ * Autor: Eduard Springer
+ * 
+ * Das CheckTerminbezeichnungServlet entnimmt die Terminbezeichnung aus der reserve.jsp.
+ * Überprüft, ob diese Terminbezeichnung für den jeweiligen User bereits in der DB existiert.
+ * Falls diese Terminbezeichnung nicht existiert, wird eine leere Liste an checkTerminbezeichnung.jsp (JSON-Objekt) übergeben.
+ * Ansonsten wird ein Liste mit den IDs, die dieselbe Terminbezeichnung haben, an checkTerminbezeichnung.jsp (JSON-Objekt) übergeben.
+ */
 
 package de.reserve;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +29,6 @@ import javax.sql.DataSource;
 import javabeans.LoginBean;
 import javabeans.ReservationBean;
 
-
 @WebServlet("/checkterminbezeichnungservlet")
 public class CheckTerminbezeichnungServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,8 +36,7 @@ public class CheckTerminbezeichnungServlet extends HttpServlet {
 	@Resource(lookup = "jdbc/MyTHIPool")
 	private DataSource ds;
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		String terminbezeichnung = request.getParameter("terminbezeichnung");
 	
 		HttpSession session = request.getSession();
@@ -55,8 +58,7 @@ public class CheckTerminbezeichnungServlet extends HttpServlet {
 			 PreparedStatement pstmt = con.prepareStatement("SELECT ReservierungID FROM thidb.platzreservierung "
 			 		+ "WHERE terminbezeichnung = ? AND username = ?")) {
 
-			//als UTF-8 in DB speichern
-			pstmt.executeQuery("SET NAMES 'UTF8'");
+			pstmt.executeQuery("SET NAMES 'UTF8'");// Im Format UTF-8 in DB speichern
 			pstmt.executeQuery("SET CHARACTER SET 'UTF8'");
 			
 			pstmt.setString(1, terminbezeichnung);

@@ -1,4 +1,10 @@
-//Eduard Springer
+/**	
+ * Autor: Eduard Springer
+ * 
+ * Das ReservationServlet entnimmt die Formulardaten aus der reserve.jsp.
+ * Verbucht den Einzeltermin (Datum, Zeitraum, Platz-Nr.) für den jeweiligen User in die DB.
+ * Danach leitet der Dispatcher zurück auf die reserve.jsp.
+ */
 
 package de.reserve;
 

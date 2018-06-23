@@ -1,4 +1,11 @@
-//Eduard Springer
+/**	
+ * Autor: Eduard Springer
+ * 
+ * Das ContactFormServlet entnimmt die Formulardaten aus contactForm.jsp.
+ * Setzt diese in ContactBeans, um später auf diese in der contactAcception.jsp zuzugreifen.
+ * Diese Formulardaten werden in der DB abgespeichert.
+ * Danach wird auf die contactAcception weitergeleitet.
+ */
 
 package de.contacts;
 
@@ -50,10 +57,6 @@ public class ContactFormServlet extends HttpServlet {
 		/* Hier wird statt dem RequestDispatcher die Methode sendRedirect() verwendet,
 		 * da beim "Refreshen" der Seite durch contactAcception.jsp eine erneute Anfrage der POST-Methode
 		 * nicht möglich ist.*/
-		
-//		request.setAttribute("cb", cb);
-//		RequestDispatcher disp = request.getRequestDispatcher("home/jsp/contactAcception.jsp"); 
-//		disp.forward(request, response);
 	}
 
 	private void persist(ContactBean cb) throws ServletException {
