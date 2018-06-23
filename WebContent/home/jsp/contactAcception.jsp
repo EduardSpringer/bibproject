@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta http-equiv="refresh" content="8; URL=../index.jsp"><!-- Weiterleitung in 8 Sekunden -->
+		<meta http-equiv="refresh" content="8; URL=../index.jsp"><!-- Weiterleitung auf index.jsp in 8 Sekunden -->
 		<title>Nachricht erfolgreich versandt!</title>
 		<base href="${pageContext.request.requestURI}"/>
 		<link rel="stylesheet" href="../css/header.css">
@@ -19,19 +19,13 @@
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
 		<div id="message">
-			<h2>${cb.name},<%--JSP-EL: direkter Zugriff auf Beans--%>
-				vielen Dank für Ihre Nachricht!<br /> Sie werden nun auf die
-				Startseite weitergeleitet.
+			<h2>${cb.name}, vielen Dank für Ihre Nachricht!
+				<br/> Sie werden nun auf die Startseite weitergeleitet.
 			</h2>
-			<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt,<br>
-				<a href="../index.jsp">klicken Sie hier</a>!
+			<p>Falls Ihr Browser keine automatische Weiterleitung unterstützt,
+			 	<br><a href="../index.jsp">klicken Sie hier</a>!
 			</p>
 		</div>
 		<%@ include file="../jspf/footer.jspf"%>
-		<%-- <c:choose>
-				<c:when test="${not empty cb.name}">Falls name-Bean nicht leer ist, dann ...
-				</c:when>
-				<c:otherwise><jsp:forward page="contact.jsp" /></c:otherwise>...ansonsten weiterleiten
-			</c:choose> --%>
 	</body>
 </html>

@@ -111,7 +111,7 @@
 		<footer class="foot">
 		<p>
 			<a href="jsp/openingHours.jsp"> Öffnungszeiten</a> |
-			<a href="jsp/contact.jsp">Kontakt</a>	|
+			<a href="jsp/contactForm.jsp">Kontakt</a>	|
 			<a href="jsp/legalNotice.jsp">Impressum</a>
 		</p>
 		</footer>
