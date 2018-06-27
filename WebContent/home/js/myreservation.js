@@ -31,6 +31,7 @@ function init(){
 	
 }
 
+//Standardaktionen des Browsers unterbinden:
 function confirmDeleteLink(evt){
 	var deletebox = confirm("Wollen Sie diesen Einzeltermin wirklich löschen?");
 	
