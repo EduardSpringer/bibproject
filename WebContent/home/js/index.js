@@ -4,14 +4,7 @@
 
 "use strict";
 
-document.addEventListener("ContentLoaded", initLastPage);
-
 document.addEventListener("DOMContentLoaded", init);
-
-function initLastPage(){
-	
-	
-}
 
 function init() {
 	var heute = new Date();
