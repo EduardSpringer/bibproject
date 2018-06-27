@@ -15,7 +15,7 @@
 		<link type="text/css" rel="stylesheet" href="../css/header.css">
 		<link type="text/css" rel="stylesheet" href="../css/footer.css">
 		<script type="text/javascript" src="../js/initPeriods.js"></script>
-		<script type="text/javascript" src="../js/listener.js"></script>
+		<script type="text/javascript" src="../js/reserveListener.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
