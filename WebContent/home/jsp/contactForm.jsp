@@ -13,12 +13,13 @@
 		<link rel="stylesheet" type="text/css" href="../css/contact.css"/>
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<script type="text/javascript" src="../js/contactFormListener.js"></script>
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
 		<div id="flexarea">
 		<main>
-		<form>
+		<form id="contactForm" action="/bibproject/contactformservlet" method="post">
 			<fieldset>
 				<legend>Kontaktformular</legend>
 				<div id="title">
@@ -61,9 +62,8 @@
 				</div>
 			</fieldset>
 			<div class="buttons">
-				<button type="submit" name="sendbutton"
-					formaction="/bibproject/contactformservlet" formmethod="post">Abschicken</button>
-				<button type="reset" name="resetbutton">Zurücksetzen</button>
+				<button type="submit" name="sendbutton">Abschicken</button>
+				<button type="reset" id="contactFormReset" name="resetbutton">Zurücksetzen</button>
 			</div>
 			<p>✘ = Eingabe erforderlich</p>
 		</form>
