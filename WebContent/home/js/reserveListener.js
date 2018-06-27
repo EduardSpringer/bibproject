@@ -97,7 +97,7 @@ function initZeitraeume(){
     	var dropdown = document.getElementById("zeitraum");
     	document.getElementById("zeitraum").options.length = 0;
     	
-    	zeitraum = {
+    	var zeitraum = {
     		    "attribute": [
     		        { "text":"22:00 - 24:00", "value":"24"},
     		        { "text":"20:00 - 22:00", "value":"22"},
