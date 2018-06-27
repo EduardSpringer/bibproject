@@ -50,7 +50,6 @@ public class ReservationWiederholterminServlet extends HttpServlet {
 			json = new JSONArray(request.getParameter("liste"));
 
 			for(int i = 0; i < json.length(); i++) {
-
 				JSONObject jsonObject = json.getJSONObject(i);
 						
 				if(jsonObject.has("datum")) {//Überprüfen, ob es die Plätze für Buchung sind (datum = freie Plätze; datumBesetzt = besetzte Plätze)
