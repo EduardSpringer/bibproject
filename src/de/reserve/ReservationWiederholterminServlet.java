@@ -58,7 +58,7 @@ public class ReservationWiederholterminServlet extends HttpServlet {
 					String strPlatznr = jsonObject.getString("platznr");
 					String terminbezeichnung = jsonObject.getString("terminbezeichnung");
 						
-					String strTerminbezeichnung = new String(terminbezeichnung.getBytes("UTF-8"), "UTF-8");
+					String strTerminbezeichnung = new String(terminbezeichnung.getBytes("UTF-8"), "UTF-8");//Terminbezeichnung im Format UTF-8 auslesen
 
 					resTermin(strDatum, strZeitraum, strPlatznr, username, strTerminbezeichnung);
 				}
