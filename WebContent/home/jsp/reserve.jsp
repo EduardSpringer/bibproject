@@ -19,14 +19,12 @@
 	</head>
 	<body>
 		<%@ include file="../jspf/header.jspf"%>
+		
 		<!-- Überprüfung, ob Benutzer eingeloggt ist, ansonsten Weiterleitung an die login.jsp -->
 		<c:if test="${empty lb.username}">
-			
 			<jsp:forward page="login.jsp">	
 			<jsp:param name="weiterleitung" value="reserve"></jsp:param>
 			</jsp:forward>
-					
-			
 		</c:if>
 		
 		<div id="flexarea">
