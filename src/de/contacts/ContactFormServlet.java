@@ -1,4 +1,11 @@
-//Eduard Springer
+/**	
+ * Autor: Eduard Springer
+ * 
+ * Das ContactFormServlet entnimmt die Formulardaten aus contactForm.jsp.
+ * Setzt diese in ContactBeans, um später auf diese in der contactAcception.jsp zuzugreifen.
+ * Diese Formulardaten werden in der DB abgespeichert.
+ * Danach wird auf die contactAcception weitergeleitet.
+ */
 
 package de.contacts;
 
@@ -18,7 +25,7 @@ import javax.servlet.http.HttpSession;
 
 import javabeans.ContactBean;
 
-@WebServlet("/contactformservlet")//Datenquelle durch Web-Container injizieren
+@WebServlet("/contactformservlet")
 public class ContactFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,40 +34,37 @@ public class ContactFormServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 
-		String betreff = request.getParameter("betreff");//Zugriff auf die Felder(name-tag) in .jsp-Datei
+		String betreff = request.getParameter("betreff");
 		String nachricht = request.getParameter("nachricht");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 
-		ContactBean cb = new ContactBean();//JavaBeans in einer Session hinterlegen
+		ContactBean cb = new ContactBean();
 		cb.setBetreff(betreff);
 		cb.setNachricht(nachricht);
 		cb.setName(name);
 		cb.setEmail(email);
-		cb.setStatus(false);// 0 als Status in der DB für 'ungelesen' im Admin-Panel
+		cb.setStatus(false);// false = ungelesene Nachricht (für E-Mail-Verwaltung)
 
-		HttpSession session = request.getSession();//Nutzung einer Sitzung
-		session.setAttribute("cb", cb);// JavaBean für die aktuelle Sitzung festlegen 
+		HttpSession session = request.getSession();
+		session.setAttribute("cb", cb);
 
-		persist(cb); // Übertragung der JavaBean an die DB
+		persist(cb);
 		
-		response.sendRedirect("home/jsp/contactAcception.jsp"); //Weiterleitung an eine JSP als Antwort
-		
-//		Wegen "refresh" der Seite ist die Verwendung des Dispatchers nicht möglich!
-//		request.setAttribute("cb", cb);
-//		RequestDispatcher disp = request.getRequestDispatcher("home/jsp/contactAcception.jsp"); 
-//		disp.forward(request, response);
+		response.sendRedirect("home/jsp/contactAcception.jsp");
+		/* Hier wird statt dem RequestDispatcher die Methode sendRedirect() verwendet,
+		 * da beim "Refreshen" der Seite durch contactAcception.jsp eine erneute Anfrage der POST-Methode
+		 * nicht möglich ist.*/
 	}
 
 	private void persist(ContactBean cb) throws ServletException {
-		//Verbindung zur DB herstellen und SQL-Anweisungen (INSERT) absetzen
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO thidb.kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) { /*Platzhalter fuer Werte in DBS*/
+						"INSERT INTO thidb.kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) {
 
-			pstmt.setString(1, cb.getBetreff()); //Zugriff auf die JavaBeans und Speicherung in die DB
+			pstmt.setString(1, cb.getBetreff());
 			pstmt.setString(2, cb.getNachricht());
 			pstmt.setString(3, cb.getName());
 			pstmt.setString(4, cb.getEmail());

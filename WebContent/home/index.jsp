@@ -100,8 +100,8 @@
 			<section>
 				<h1>AKTUELLE PLATZAUSLASTUNG</h1> 
 				<div id=platzauslastung>
-					<p id="resPlaetze">Reservierte Plätze: </p>
-					<p id="freiePlaetze">Freie Plätze: </p>
+					<meter id="meter" value="0" min="0" max="53"></meter>
+					<label id="meterText" for="meter"></label>
 					<p class="hidden" id="geschlossen">Auslastung nicht verfügbar, weil die Bibliothek geschlossen ist!</p>
 				</div>
 			</section>
@@ -111,7 +111,7 @@
 		<footer class="foot">
 		<p>
 			<a href="jsp/openingHours.jsp"> Öffnungszeiten</a> |
-			<a href="jsp/contact.jsp">Kontakt</a>	|
+			<a href="jsp/contactForm.jsp">Kontakt</a>	|
 			<a href="jsp/legalNotice.jsp">Impressum</a>
 		</p>
 		</footer>

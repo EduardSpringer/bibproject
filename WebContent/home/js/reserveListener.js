@@ -9,7 +9,7 @@ function setAllEventListener() {
 		termin.addEventListener("change", changeTermin);
 		termin = document.getElementById("wiederholtermin");
 		termin.addEventListener("change", changeTermin);
-	// Date: Datum auf Datum des Wiederholtermins referenzieren & Zeiträume initialiseren
+	// Date: Datum auf das Datum des Wiederholtermins referenzieren & Zeiträume initialisieren
 		var datum = document.getElementById("datum");
 		datum.addEventListener("change", changeDatum);
 	// Date: Datum (vom) auf Datum (bis) referenzieren
@@ -24,17 +24,23 @@ function setAllEventListener() {
 	// Button(Submit): Reservieren
 		var form = document.getElementById("formular");
 		form.addEventListener("submit", checkForm);
-	// Input: Terminbezeichnung
+	// Input: Terminbezeichnung überprüfen
 		var terminbezeichnung = document.getElementById("terminbezeichnung");
 		terminbezeichnung.addEventListener("blur", checkTerminbezeichnung);
 }
 
+/* Beim Klick auf die freien Plätze (grüne Buttons), 
+ * wird der Wert des Sitzplatzes auf einen Platzhalter referenziert. 
+ * */
 function changeText(j) {
 	return function() {
 		document.getElementById("platznr").value = j;
 	};
 }
 
+/* Bei der Auswahl zwischen Wiederholtermin und Einzeltermin werden
+ * dementsprechend manche Felder ein-/ ausgeblendet.
+ * */
 function changeTermin() {
 	if(document.getElementById("wiederholtermin").checked){
 		document.getElementById("terminbezeichnung").disabled = false;
@@ -56,6 +62,9 @@ function changeTermin() {
 	}
 }
 
+/* Wenn der Wert für das Datum geändert wird, müssen dementsprechend
+ * einige Felder & deren Eigenschaften bzw. Platzhalter zurückgesetzt werden.
+ * */
 function changeDatum() {
 	document.getElementById("platznr").value = ""; 
 	document.getElementById("platzverteilung").innerHTML ="";
@@ -64,19 +73,18 @@ function changeDatum() {
 	
 	document.getElementById("bis").value = document.getElementById("datum").value;
 	document.getElementById("bis").min = document.getElementById("datum").value;
-	//Intervall von 7 Tagen
-	document.getElementById("bis").step = 7;
-	// Value um 7 Tagen erhöht
-	document.getElementById("bis").stepUp(1);
-	// Value auf Min referenziert
-	document.getElementById("bis").min = document.getElementById("bis").value;
-	// default-Value für Dauer
-	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
-	// Initialisierung der Zeiträume
+	document.getElementById("bis").step = 7;// Intervall von 7 Tagen
+	document.getElementById("bis").stepUp(1);// Value um 7 Tagen erhöht
+	document.getElementById("bis").min = document.getElementById("bis").value;// Value auf Min referenziert
+	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";// default-Value für Dauer
+
 	initZeitraeume();
 	setWoche();
 }
 
+/* Die Zeiträume werden je nach Auswahl des Datum dementsprechend gerendert.
+ * Vergangene Zeiträume für den heutigen Tag werden somit nicht angezeigt.
+ * */
 function initZeitraeume(){
 	var dropdown = document.getElementById("zeitraum");
     var aktuellesDatum = new Date();
@@ -89,7 +97,7 @@ function initZeitraeume(){
     	var dropdown = document.getElementById("zeitraum");
     	document.getElementById("zeitraum").options.length = 0;
     	
-    	zeitraum = {
+    	var zeitraum = {
     		    "attribute": [
     		        { "text":"22:00 - 24:00", "value":"24"},
     		        { "text":"20:00 - 22:00", "value":"22"},
@@ -185,6 +193,9 @@ function initZeitraeume(){
     }
 }
 
+/* Da es zwei Input-Felder vom Typ Datum gibt, müssen diese dementsprechend synchronisiert werden.
+ * Auch werden andere dabei andere Felder zurückgesetzt.
+ * */
 function setVomMin(){
 	document.getElementById("datum").value = document.getElementById("vom").value;
 	document.getElementById("platznr").value = ""; 
@@ -192,11 +203,8 @@ function setVomMin(){
 	
 	document.getElementById("bis").value = document.getElementById("vom").value;
 	document.getElementById("bis").min = document.getElementById("vom").value;
-	//Intervall von 7 Tagen
 	document.getElementById("bis").step = 7;
-	// Value um 7 Tagen erhöht
 	document.getElementById("bis").stepUp(1);
-	// Value auf Min referenziert
 	document.getElementById("bis").min = document.getElementById("bis").value;
 	
 	document.getElementById("dauer").innerHTML = "Dauer: 1 Woche";
@@ -204,7 +212,11 @@ function setVomMin(){
 	setWoche();
 }
 
-//Author: Josiah Hester https://stackoverflow.com/questions/20587660/calculate-date-difference-in-weeks-javascript
+/* Hier wird enstprechend der Auswahl vom Datum (von und bis) die Dauer in Wochen generiert.
+ * Die Berechnung für weeks: 
+ * Author: Josiah Hester 
+ * Quelle: https://stackoverflow.com/questions/20587660/calculate-date-difference-in-weeks-javascript
+ * */
 function setWoche(){
 	var vom = new Date(document.getElementById("vom").value);
 	var bis = new Date(document.getElementById("bis").value);
@@ -217,6 +229,9 @@ function setWoche(){
 	}
 }
 
+/* Wird ein Zeitraum gewählt, werden dementsprechend für diesen Zeitraum
+ * die Plätze (grüne/ rote Buttons) generiert.
+ */
 function changeZeitraum(){
 	document.getElementById("platznr").value = ""; 
 	
@@ -309,11 +324,11 @@ function changeZeitraum(){
 		}
 	};
 	xmlhttp.open("GET", searchURL, true);
-//	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); //nur bei POST-Methode
 	xmlhttp.send();
 }
 
-
+/* Hier wird das Formular überprüft, bevor es zur Buchung kommt.
+ * */
 function checkForm(evt){
 	var platz = document.getElementById("platznr").value;
 	var bisdatum = document.getElementById("bis").value;
@@ -335,8 +350,12 @@ function checkForm(evt){
 	}
 }
 
+/* Diese Funktion überprüft, ob für die Wiederholtermine die Plätze frei sind.
+ * Wenn ja, findet die Buchung statt.
+ * Wenn die Plätze belegt sind, wird der User informiert und dieser hat dann die Auswahl,
+ * ob für die restlichen freien Plätze eine Buchung stattfindet oder nicht.
+ * */
 function checkPlaetze(evt){
-	
 	var datum = document.getElementById("datum").value;
 	var zeitraum = document.getElementById("zeitraum").value;
 	var platznr = document.getElementById("platznr").value;
@@ -409,17 +428,27 @@ function checkPlaetze(evt){
 	xmlhttp.send();
 }
 
+/* Falls der User sich entscheidet, trotz belegter Termine, die freien
+ * Termine zu verbuchen oder auch wenn alle Termine frei sind, werden diese
+ * an das entsprechende Servlet weitergeleitet. Wenn die Buchung erfolgt ist,
+ * findet eine Weiterleitung auf die Reservierungsseite.
+ * */
 function bookingWiederholtermine(liste, xmlhttp){
 	xmlhttp.onreadystatechange = function(){
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			document.location.href="/bibproject/home/jsp/reserve.jsp";
 		}
 	};
-	xmlhttp.open("POST", "/bibproject/reservationservlet", true);
+	xmlhttp.open("POST", "/bibproject/reservationwiederholterminservlet", true);
 	xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 	xmlhttp.send("liste=" + JSON.stringify(liste));
 }
 
+/* Der User wird informiert, falls die eingebene Terminbezeichnung bereits von ihm
+ * verwendet wird, ob er die gewählten Termine unter dieser Bezeichnung
+ * reservieren möchte oder nicht. Falls der User sich dagegen entscheidet, wird
+ * die Terminbezeichnung im Feld gelöscht und der User wird gebeten erneut eine einzugeben.
+ * */
 function checkTerminbezeichnung(){
 	var terminbezeichnung = document.getElementById("terminbezeichnung").value;
 	

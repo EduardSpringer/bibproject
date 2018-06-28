@@ -5,7 +5,7 @@
 <footer class="foot">
 	<p>
 		<a href="openingHours.jsp"> Öffnungszeiten</a> |
-		<a href="contact.jsp">Kontakt</a>	|
+		<a href="contactForm.jsp">Kontakt</a>	|
 		<a href="legalNotice.jsp">Impressum</a>
 	</p>
 </footer>
