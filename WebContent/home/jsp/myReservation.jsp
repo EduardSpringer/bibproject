@@ -33,24 +33,28 @@
 				
 				<c:if test="${not empty einzeltermine}">
 					<table>
-						<tr>
-							<th></th>
-							<th>Datum</th>
-							<th>Uhrzeit</th>
-							<th>Platznummer</th>
-							<th>Löschen</th>
-						</tr>
-						<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
-									begin="${erstesElement}" end="${letztesElement}">
+						<thead>
 							<tr>
-								<td>${status.index+1}</td>
-								<td>${termin.datumString}</td>
-								<td>${termin.zeitraum}</td>
-								<td>${termin.platzID}</td>
-								<td><a  href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
-										class ="deletelink">✘</a></td>
+								<th></th>
+								<th>Datum</th>
+								<th>Uhrzeit</th>
+								<th>Platznummer</th>
+								<th>Löschen</th>
 							</tr>
-						</c:forEach>
+						</thead>
+						<tbody>
+							<c:forEach var="termin" items="${einzeltermine}" varStatus="status" 
+									begin="${erstesElement}" end="${letztesElement}">							
+								<tr>
+									<td>${status.index+1}</td>
+									<td>${termin.datumString}</td>
+									<td>${termin.zeitraum}</td>
+									<td>${termin.platzID}</td>
+									<td><a  href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}"
+											class ="deletelink">✘</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				
 				</c:if>
@@ -87,31 +91,31 @@
 						class ="deletewdhtermin" id="delete${terminBez}">✘</a>
 				</p>
 				
-			<table id= "${terminBez}_table">
-			<tr>			
-				<th>Datum</th>
-				<th>Uhrzeit</th>
-				<th>Platznummer</th>
-				<th>Löschen</th>
-			</tr>
-			
-			<c:forEach var="termin" items="${wdhtermine}">
-				<c:if test="${terminBez eq termin.terminbezeichnung}">
-							
-				<tr>
-					<td>${termin.datumString}</td>
-					<td>${termin.zeitraum}</td>
-					<td>${termin.platzID}</td>
-					<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}&terminBez="
-							class="deletelink">✘</a>
-					</td>
-				</tr>
-				</c:if>
+				<table id= "${terminBez}_table">
+					<thead>
+						<tr>			
+							<th>Datum</th>
+							<th>Uhrzeit</th>
+							<th>Platznummer</th>
+							<th>Löschen</th>
+						</tr>
+					</thead>
+					<tbody>	
+						<c:forEach var="termin" items="${wdhtermine}">						
+							<c:if test="${terminBez eq termin.terminbezeichnung}">					
+								<tr>
+									<td>${termin.datumString}</td>
+									<td>${termin.zeitraum}</td>
+									<td>${termin.platzID}</td>
+									<td><a href="/bibproject/deletereservationservlet?reservierungID=${termin.reservierungID}&terminBez="
+											class="deletelink">✘</a>
+									</td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</tbody>			
+				</table>
 			</c:forEach>
-			
-
-		</table>
-		</c:forEach>
 		
 		</section>
 	</div>
