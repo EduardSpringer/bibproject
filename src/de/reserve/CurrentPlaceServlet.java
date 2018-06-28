@@ -44,10 +44,10 @@ public class CurrentPlaceServlet extends HttpServlet {
 		java.sql.Date currentdate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		
 		int anzPlaetze = sucheAnzAktuellerPlaetze(currentdate);
-		int freiePlaetze = 53 - anzPlaetze;
+		//int freiePlaetze = 53 - anzPlaetze;
 
 		request.setAttribute("anzBesetztePlaetze", anzPlaetze);
-		request.setAttribute("anzFreiePlaetze", freiePlaetze);
+		//request.setAttribute("anzFreiePlaetze", freiePlaetze);
 			
 		// Weiterleiten an JSP
 		RequestDispatcher dispatcher = request.getRequestDispatcher("home/jsp/JSON/currentPlace.jsp");
