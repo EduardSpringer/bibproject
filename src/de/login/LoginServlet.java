@@ -37,7 +37,6 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String checkbox = request.getParameter("check");
 		String weiterleitung = request.getParameter("weiterleitung");
-		System.out.println(weiterleitung);
 
 		RequestDispatcher disp;
 
@@ -83,12 +82,17 @@ public class LoginServlet extends HttpServlet {
 
 				}
 				
-				request.setAttribute("login", true);
+				//request.setAttribute("login", true);
 				
-				disp = request.getRequestDispatcher("/home/index.jsp");
+				if(weiterleitung.equals("reserve")) {
+					disp = request.getRequestDispatcher("/home/jsp/reserve.jsp");
+				}
+				else {
+					disp = request.getRequestDispatcher("/home/index.jsp");
+				}
+				
 				disp.forward(request, response);
-//				String referer = request.getHeader("Referer");
-//				response.sendRedirect(referer);
+
 			}
 		}
 		
