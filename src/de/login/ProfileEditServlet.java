@@ -53,6 +53,9 @@ public class ProfileEditServlet extends HttpServlet {
 		javabean.setFilename(filepart.getSubmittedFileName()); 
 		LoginBean loginbean = new LoginBean(); 
 		loginbean.setUsername(username);
+		LoginBean lb = (LoginBean)session.getAttribute("lb"); 
+		boolean bildexistAlt = lb.getBildexist(); 
+		boolean adminrechte = lb.getAdminrechte(); 
 		if(username.isEmpty()) {
 			loginbean.setFehlermeldung("Bitte einloggen!");
 			request.setAttribute("lb", loginbean);
@@ -99,8 +102,10 @@ public class ProfileEditServlet extends HttpServlet {
 					loginbean.setBildexist(true);
 				}
 				else {
+					loginbean.setBildexist(bildexistAlt);
 					ps.setInt(5, 2);
 				}
+				loginbean.setAdminrechte(adminrechte);
 				session.setAttribute("lb", loginbean);
 				ps.setString(6, loginbean.getUsername()); 
 				javabean.setUsername(loginbean.getUsername());

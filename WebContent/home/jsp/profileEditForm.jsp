@@ -20,7 +20,7 @@
 			<c:if test="${empty lb.username}">
 				<jsp:forward page="login.jsp" />             
 			</c:if>   
-			<h1>Bearbeite jetzt dein Profil!</h1>                 
+			<h1>Bearbeite jetzt dein Profil!</h1>                  
 			<form action="/bibproject/profileeditservlet?username=${lb.username}" id="profileedit" method="post" enctype="multipart/form-data">
 				<p>
 					<label for="bearbeitevorname">Vorname</label>

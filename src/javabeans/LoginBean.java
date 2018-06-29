@@ -45,7 +45,7 @@ public class LoginBean implements Serializable{
 		this.fehlermeldung = fehlermeldung;
 	}
 
-	public boolean isAdminrechte() {
+	public boolean getAdminrechte() {
 		return adminrechte;
 	}
 
@@ -53,7 +53,7 @@ public class LoginBean implements Serializable{
 		this.adminrechte = adminrechte;
 	}
 
-	public boolean isBildexist() {
+	public boolean getBildexist() {
 		return bildexist;
 	}
 
