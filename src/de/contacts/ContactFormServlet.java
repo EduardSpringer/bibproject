@@ -58,7 +58,7 @@ public class ContactFormServlet extends HttpServlet {
 		//Verbindung zur DB herstellen und SQL-Anweisungen (INSERT) absetzen
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(
-						"INSERT INTO kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) { /*Platzhalter fuer Werte in DBS*/
+						"INSERT INTO thidb.kontakt (betreff,nachricht,name,email,status) VALUES (?,?,?,?,?)")) { /*Platzhalter fuer Werte in DBS*/
 
 			pstmt.setString(1, cb.getBetreff()); //Zugriff auf die JavaBeans und Speicherung in die DB
 			pstmt.setString(2, cb.getNachricht());
