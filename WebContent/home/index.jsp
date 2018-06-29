@@ -4,7 +4,7 @@
 <%@ page errorPage="errorPage.jsp" %> <%--Bei Fehler, Weiterleitung an die Fehlerseite --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> <!-- Document Type Definition (legt die verwendbaren Elemente und die Syntax fest) -->
-<html> <!-- umfasst das gesamte HTML-Dokument -->
+<html> <!-- umfasst das gesamte HTML-Dokument --> 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Startseite</title>
@@ -78,8 +78,9 @@
 					<c:if test="${lb.adminrechte == true}">
 						<li id="admin"><a>Admin ▼</a>	
 							<ul>
-								<li><a href="jsp/adminEmail.jsp">Kontaktverwaltung</a></li>
-								<li><a href="jsp/adminReserve.jsp">Platzverwaltung</a></li>
+								<li><a href="/bibproject/adminemailservlet" >Kontaktverwaltung</a></li>
+								<li><a href="/bibproject/adminreserveservlet">Platzverwaltung</a></li>
+								<li><a href="/bibproject/adminuserservlet">User-Verwaltung</a></li>
 							</ul>
 						</li>
 					</c:if>	

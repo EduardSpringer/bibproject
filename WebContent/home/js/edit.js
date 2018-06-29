@@ -5,15 +5,15 @@
 document.addEventListener("DOMContentLoaded",init);
 
 function init(){
-	var form = document.getElementById("registrierung");
+	var form = document.getElementById("profileedit");
 	form.addEventListener("submit", bildCheck);
 	form.addEventListener("submit", vergleichePasswort); 
 }
 
 //Funktion vergleichePasswort: https://stackoverflow.com/questions/16990378/javascript-form-validation-with-password-confirming
 function vergleichePasswort(evt){
-	var passwort = document.getElementById("passwort").value;
-	var passwortbestaetigen = document.getElementById("passwortbestaetigen").value;
+	var passwort = document.getElementById("bearbeitepasswort").value;
+	var passwortbestaetigen = document.getElementById("bearbeitepasswortbestaetigen").value;
 	if(passwort != passwortbestaetigen){
 		alert("Passworteingaben stimmen nicht überein!\nBitte Eingaben nochmal überprüfen! "); 
 		evt.preventDefault();
@@ -21,7 +21,7 @@ function vergleichePasswort(evt){
 }
 
 function bildCheck(evt){
-	var profilbild = document.getElementById("profilbild").value;  
+	var profilbild = document.getElementById("bildaendern").value;  
 	var bild = profilbild.substring(profilbild.lastIndexOf("."), profilbild.length)
 	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || !profilbild) { 
 	}

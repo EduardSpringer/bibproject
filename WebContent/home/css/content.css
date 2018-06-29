@@ -1,3 +1,7 @@
+/**
+ * Sara Viktoria Miller
+ */
+ 
 .zentriert{
 	max-width: 1000px; 
 	position: relative; 
@@ -16,7 +20,7 @@ form {
 
 input{
 	padding: 0.5em; 
-	width: 20em;
+	width: 24em;
 	margin-right: auto; 
 	border: none;  
 	border-radius: 3px;
@@ -34,7 +38,7 @@ input{
 	overflow: hidden; 
 	display: inline-block; 
 	padding: 1em; 
-	width: 34em; 
+	width: 39em; 
     text-align: center; 
     color: #005A9B;  
     font-family: sans-serif; 
@@ -118,7 +122,7 @@ h2{
 
 button{
 	padding: 1em; 
-	width: 36em; 
+	width: 41em; 
 	border: none; 
 	border-radius: 5px; 
 	background: #FFFFFF; 
@@ -134,4 +138,43 @@ input:invalid {
     border: 2px solid #FF3633; 
     color: #FF3633; 
     content: " *"; 
+}
+input:invalid+span::after {
+	color: red;
+	content: " ✘";
+}
+
+textarea:invalid+span::after {
+	color: red;
+	content: " ✘";
+}
+
+input:valid+span::after {
+	color: green;
+	content: " ✔";
+}
+
+textarea:valid+span::after {
+	color: green;
+	content: " ✔";
+}
+
+input[type="checkbox"]{
+			width: auto;
+}
+
+#fehlermeldung{
+	color: red; 
+}
+
+.bild{
+	display: inline-block;  
+	text-align: left; 
+	min-width: 10em; 
+	color: #FFFFFF; 
+	font-family: sans-serif; 
+	font-weight: 300; 
+	font-style: normal; 
+	font-size: 15px; 
+	line-height: 15px; 
 }

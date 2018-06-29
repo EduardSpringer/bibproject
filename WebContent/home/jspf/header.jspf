@@ -1,6 +1,7 @@
 <!-- Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>	
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--Page direktive darf/muss in der .jspf verwendet werden --%>
 	
 	<header>
@@ -22,7 +23,10 @@
 									<img class="profilbild" src="../img/keinBild.jpg" width="150" height="150" alt="Profilbild1">
 								</c:otherwise>
 							</c:choose>
+							
+							
 						</div>
+						
 				
 						<div class="loginfeld">				
 							<ul>
@@ -46,7 +50,7 @@
 			
 			<hr>
 			
-			<nav>			
+			<nav>			 
 				<ul>
 				<li><a href="../index.jsp">Startseite</a></li>
 				<li><a href="reserve.jsp">Reservieren</a></li>
@@ -62,8 +66,9 @@
 				<c:if test="${lb.adminrechte == true}">
 					<li id="admin"><a>Admin ▼</a>							
 						<ul>
-							<li><a href="adminEmail.jsp">Kontaktverwaltung</a></li>
-							<li><a href="adminReserve.jsp">Platzverwaltung</a></li>
+							<li><a href="/bibproject/adminemailservlet" >Kontaktverwaltung</a></li>
+							<li><a href="/bibproject/adminreserveservlet">Platzverwaltung</a></li>
+							<li><a href="/bibproject/adminuserservlet">User-Verwaltung</a></li>
 						</ul>
 					</li>		
 				</c:if>		

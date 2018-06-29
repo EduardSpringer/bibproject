@@ -14,6 +14,8 @@ public class ReservationBean implements Serializable {
 	private String zeitraum;
 	private String terminbezeichnung;
 	private Date zeitstempel;
+	private String nachname; 
+	private String vorname; 
 	
 	public String getDatumString() {
 		return datumString;
@@ -59,5 +61,16 @@ public class ReservationBean implements Serializable {
 	public void setZeitstempel(Date zeitstempel) {
 		this.zeitstempel = zeitstempel;
 	}
-
+	public void setNachname(String nachname) {
+		this.nachname = nachname; 
+	}
+	public String getNachname() {
+		return nachname; 
+	}
+	public void setVorname(String vorname) {
+		this.vorname = vorname; 
+	}
+	public String getVorname() {
+		return vorname; 
+	}
 }

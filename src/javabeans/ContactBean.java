@@ -8,11 +8,12 @@ public class ContactBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String betreff;
-	private String nachricht;
+	private String nachricht; 
 	private String name;
 	private String email;
 	private Boolean status;
-	
+	private int id; 
+		
 	public String getBetreff() {
 		return betreff;
 	}
@@ -42,5 +43,12 @@ public class ContactBean implements Serializable {
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
+	}
+	
+	public int getId() {
+		return id; 
+	}
+	public void setId(int id) {
+		this.id = id; 
 	}
 }

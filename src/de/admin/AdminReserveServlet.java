@@ -17,44 +17,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-import javabeans.ContactBean;
+import javabeans.ReservationBean;
 
-@WebServlet("/adminemailservlet") 
+@WebServlet("/adminreserveservlet") 
 
-public class AdminEmailServlet extends HttpServlet {
+public class AdminReserveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup="jdbc/MyTHIPool")
 	private DataSource ds;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");	
-		List<ContactBean> kontakte = read(); 
-		request.setAttribute("kontakte", kontakte);
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/adminEmail.jsp");
+		List<ReservationBean> reservierungen = read(); 
+		request.setAttribute("reservierungen", reservierungen);
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/adminReserve.jsp");
 		dispatcher.forward(request, response);	
 	}
 
-	protected List<ContactBean> read() throws ServletException{
-		List<ContactBean> kontakte = new ArrayList<ContactBean>(); 
+	protected List<ReservationBean> read() throws ServletException{
+		List<ReservationBean> reservierungen = new ArrayList<ReservationBean>(); 
 		try(Connection conn = ds.getConnection();
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM thidb.Kontakt ORDER BY Status, KontaktID ASC")){
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM thidb.platzreservierung INNER JOIN thidb.Benutzer ON platzreservierung.Username = Benutzer.Username ORDER BY Datum DESC")){
 			try(ResultSet rs = ps.executeQuery()){
 				while(rs.next()) {
-					ContactBean cb = new ContactBean(); 
-					cb.setId(rs.getInt("KontaktID")); 
-					cb.setBetreff(rs.getString("Betreff"));
-					cb.setNachricht(rs.getString("Nachricht"));
-					cb.setName(rs.getString("Name"));
-					cb.setEmail(rs.getString("EMail"));
-					cb.setStatus(rs.getBoolean("Status"));
-					kontakte.add(cb); 
-				}
-				
+					ReservationBean rb = new ReservationBean(); 
+					rb.setReservierungID(rs.getInt("ReservierungID")); 
+					rb.setDatumString(rs.getString("Datum"));
+					rb.setZeitraum(rs.getString("Zeitraum"));
+					rb.setPlatzID(rs.getInt("PlatzID"));
+					rb.setNachname(rs.getString("Nachname")); 
+					rb.setVorname(rs.getString("Vorname")); 
+					rb.setUsername(rs.getString("Username"));
+					reservierungen.add(rb); 
+				}	
 			}
 		}catch(Exception ex) {
 			throw new ServletException(ex.getMessage()); 
 		}
-		return kontakte; 
+		return reservierungen; 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

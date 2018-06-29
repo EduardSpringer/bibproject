@@ -1,7 +1,9 @@
+/**
+ * Sara Viktoria Miller
+ */
 package javabeans;
 
 import java.io.Serializable;
-import java.util.Vector;
 
 public class ProfileBean implements Serializable{
 	
@@ -15,6 +17,7 @@ public class ProfileBean implements Serializable{
 	private String passwortbestaetigen;
 	private String email;
 	private String username; 
+	private boolean adminrechte; 
 
 	private byte[] profilbild; 
 	private String submittedFileName;
@@ -74,10 +77,18 @@ public class ProfileBean implements Serializable{
 		// TODO Auto-generated method stub
 		
 	}
-
+	public String getFilename() {
+		return submittedFileName; 
+	}
 	public void setFilename(String submittedFileName) {
-		// TODO Auto-generated method stub
 		this.submittedFileName = submittedFileName; 
+	}
+	public boolean getAdminrechte() {
+		return adminrechte;
+	}
+
+	public void setAdminrechte(boolean adminrechte) {
+		this.adminrechte = adminrechte;
 	}
 	
 

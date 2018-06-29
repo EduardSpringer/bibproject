@@ -17,47 +17,45 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-import javabeans.ContactBean;
+import javabeans.ProfileBean;
 
-@WebServlet("/adminemailservlet") 
+@WebServlet("/adminuserservlet") 
 
-public class AdminEmailServlet extends HttpServlet {
+public class AdminUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(lookup="jdbc/MyTHIPool")
 	private DataSource ds;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");	
-		List<ContactBean> kontakte = read(); 
-		request.setAttribute("kontakte", kontakte);
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/adminEmail.jsp");
+		List<ProfileBean> users = read(); 
+		request.setAttribute("users", users);
+		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/adminUser.jsp");
 		dispatcher.forward(request, response);	
 	}
-
-	protected List<ContactBean> read() throws ServletException{
-		List<ContactBean> kontakte = new ArrayList<ContactBean>(); 
+ 
+	protected List<ProfileBean> read() throws ServletException{
+		List<ProfileBean> users = new ArrayList<ProfileBean>(); 
 		try(Connection conn = ds.getConnection();
-				PreparedStatement ps = conn.prepareStatement("SELECT * FROM thidb.Kontakt ORDER BY Status, KontaktID ASC")){
-			try(ResultSet rs = ps.executeQuery()){
+				PreparedStatement ps = conn.prepareStatement("SELECT * FROM thidb.Benutzer ORDER BY Adminrechte DESC")){
+			try(ResultSet rs = ps.executeQuery()){ 
 				while(rs.next()) {
-					ContactBean cb = new ContactBean(); 
-					cb.setId(rs.getInt("KontaktID")); 
-					cb.setBetreff(rs.getString("Betreff"));
-					cb.setNachricht(rs.getString("Nachricht"));
-					cb.setName(rs.getString("Name"));
-					cb.setEmail(rs.getString("EMail"));
-					cb.setStatus(rs.getBoolean("Status"));
-					kontakte.add(cb); 
+					ProfileBean pb = new ProfileBean(); 
+					pb.setVorname(rs.getString("Vorname")); 
+					pb.setNachname(rs.getString("Nachname")); 
+					pb.setEmail(rs.getString("EMail"));
+					pb.setUsername(rs.getString("Username"));
+					pb.setAdminrechte(rs.getBoolean("Adminrechte"));
+					users.add(pb); ; 
 				}
-				
 			}
 		}catch(Exception ex) {
 			throw new ServletException(ex.getMessage()); 
 		}
-		return kontakte; 
+		return users; 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-	}       
+	}   
 }
