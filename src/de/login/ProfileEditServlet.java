@@ -96,7 +96,7 @@ public class ProfileEditServlet extends HttpServlet {
 					ps.setBytes(4, javabean.getProfilbild());
 				if(javabean.getProfilbild() != null) {
 					ps.setInt(5, 1); 
-					loginbean.setBildexist(false);
+					loginbean.setBildexist(true);
 				}
 				else {
 					ps.setInt(5, 2);
