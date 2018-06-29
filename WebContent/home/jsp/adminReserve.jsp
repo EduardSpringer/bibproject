@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<script type="text/javascript" src="../js/myreservation.js"></script>
 		<title>Reservierungsverwaltung</title>   
 	</head> 
 	<body>    
@@ -47,7 +48,7 @@
 						<td>${reservierung.nachname}</td>
 						<td>${reservierung.vorname}</td>
 						<td>${reservierung.username}</td>
-						<td><a  href="/bibproject/deletereservation?ReservierungID=${reservierung.reservierungID}">✘</a></td> 
+						<td><a  href="/bibproject/deletereservation?ReservierungID=${reservierung.reservierungID}" class="deletelink">✘</a></td> 
 					</tr>
 				</c:forEach>
 				</table>

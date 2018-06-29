@@ -7,10 +7,11 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<base href="${pageContext.request.requestURI}" />
-		<link rel="stylesheet" href="../css/content.css">
+		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/admin.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<script type="text/javascript" src="../js/myreservation.js"></script>
 	<title>User-Verwaltung</title>      
 	</head> 
 	<body>    
@@ -53,7 +54,7 @@
 							<td><a  href="/bibproject/makeuseradmin?User=${user.username}">✔</a></td> 
 						</c:otherwise>
 						</c:choose>
-						<td><a  href="/bibproject/deleteuser?User=${user.username}">✘</a></td> 	
+						<td><a  href="/bibproject/deleteuser?User=${user.username}" class="deletelink">✘</a></td> 	
 					</tr>
 				</c:forEach>
 				</table>
