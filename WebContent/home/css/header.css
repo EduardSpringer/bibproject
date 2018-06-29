@@ -127,6 +127,7 @@ noscript{
 	background-color: white;
 	border: 3px solid #005A9B;
 	border-radius: 2em;
+	z-index: 2;
 }
 .hidden{
 	display:none;

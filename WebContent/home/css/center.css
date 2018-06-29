@@ -10,7 +10,7 @@
     margin-right: auto;
     padding: 10px;
     text-align: left; /*damit der inhalt nicht durch outsidediv zentriert wird */
-    z-index: -1;
+    
 }
 
 .outsidediv{ /*damit der innere div zentriert werden kann*/
