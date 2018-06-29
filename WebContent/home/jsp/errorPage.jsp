@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isErrorPage="true" %>
+<%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,6 +30,5 @@
 	<%-- Beispiel für einen Fehler:
 	<%String irgendwas = null;out.println(irgendwas.toString());%> --%>
 	<%-- <%@ page errorPage="errorPage.jsp" %> --%>
-	
 	</body>
 </html>

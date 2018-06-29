@@ -42,4 +42,14 @@ h1{
 	font-style: italic;
 }
 
+meter{
+	width: 15em;
+	height: 2em;
+}
+
+#meterText{
+	margin-left: -11.5em;
+	margin-bottom: 2em;
+	opacity: 0.4;
+}
 

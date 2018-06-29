@@ -67,7 +67,11 @@ table{
 th, td{
 	padding: 3px 0px;
 }
-tr:nth-child(odd){/*ungerade Zeile */
+
+thead{
+	background:#efeef7;
+}
+tbody tr:nth-child(even){/*gerade Zeile für tbody*/
 	background:#efeef7;
 }
 

@@ -52,7 +52,9 @@
 					<input type="file" name="profilbild" id="bildaendern" accept=".jpg, .jpeg, .png"/>
 				</div>
 				<p></p>
+
 				<button type="submit" id="bearbeiten">Änderungen übernehmen</button>
+
 			</form>
 		</section>
 		</div>

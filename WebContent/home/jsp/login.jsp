@@ -46,6 +46,8 @@
 								<input type="checkbox" name="check" id="checkbox" value="merken">
 								<label for="checkbox">Anmeldenamen merken</label>
 							</div>
+							
+							 <input type="hidden" name="weiterleitung" value="${param.weiterleitung}">
 														
 							<button type="submit" name="loginbutton" value="login">Anmelden</button>
 							<p id="register">Noch nicht registriert?<br>

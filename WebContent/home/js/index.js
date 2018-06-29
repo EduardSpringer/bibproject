@@ -4,14 +4,7 @@
 
 "use strict";
 
-document.addEventListener("ContentLoaded", initLastPage);
-
 document.addEventListener("DOMContentLoaded", init);
-
-function initLastPage(){
-	
-	
-}
 
 function init() {
 	var heute = new Date();
@@ -23,9 +16,8 @@ function init() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				var anzPlatz = JSON.parse(xmlhttp.responseText);
 	
-				document.getElementById("resPlaetze").innerHTML = "Reservierte Plätze: " + anzPlatz.anzBesetzt;
-				document.getElementById("freiePlaetze").innerHTML = "Freie Plätze: " + anzPlatz.anzFrei;
-				
+				document.getElementById("meter").value = anzPlatz.anzBesetzt;
+				document.getElementById("meterText").innerHTML = "Belegt: " + anzPlatz.anzBesetzt + " von 53";
 			}
 		}
 		xmlhttp.open("GET", "../currentplaceservlet", true);
