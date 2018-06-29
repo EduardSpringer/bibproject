@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
+		<script type="text/javascript" src="../js/myreservation.js"></script>
 		<title>Kontaktverwaltung</title>    
 	</head> 
 	<body>     
@@ -55,7 +56,7 @@
 								<td><a  href="/bibproject/nachrichtgelesen?KontaktID=${kontakt.id}">✔</a></td> 
 							</c:otherwise>
 						</c:choose>
-						<td><a  href="/bibproject/deletemessage?KontaktID=${kontakt.id}">✘</a></td> 
+						<td><a  href="/bibproject/deletemessage?KontaktID=${kontakt.id}" class="deletelink">✘</a></td> 
 					</tr>
 					</c:forEach>
 					</table>
