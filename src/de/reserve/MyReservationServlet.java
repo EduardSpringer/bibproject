@@ -47,36 +47,44 @@ public class MyReservationServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		
-		// DB-Zugriff Einzeltermine
-		List<ReservationBean> einzeltermine = sucheEinzeltermine(user.getUsername());
+		if(user == null) {
+			// Weiterleiten an JSP
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/login.jsp");
+			dispatcher.forward(request, response);	
+		}
+		else {
 		
-		//DB-Zugriff Wiederholungstermine
-		Object wdhObject[] = sucheWdhtermine(user.getUsername());
-		List<ReservationBean> wdhtermine = (List<ReservationBean>) wdhObject[0];
-		Set<String> terminBezSet = (Set<String>) wdhObject[1];
+			// DB-Zugriff Einzeltermine
+			List<ReservationBean> einzeltermine = sucheEinzeltermine(user.getUsername());
+			
+			//DB-Zugriff Wiederholungstermine
+			Object wdhObject[] = sucheWdhtermine(user.getUsername());
+			List<ReservationBean> wdhtermine = (List<ReservationBean>) wdhObject[0];
+			Set<String> terminBezSet = (Set<String>) wdhObject[1];
+			
+			//Berechnung der Seitenanzahl und Anzeige der Elemente für jeweilige Seite für die Einzeltermine
+			int nextPageEinzeltermin [] = getEinzelterminPage(page,einzeltermine.size());
+			int start = nextPageEinzeltermin [0];
+			int end = nextPageEinzeltermin [1];
+			int anzSeiten = nextPageEinzeltermin [2];
+			int nachfolgendeSeite = nextPageEinzeltermin [3];
+			int vorherigeSeite =nextPageEinzeltermin [4];
+			
+			// Scope "Request"
+			request.setAttribute("erstesElement", start); //foreach schleife Einzeltermine
+			request.setAttribute("letztesElement", end); //foreach schleife Einzeltermine
+			request.setAttribute("seitenAnzInsgesamt", anzSeiten); //foreach schleife für Seitenanzahllink
+			request.setAttribute("nachfolgendeSeite", nachfolgendeSeite); //"nächste Seite" Einzeltermine
+			request.setAttribute("vorherigeSeite", vorherigeSeite);//"vorherige Seite" Einzeltermine
 		
-		//Berechnung der Seitenanzahl und Anzeige der Elemente für jeweilige Seite für die Einzeltermine
-		int nextPageEinzeltermin [] = getEinzelterminPage(page,einzeltermine.size());
-		int start = nextPageEinzeltermin [0];
-		int end = nextPageEinzeltermin [1];
-		int anzSeiten = nextPageEinzeltermin [2];
-		int nachfolgendeSeite = nextPageEinzeltermin [3];
-		int vorherigeSeite =nextPageEinzeltermin [4];
-		
-		// Scope "Request"
-		request.setAttribute("erstesElement", start); //foreach schleife Einzeltermine
-		request.setAttribute("letztesElement", end); //foreach schleife Einzeltermine
-		request.setAttribute("seitenAnzInsgesamt", anzSeiten); //foreach schleife für Seitenanzahllink
-		request.setAttribute("nachfolgendeSeite", nachfolgendeSeite); //"nächste Seite" Einzeltermine
-		request.setAttribute("vorherigeSeite", vorherigeSeite);//"vorherige Seite" Einzeltermine
-	
-		request.setAttribute("einzeltermine", einzeltermine); //Liste der Res.Bean (Einzeltermine)		
-		request.setAttribute("wdhtermine", wdhtermine); //Liste der Res.Bean (Wdh Termine)
-		request.setAttribute("terminBezSet", terminBezSet); //alle Terminbezeichnungen
-		
-		// Weiterleiten an JSP
-		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/myReservation.jsp");
-		dispatcher.forward(request, response);	
+			request.setAttribute("einzeltermine", einzeltermine); //Liste der Res.Bean (Einzeltermine)		
+			request.setAttribute("wdhtermine", wdhtermine); //Liste der Res.Bean (Wdh Termine)
+			request.setAttribute("terminBezSet", terminBezSet); //alle Terminbezeichnungen
+			
+			// Weiterleiten an JSP
+			final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/myReservation.jsp");
+			dispatcher.forward(request, response);	
+		}
 	}
 
 	private List<ReservationBean> sucheEinzeltermine(String username) throws ServletException {

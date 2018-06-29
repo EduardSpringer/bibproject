@@ -28,7 +28,7 @@
 			<h1>Einzelreservierungen</h1>
 			<div id="termindiv">
 				<c:if test="${empty einzeltermine}">
-					<p class="keineTermine">Sie haben zur Zeit keine Einzelreservierungen</p>
+					<p class="keineTermine">Sie haben zurzeit keine Einzelreservierungen!</p>
 				</c:if>
 				
 				<c:if test="${not empty einzeltermine}">
@@ -80,7 +80,7 @@
 			<h1>Wiederholungsreservierungen</h1>
 			
 			<c:if test="${empty wdhtermine}">
-				<p class="keineTermine">Sie haben zur Zeit keine Wiederholungsreservierungen</p>
+				<p class="keineTermine">Sie haben zurzeit keine Wiederholungsreservierungen!</p>
 			</c:if>
 			<c:forEach var="terminBez" items="${terminBezSet}" varStatus="status">
 				<p>
