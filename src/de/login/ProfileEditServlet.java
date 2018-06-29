@@ -99,8 +99,10 @@ public class ProfileEditServlet extends HttpServlet {
 					loginbean.setBildexist(true);
 				}
 				else {
+					loginbean.setBildexist(false);
 					ps.setInt(5, 2);
 				}
+				loginbean.setAdminrechte(javabean.getAdminrechte());
 				session.setAttribute("lb", loginbean);
 				ps.setString(6, loginbean.getUsername()); 
 				javabean.setUsername(loginbean.getUsername());
