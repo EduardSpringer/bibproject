@@ -70,6 +70,7 @@ textarea:valid+span::after {
 
 button{
 	width: 150px;
+	height: 2em;
 	margin: 10px;
 	background: white;
 	border: 1px solid #005A9B;
