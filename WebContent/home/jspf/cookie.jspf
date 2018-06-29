@@ -1,0 +1,11 @@
+<!-- Helene Akulow -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>	  
+<%--Page direktive muss in der .jspf verwendet werden --%>
+
+<div id="cookiebox" class="hidden">
+	<p id="cookietext">Aktivieren Sie ihre Cookies 
+		<button type="button" id="cookiebutton">Ok!</button>
+	</p>
+</div>
+<script type="text/javascript" src="../js/cookie.js"></script>

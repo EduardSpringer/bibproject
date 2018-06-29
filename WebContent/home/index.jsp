@@ -53,11 +53,12 @@
 						</div>	
 						</c:otherwise>
 					</c:choose>
-				</div>
+				</div>				
 	
 				<a href="index.jsp">
 					<img src="img/logo.jpg" width="179" height="173" alt="Logo">
 				</a>
+				<noscript>Sie haben JavaScript deaktiviert!</noscript>
 				
 				<hr>
 				
@@ -86,13 +87,9 @@
 					</c:if>	
 					</ul>			
 				</nav>			
-			</div>
-			<noscript>Sie haben JavaScript deaktiviert!</noscript>
-			<div id="cookiebox" class="hidden">
-				<p id="cookietext">Aktivieren Sie ihre Cookies 
-					<button type="button" id="cookiebutton">Ok!</button>
-				</p>
-			</div>
+			</div>			
+			
+			<%@ include file="jspf/cookie.jspf" %>
 		</header>	
 		  
 

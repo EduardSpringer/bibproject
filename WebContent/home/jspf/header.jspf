@@ -1,8 +1,7 @@
 <!-- Helene Akulow -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>	
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%--Page direktive darf/muss in der .jspf verwendet werden --%>
+    pageEncoding="UTF-8"%>	  
+<%--Page direktive muss in der .jspf verwendet werden --%>
 	
 	<header>
 		<div class="center">			
@@ -48,6 +47,8 @@
 				<img src="../img/logo.jpg" width="179" height="173" alt="Logo">
 			</a>
 			
+			<noscript>Sie haben JavaScript deaktiviert!</noscript>
+			
 			<hr>
 			
 			<nav>			 
@@ -75,11 +76,7 @@
 				</ul>			
 			</nav>		
 		</div>
-		<noscript>Sie haben JavaScript deaktiviert!</noscript>
-		<div id="cookiebox" class="hidden">
-			<p id="cookietext">Aktivieren Sie ihre Cookies 
-				<button type="button" id="cookiebutton">Ok!</button>
-			</p>
-		</div>
-		<script type="text/javascript" src="../js/cookie.js"></script>
+		
+		<%@ include file="cookie.jspf" %>
+		
 	</header>
