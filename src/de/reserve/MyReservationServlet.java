@@ -47,6 +47,7 @@ public class MyReservationServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		
+		//Aufruf durch URL Fehler vermeiden
 		if(user == null) {
 			// Weiterleiten an JSP
 			final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/login.jsp");
