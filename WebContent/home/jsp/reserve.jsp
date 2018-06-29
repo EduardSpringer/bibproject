@@ -23,27 +23,27 @@
 		<!-- Überprüfung, ob Benutzer eingeloggt ist, ansonsten Weiterleitung an die login.jsp -->
 		<c:if test="${empty lb.username}">
 			<jsp:forward page="login.jsp">	
-			<jsp:param name="weiterleitung" value="reserve"></jsp:param>
+				<jsp:param name="weiterleitung" value="reserve"></jsp:param>
 			</jsp:forward>
 		</c:if>
 		
 		<div id="flexarea">
 		<main>	
 			<!-- Aktuelles Datum mittels JSP:fmt in best. Datumsformat formatieren!-->
-			<jsp:useBean id="aktuellesDatum" class="java.util.Date"/>    
-			<fmt:formatDate value="${aktuellesDatum}" pattern="yyyy-MM-dd" var="aktuellesDatum"/>
+			<jsp:useBean id="aktuellesDatum" class="java.util.Date"></jsp:useBean>    
+			<fmt:formatDate value="${aktuellesDatum}" pattern="yyyy-MM-dd" var="aktuellesDatum"></fmt:formatDate>
 			
 			<!-- jsp:setProperty by Author: rickz 
 			Quelle: https://stackoverflow.com/questions/13661212/get-date-of-tomorrow-using-jstl/25058675 -->
-			<jsp:useBean id="bisDatum" class="java.util.Date"/> 
-			<jsp:setProperty name="bisDatum" property="time" value="${bisDatum.time + 604800000}"/>
-			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"/> 
+			<jsp:useBean id="bisDatum" class="java.util.Date"></jsp:useBean>
+			<jsp:setProperty name="bisDatum" property="time" value="${bisDatum.time + 604800000}"></jsp:setProperty>
+			<fmt:formatDate value="${bisDatum}" pattern="yyyy-MM-dd" var="bisDatum"></fmt:formatDate> 
 			
-			<form id="formular" action="/bibproject/reservationservlet" accept-charset="UTF-8" method="post"></form>
+			<form id="formular" action="/bibproject/reservationservlet" method="post"></form>
 	
 			<div id="auswahl">
 				<label for="datum">Datum: </label>
-				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required form="formular"> 
+				<input type="date" name="datum" id="datum" min="${aktuellesDatum}" max="2018-10-02" value="${aktuellesDatum}" required form="formular"/> 
 				<label for="zeitraum">Zeitraum:</label>
 				<select name="zeitraum" id="zeitraum" form="formular"></select>
 			</div>

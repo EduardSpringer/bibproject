@@ -211,8 +211,3 @@ input[type="number"]{
 	margin-left: 1em;
 	width: 1.1em;
 }
-
-/* https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box */
-input[type='number'] {
-    -moz-appearance:textfield;
-}

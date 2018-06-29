@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<meta http-equiv="refresh" content="8; URL=../index.jsp"><!-- Weiterleitung auf index.jsp in 8 Sekunden -->
 		<title>Nachricht erfolgreich versandt!</title>
 		<base href="${pageContext.request.requestURI}"/>

@@ -33,7 +33,7 @@ public class ReservationServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+		
 		String datum = request.getParameter("datum");
 		String zeitraum = request.getParameter("zeitraum");
 		String platznr = request.getParameter("platznr");
@@ -42,6 +42,7 @@ public class ReservationServlet extends HttpServlet {
 		LoginBean user = (LoginBean) session.getAttribute("lb");
 		String username = user.getUsername();
 		
+		if(datum != null && zeitraum != null & platznr != null)
 		resTermin(datum, zeitraum, platznr, username);
 		
 		final RequestDispatcher dispatcher = request.getRequestDispatcher("/home/jsp/reserve.jsp");
