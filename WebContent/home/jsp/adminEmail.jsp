@@ -11,11 +11,11 @@
 		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
-		<script type="text/javascript" src="../js/myreservation.js"></script>
+		<script type="text/javascript" src="../js/myreservation.js"></script> 
 		<title>Kontaktverwaltung</title>    
 	</head> 
-	<body>     
-		<%@ include file="../jspf/header.jspf" %>    
+	<body>        
+		<%@ include file="../jspf/header.jspf" %>
 		<div class="outsidediv">               
 			<p></p>  
 			<c:if test="${empty lb.username}">
@@ -30,30 +30,30 @@
 				<c:if test="${not empty kontakte}">   
 					<table> 
 					<tr>			 
-						<th>NachrichtID</th> 
-						<th>Betreff</th> 
+						<th>NachrichtID</th>
+						<th>Betreff</th>              
 						<th>Nachricht</th>    
 						<th>Name</th> 
 						<th>Email</th> 
 						<th>Gelesen?</th>
 						<th>Als "Gelesen" markieren?</th> 
-						<th>Nachricht löschen?</th>
+						<th>Nachricht löschen?</th>                      
 					</tr>
 					<c:forEach var="kontakt" items="${kontakte}">			
-					<tr>
+					<tr> 
 						<td>${kontakt.id}</td>  
 						<td>${kontakt.betreff}</td>
 						<td>${kontakt.nachricht}</td> 
 						<td>${kontakt.name}</td>
 						<td>${kontakt.email}</td>
 						<c:choose>
-							<c:when test="${kontakt.status == true}">
+							<c:when test="${kontakt.status == true}"> 
 								<td>Ja</td>
 								<td></td>
 							</c:when>
 							<c:otherwise>
 								<td>Nein</td>
-								<td><a  href="/bibproject/nachrichtgelesen?KontaktID=${kontakt.id}">✔</a></td> 
+								<td><a  href="/bibproject/nachrichtgelesen?KontaktID=${kontakt.id}" class="statusaendern">✔</a></td> 
 							</c:otherwise>
 						</c:choose>
 						<td><a  href="/bibproject/deletemessage?KontaktID=${kontakt.id}" class="deletelink">✘</a></td> 
@@ -61,6 +61,7 @@
 					</c:forEach>
 					</table>
 				</c:if>
+				<p></p> 
 		</div>
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>

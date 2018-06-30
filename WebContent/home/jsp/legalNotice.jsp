@@ -26,7 +26,7 @@
 				85049 Ingolstadt <br></p>
 				<p> <strong>Vertreten durch: </strong><br>
 				Helene Akulow<br>
-				Sara Miller<br>
+				Sara Viktoria Miller<br>
 				Eduard Springer<br></p>
 				<p><strong>Kontakt:</strong> <br>
 				Telefon: 0841-8863623<br>

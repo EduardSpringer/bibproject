@@ -7,16 +7,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Profil bearbeiten</title>
-		<link rel="stylesheet" href="../css/content.css" type="text/css">
-		<link rel="stylesheet" href="../css/header.css">
+		<link rel="stylesheet" href="../css/content.css">
 		<link rel="stylesheet" href="../css/center.css">
+		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">   
 		<script src="../js/edit.js"></script> 
 	</head> 
 	<body>          
 		<%@ include file="../jspf/header.jspf" %>     
-		<div class="outsidediv">     
-		<section class="zentriert">   
+		<div class="outsidediv">       
 			<c:if test="${empty lb.username}">
 				<jsp:forward page="login.jsp" />             
 			</c:if>   
@@ -54,9 +53,8 @@
 				<p></p>
 
 				<button type="submit" id="bearbeiten">Änderungen übernehmen</button>
-
 			</form>
-		</section>
+			<p></p>
 		</div>
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>

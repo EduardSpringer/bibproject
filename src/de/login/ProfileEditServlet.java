@@ -86,7 +86,8 @@ public class ProfileEditServlet extends HttpServlet {
 				try(Connection con = ds.getConnection();    
 					PreparedStatement ps = con.prepareStatement("UPDATE thidb.Benutzer SET Profilbild = NULL, Bildexist = 0 WHERE Username = ?")){
 					ps.setString(1, loginbean.getUsername());
-					ps.executeUpdate(); 
+					ps.executeUpdate();  
+					bildexistAlt = false; 
 				}catch(Exception ex) {
 					throw new ServletException(ex.getMessage()); 
 				}
@@ -105,6 +106,7 @@ public class ProfileEditServlet extends HttpServlet {
 					loginbean.setBildexist(bildexistAlt);
 					ps.setInt(5, 2);
 				}
+				loginbean.setProfilbild(null);
 				loginbean.setAdminrechte(adminrechte);
 				session.setAttribute("lb", loginbean);
 				ps.setString(6, loginbean.getUsername()); 
