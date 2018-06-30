@@ -39,7 +39,7 @@ td{
 	border-width: thin; 
 }
 
-/*Rahmenelemente für Seitenzellen: //https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
+/*Beginn: Rahmenelemente für Seitenzellen > //https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
 td:first-child, th:first-child {
      border-left: none;
 }
@@ -51,6 +51,7 @@ td:last-child, th:last-child{
 table tr:last-child td { 
 	border-bottom: none; 
 }
+/*Ende: Rahmenelemente für Seitenzellen > //https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
 
 th{
 	border-top: none; 

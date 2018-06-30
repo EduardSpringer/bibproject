@@ -69,9 +69,10 @@ public class ProfileEditServlet extends HttpServlet {
 				while((i = is.read()) != -1) {
 					baos.write(i);
 				}
-				//Dateityp überprüfen: https://javatutorial.net/java-servlet-file-upload
 				if(!contenttype.isEmpty()) {
+					//Beginn: Dateityp überprüfen > https://javatutorial.net/java-servlet-file-upload
 					if(contenttype.equalsIgnoreCase("image/jpeg") || contenttype.equalsIgnoreCase("image/jpg") || contenttype.equalsIgnoreCase("image/png")) {
+						//Ende: Dateityp überprüfen > https://javatutorial.net/java-servlet-file-upload
 						javabean.setProfilbild(baos.toByteArray());
 						baos.flush(); 
 					}
