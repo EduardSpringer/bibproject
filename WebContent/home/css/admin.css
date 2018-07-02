@@ -1,7 +1,5 @@
-/**
- * Sara Viktoria Miller
- */
- 
+/*Sara Viktoria Miller*/
+
 p{
 	color: #005A9B; 
 	font-family: sans-serif; 
@@ -13,42 +11,67 @@ p{
 }
 
 th{
-	color: #FFFFFF; 
+	color: #005A9B;
 	font-family: sans-serif; 
 	font-weight: 900; 
 	font-style: normal; 
 	font-size: 15px; 
-	line-height: 15px; 
 	text-align: center;
-	padding: 15x; 
-	height: 50px;
-	width: 200px; 
+	padding: 15px; 
+	width: 150px; 
+	border-top: none; 
+	border-style: solid;
+	border-color: #005A9B;
+	border-width: thin; 
 }
 
 td{
-	color: #FFFFFF; 
+	color: #005A9B; 
 	font-family: sans-serif; 
 	font-weight: 300; 
 	font-style: normal; 
-	font-size: 12px; 
-	line-height: 13px; 
+	font-size: 15px; 
 	text-align: left;
 	padding: 15px; 
 	text-align: center;
+	border-style: solid;
+	border-color: #005A9B;
+	border-width: thin; 
 }
 
-a{
+/*Beginn: Rahmenelemente für Seitenzellen > //https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
+td:first-child, th:first-child {
+     border-left: none;
+}
+
+td:last-child, th:last-child{
+	border-right: none; 
+}
+
+table tr:last-child td { 
+	border-bottom: none; 
+}
+/*Ende: Rahmenelemente für Seitenzellen > //https://stackoverflow.com/questions/4932181/rounded-table-corners-css-only*/
+
+th{
+	border-top: none; 
+}
+
+.deletelink{
 	color: red; 
 	text-decoration: none;
 }
-
-table {
-	display:inline-block; 
-	background: #005A9B;
-    border-collapse: collapse;
-    text-align: center;
+.statusaendern{
+	color: green; 
+	text-decoration: none; 
 }
 
-table, td, th {
-    border: 0.5px solid;
+table{
+	border-radius: 25px;
+	display:inline-block; 
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #005A9B; 
+	background: #FFFFFF; 
+	border-width: thin;
 }

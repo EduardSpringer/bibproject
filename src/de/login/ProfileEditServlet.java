@@ -69,9 +69,10 @@ public class ProfileEditServlet extends HttpServlet {
 				while((i = is.read()) != -1) {
 					baos.write(i);
 				}
-				//Dateityp überprüfen: https://javatutorial.net/java-servlet-file-upload
 				if(!contenttype.isEmpty()) {
+					//Beginn: Dateityp überprüfen > https://javatutorial.net/java-servlet-file-upload
 					if(contenttype.equalsIgnoreCase("image/jpeg") || contenttype.equalsIgnoreCase("image/jpg") || contenttype.equalsIgnoreCase("image/png")) {
+						//Ende: Dateityp überprüfen > https://javatutorial.net/java-servlet-file-upload
 						javabean.setProfilbild(baos.toByteArray());
 						baos.flush(); 
 					}
@@ -86,7 +87,8 @@ public class ProfileEditServlet extends HttpServlet {
 				try(Connection con = ds.getConnection();    
 					PreparedStatement ps = con.prepareStatement("UPDATE thidb.Benutzer SET Profilbild = NULL, Bildexist = 0 WHERE Username = ?")){
 					ps.setString(1, loginbean.getUsername());
-					ps.executeUpdate(); 
+					ps.executeUpdate();  
+					bildexistAlt = false; 
 				}catch(Exception ex) {
 					throw new ServletException(ex.getMessage()); 
 				}
@@ -105,6 +107,7 @@ public class ProfileEditServlet extends HttpServlet {
 					loginbean.setBildexist(bildexistAlt);
 					ps.setInt(5, 2);
 				}
+				loginbean.setProfilbild(null);
 				loginbean.setAdminrechte(adminrechte);
 				session.setAttribute("lb", loginbean);
 				ps.setString(6, loginbean.getUsername()); 

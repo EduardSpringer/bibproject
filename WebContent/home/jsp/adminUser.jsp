@@ -7,12 +7,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<base href="${pageContext.request.requestURI}" />
-		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/admin.css">
+		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
 		<link rel="stylesheet" href="../css/footer.css">
 		<script type="text/javascript" src="../js/myreservation.js"></script>
-	<title>User-Verwaltung</title>      
+		<title>User-Verwaltung</title>      
 	</head> 
 	<body>    
 		<%@ include file="../jspf/header.jspf" %>      
@@ -51,7 +51,7 @@
 						</c:when>
 						<c:otherwise>
 							<td>Nein</td>
-							<td><a  href="/bibproject/makeuseradmin?User=${user.username}">✔</a></td> 
+							<td><a  href="/bibproject/makeuseradmin?User=${user.username}" class="statusaendern">✔</a></td> 
 						</c:otherwise>
 						</c:choose>
 						<td><a  href="/bibproject/deleteuser?User=${user.username}" class="deletelink">✘</a></td> 	
@@ -59,6 +59,7 @@
 				</c:forEach>
 				</table>
 			</c:if>
+			<p></p>
 		</div>
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>

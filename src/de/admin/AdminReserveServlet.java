@@ -43,7 +43,8 @@ public class AdminReserveServlet extends HttpServlet {
 					ReservationBean rb = new ReservationBean(); 
 					rb.setReservierungID(rs.getInt("ReservierungID")); 
 					rb.setDatumString(rs.getString("Datum"));
-					rb.setZeitraum(rs.getString("Zeitraum"));
+					int vonDatum = Integer.parseInt(rs.getString("Zeitraum"))-2; 
+					rb.setZeitraum(vonDatum + ".00 bis " + rs.getString("Zeitraum") + ".00 Uhr");
 					rb.setPlatzID(rs.getInt("PlatzID"));
 					rb.setNachname(rs.getString("Nachname")); 
 					rb.setVorname(rs.getString("Vorname")); 

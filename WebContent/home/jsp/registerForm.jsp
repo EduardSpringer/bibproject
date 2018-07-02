@@ -16,8 +16,7 @@
 	</head>
 	<body>  
 		<%@ include file="../jspf/header.jspf" %>    
-		<div class="outsidediv">       
-		<section class="zentriert">           
+		<div class="outsidediv">                 
 		<c:if test="${not empty lb.username}">
 			<jsp:forward page="profileEditForm.jsp" />         
 		</c:if>           
@@ -59,7 +58,7 @@
 			<p></p>    
 			<button type="submit" name = "registrieren" id="register">Registrieren</button>
 		</form>  
-		</section>
+		<p></p>
 		</div>
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>

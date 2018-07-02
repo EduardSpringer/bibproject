@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../css/admin.css">
 		<link rel="stylesheet" href="../css/center.css">
 		<link rel="stylesheet" href="../css/header.css">
-		<link rel="stylesheet" href="../css/footer.css">
+		<link rel="stylesheet" href="../css/footer.css"> 
 		<script type="text/javascript" src="../js/myreservation.js"></script>
 		<title>Reservierungsverwaltung</title>   
 	</head> 
@@ -32,7 +32,7 @@
 				<tr>			
 					<th>ReservierungsID</th> 
 					<th>Reservierungsdatum</th>    
-					<th>Zeitraum</th>    
+					<th>Zeitraum</th>      
 					<th>PlatznummerID</th> 
 					<th>Nachname</th>
 					<th>Vorname</th>
@@ -53,6 +53,7 @@
 				</c:forEach>
 				</table>
 			</c:if>
+			<p></p>
 		</div> 
 		<%@ include file="../jspf/footer.jspf" %>
 	</body>
