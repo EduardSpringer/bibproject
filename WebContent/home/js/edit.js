@@ -23,7 +23,7 @@ function vergleichePasswort(evt){
 function bildCheck(evt){
 	var profilbild = document.getElementById("bildaendern").value;  
 	var bild = profilbild.substring(profilbild.lastIndexOf("."), profilbild.length)
-	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || !profilbild) { 
+	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || bild == ".PNG" || bild == ".JPG" || bild == ".JPEG" || !profilbild) { 
 	}
 	else{ 
 		alert("Dateityp wird nicht unterstützt!\nUnterstützt werden folgende Dateiformate: png, jpg und jpeg "); 

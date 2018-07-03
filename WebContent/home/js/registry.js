@@ -27,7 +27,7 @@ function vergleichePasswort(evt){
 function bildCheck(evt){
 	var profilbild = document.getElementById("profilbild").value;  
 	var bild = profilbild.substring(profilbild.lastIndexOf("."), profilbild.length)
-	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || !profilbild) { 
+	if (bild == ".png" || bild == ".jpg" || bild == ".jpeg" || bild == ".PNG" || bild == ".JPG" || bild == ".JPEG" || !profilbild) { 
 
 	}
 	else{ 

@@ -48,7 +48,7 @@
 				<p></p>
 				<div class="upload-button">
 					Profilbild hochladen
-					<input type="file" name="profilbild" id="bildaendern" accept=".jpg, .jpeg, .png"/>
+					<input type="file" name="profilbild" id="bildaendern" accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"/>
 				</div>
 				<p></p>
 

@@ -30,7 +30,7 @@
 				<span></span>
 			</p> 
 			<p>             
-				<label for="nachname">Nachname *</label>
+				<label for="nachname">Nachname *</label> 
 				<input name="nachname" id="nachname" type="text" size="30" maxlength="30" required placeholder="Nachname darf nicht länger als 30 Zeichen sein">
 				<span></span> 
 			</p>     
@@ -53,7 +53,7 @@
 			<h5>(* Pflichtfeld)</h5>
 			<div class="upload-button">
 				Profilbild hochladen
-			<input type="file" name="profilbild" id="profilbild" accept=".jpg, .jpeg, .png"/>		
+			<input type="file" name="profilbild" id="profilbild" accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"/>		
 			</div>
 			<p></p>    
 			<button type="submit" name = "registrieren" id="register">Registrieren</button>
