@@ -6,7 +6,7 @@
 <!DOCTYPE html> <!-- Document Type Definition (legt die verwendbaren Elemente und die Syntax fest) -->
 <html> <!-- umfasst das gesamte HTML-Dokument --> 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
 		<title>Startseite</title>
 		<meta name="Webseite der Bibliothek an der THI" content="Platzreservierung"/>
 		<base href="${pageContext.request.requestURI}" />

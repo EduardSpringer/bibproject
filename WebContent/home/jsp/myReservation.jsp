@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="utf-8">
 		<title>Meine Termine</title>
 		<base href="${pageContext.request.requestURI}" />
 		<link rel="stylesheet" href="../css/myReservation.css">
