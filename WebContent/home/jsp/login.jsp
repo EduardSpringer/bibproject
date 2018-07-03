@@ -31,7 +31,7 @@
 							<div>
 								<label for="username">Name:</label>
 								<input type ="text" id="username" name="username" value="${cookie.usernameCookie.value}" 
-									type="text" maxlength="7" autofocus required pattern="[A-Za-z]{3}[0-9]{4}" 
+								 	maxlength="7" autofocus required pattern="[A-Za-z]{3}[0-9]{4}" 
 									title="THI Loginname (Musterbeispiel: hea1111)" placeholder= "hea1111">
 								<span></span>
 							</div>

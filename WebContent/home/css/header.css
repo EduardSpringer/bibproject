@@ -30,7 +30,7 @@ header {
 
 
 .loginfeld{
-	margin: 10px;
+	margin: 15px;
 	float: right;
 	font-size: 1.2em;	
 }
@@ -115,7 +115,7 @@ noscript{
 	font-family: sans-serif;
 	color:red;
 	font-size: 1.75em;
-	padding-left: 240px;
+	padding-left: 220px;
 }
 
 /*Cookiebox*/
